@@ -1,4 +1,20 @@
-#face {
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    overflow-y: scroll;
+}
+
+body {
+    background: #607d8b;
+ 
+}
+
+.head {
     background-color: #804000;
     width: 200px;
     height: 200px;

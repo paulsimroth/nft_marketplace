@@ -16,7 +16,7 @@ function genColors(){
 
 //This function code needs to modified so that it works with Your cat code.
 function headColor(color,code) {
-    $('.cat__head, .cat__chest').css('background', '#' + color)  //This changes the color of the cat
+    $('.head, .body').css('background', '#' + color)  //This changes the color of the cat
     $('#headcode').html('code: '+code) //This updates text of the badge next to the slider
     $('#dnabody').html(code) //This updates the body color part of the DNA that is displayed below the cat
 }
@@ -47,7 +47,7 @@ function decorationVariation(num) {
 }
 
 async function normalEyes() {
-    await $('.cat__eye').find('span').css('border', 'none')
+    await $('.eye').find('span').css('border', 'none')
 }
 
 async function normaldecoration() {
