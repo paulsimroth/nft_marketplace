@@ -13,7 +13,7 @@ function genColors(){
     return colors;
 };
 
-//This function code needs to modified so that it works with Your cat code.
+//Color Variations
 function headColor(color,code) {
     $('.ear, .head, .body').css('background', '#' + color)  //This changes the color of the bear
     $('#headcode').html('code: '+ code) //This updates text of the badge next to the slider
@@ -38,9 +38,7 @@ function earsColor(color,code) {
     $('#dnaears').html(code) 
 };
 
-//###################################################
-//Functions below will be used later on in the project
-//###################################################
+//Appearance Variation
 function eyeVariation(num) {
 
     $('#dnashape').html(num)
@@ -49,6 +47,39 @@ function eyeVariation(num) {
             normalEyes()
             $('#eyeName').html('Basic')
             break
+        case 2:
+            normalEyes()
+            $('#eyeName').html('Chill')
+            eyesType2()
+            break
+        case 3:
+            normalEyes()
+            $('#eyeName').html('Up')
+            eyesType3()
+            break
+        case 4:
+            normalEyes()
+            $('#eyeName').html('Case 4')
+            eyesType4()
+            break
+        case 5:
+            normalEyes()
+            $('#eyeName').html('Case 5')
+            eyesType5()
+            break
+        case 6:
+            normalEyes()
+            $('#eyeName').html('Case 6')
+            eyesType6()
+            break
+        case 7:
+            normalEyes()
+            $('#eyeName').html('Case 7')
+            eyesType7()
+            break
+        default:
+            console.log("No match")
+            break;
     }
 };
 
@@ -62,9 +93,36 @@ function decorationVariation(num) {
     }
 };
 
-async function normalEyes() {
-    await $('.eye').find('span').css('border', 'none')
+
+//Eye types
+function normalEyes() {
+    $('.eye').find('span').css('border', 'none')
 };
+
+function eyesType2() {
+    $('.eye').find('span').css('border-top', '15px solid ')
+}
+
+function eyesType3() {
+    $('.eye').find('span').css('border-bottom', '15px solid')
+}
+
+function eyesType4() {
+    $('.eye').find('span').css('border-bottom', '15px solid')
+}
+
+function eyesType5() {
+    $('.eye').find('span').css('border-bottom', '15px solid')
+}
+
+function eyesType6() {
+    $('.eye').find('span').css('border-bottom', '15px solid')
+}
+
+function eyesType7() {
+    $('.eye').find('span').css('border-bottom', '15px solid')
+}
+
 
 async function normaldecoration() {
     //Remove all style from other decorations
