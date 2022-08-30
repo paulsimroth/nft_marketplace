@@ -40,45 +40,44 @@ function earsColor(color,code) {
 
 //Appearance Variation
 function eyeVariation(num) {
-
     $('#dnashape').html(num)
     switch (num) {
         case 1:
             normalEyes()
             $('#eyeName').html('Basic')
-            break
+            break;
         case 2:
             normalEyes()
-            $('#eyeName').html('Chill')
+            $('#eyeName').html('Eyelid down')
             eyesType2()
-            break
+            break;
         case 3:
             normalEyes()
-            $('#eyeName').html('Up')
+            $('#eyeName').html('Eyelid up')
             eyesType3()
-            break
+            break;
         case 4:
             normalEyes()
-            $('#eyeName').html('Case 4')
+            $('#eyeName').html('Schock')
             eyesType4()
-            break
+            break;
         case 5:
             normalEyes()
-            $('#eyeName').html('Case 5')
+            $('#eyeName').html('Unset')
             eyesType5()
-            break
+            break;
         case 6:
             normalEyes()
-            $('#eyeName').html('Case 6')
+            $('#eyeName').html('Square')
             eyesType6()
-            break
+            break;
         case 7:
             normalEyes()
-            $('#eyeName').html('Case 7')
+            $('#eyeName').html('Up')
             eyesType7()
-            break
+            break;
         default:
-            console.log("No match")
+            $('#eyeName').html('INVALID')
             break;
     }
 };
@@ -93,35 +92,39 @@ function decorationVariation(num) {
     }
 };
 
-
 //Eye types
 function normalEyes() {
+    //all variantions are reset to default
     $('.eye').find('span').css('border', 'none')
+    $('.eye').find('span').css('width', '35px')
+    $('.eye').find('span').css('position', 'absolute')
+    $('.eye').find('span').css('border-radius', '50%')
+    $('.eye').find('span').css('top', '10px')
 };
 
 function eyesType2() {
     $('.eye').find('span').css('border-top', '15px solid ')
-}
+};
 
 function eyesType3() {
     $('.eye').find('span').css('border-bottom', '15px solid')
-}
+};
 
 function eyesType4() {
-    $('.eye').find('span').css('border-bottom', '15px solid')
-}
+    $('.eye').find('span').css('width', '25px')
+};
 
 function eyesType5() {
-    $('.eye').find('span').css('border-bottom', '15px solid')
-}
+    $('.eye').find('span').css('position', 'unset')
+};
 
 function eyesType6() {
-    $('.eye').find('span').css('border-bottom', '15px solid')
-}
+    $('.eye').find('span').css('border-radius', '0 0 0 0')
+};
 
 function eyesType7() {
-    $('.eye').find('span').css('border-bottom', '15px solid')
-}
+    $('.eye').find('span').css('top', '1px')
+};
 
 
 async function normaldecoration() {
