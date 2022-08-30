@@ -63,9 +63,18 @@ function renderBear(dna){
 
   eyeVariation(dna.eyesShape)
   $('#eyesshape').val(dna.eyesShape)
+
+  decorationVariation(dna.decorationPattern)
+  $('#hatshape').val(dna.decorationPattern)
+
+  decorationVariation(dna.decorationMidcolor)
+  $('#hattopcolor').val(dna.decorationMidcolor)
+
+  decorationVariation(dna.decorationSidescolor)
+  $('#hatbrimcolor').val(dna.decorationSidescolor)
 }
 
-// Changing bear attributes
+// Changing bear DNA attributes
 $('#bodycolor').change(()=>{
   var colorVal = $('#bodycolor').val()
   headColor(colors[colorVal],colorVal)
@@ -89,4 +98,19 @@ $('#earscolor').change(()=>{
 $('#eyesshape').change(()=>{
   var shape = parseInt($('#eyesshape').val())
   eyeVariation(shape)
+});
+
+$('#hatshape').change(()=>{
+  var shape = parseInt($('#hatshape').val())
+  decorationVariation(shape)
+});
+
+$('#hattopcolor').change(()=>{
+  var color = parseInt($('#hattopcolor').val())
+  decorationColor1(color)
+});
+
+$('#hatbrimcolor').change(()=>{
+  var color = parseInt($('#hatbrimcolor').val())
+  decorationColor2(color)
 });

@@ -38,7 +38,7 @@ function earsColor(color,code) {
     $('#dnaears').html(code) 
 };
 
-//Appearance Variation
+//Eye Variation
 function eyeVariation(num) {
     $('#dnashape').html(num)
     switch (num) {
@@ -81,7 +81,7 @@ function eyeVariation(num) {
             break;
     }
 };
-
+//Hat Variations
 function decorationVariation(num) {
     $('#dnadecoration').html(num)
     switch (num) {
@@ -89,7 +89,37 @@ function decorationVariation(num) {
             $('#decorationName').html('Basic')
             normaldecoration()
             break
-    }
+        case 2:
+            normaldecoration()
+            $('#decorationName').html('Tophat')
+            decorationPattern2()
+            break
+        case 3:
+            normaldecoration()
+            $('#decorationName').html('Hat with No Brim')
+            decorationPattern3()
+            break
+        case 4:
+            normaldecoration()
+            $('#decorationName').html('Big Hat')
+            decorationPattern4()
+            break
+        case 5:
+            normaldecoration()
+            $('#decorationName').html('Small Hat')
+            decorationPattern5()
+            break
+        case 6:
+            normaldecoration()
+            $('#decorationName').html('Cap')
+            decorationPattern6()
+            break
+        case 7:
+            normaldecoration()
+            $('#decorationName').html('No Hat')
+            decorationPattern7()
+            break
+        }
 };
 
 //Eye types
@@ -126,11 +156,39 @@ function eyesType7() {
     $('.eye').find('span').css('top', '1px')
 };
 
-
+//Hat Types
 async function normaldecoration() {
     //Remove all style from other decorations
-    //In this way we can also use normalDecoration() to reset the decoration style
-    $('.cat__head-dots').css({ "transform": "rotate(0deg)", "height": "48px", "width": "14px", "top": "1px", "border-radius": "0 0 50% 50%" })
-    $('.cat__head-dots_first').css({ "transform": "rotate(0deg)", "height": "35px", "width": "14px", "top": "1px", "border-radius": "50% 0 50% 50%" })
-    $('.cat__head-dots_second').css({ "transform": "rotate(0deg)", "height": "35px", "width": "14px", "top": "1px", "border-radius": "0 50% 50% 50%" })
+    $('.hat-top').css({"height": "50px", "width": "90px", "left": "93px", "border-radius": "85% 85% 25% 25%", "top": "0px", "visibility": "visible"})
+    $('.hat-brim').css({"height": "7px", "width": "120px", "top": "45px", "left": "78px", "border-radius": "0 0 0 0", "visibility": "visible"})
+};
+
+function decorationPattern2() {
+    $('.hat-top').css({"height": "70px", "width": "90px", "left": "93px", "border-radius": "0 0 0 0", "top": "-18px", "visibility": "visible"})
+    $('.hat-brim').css({"height": "7px", "width": "120px", "top": "45px", "left": "78px", "border-radius": "0 0 0 0", "visibility": "visible"})
+};
+
+function decorationPattern3() {
+    $('.hat-top').css({"height": "50px", "width": "90px", "left": "93px", "border-radius": "85% 85% 25% 25%", "visibility": "visible" })
+    $('.hat-brim').css({"height": "7px", "width": "90px", "top": "45px", "left": "93px", "border-radius": "0 0 0 0", "visibility": "visible"})
+};
+
+function decorationPattern4() {
+    $('.hat-top').css({"height": "50px", "width": "120px", "left": "78px", "border-radius": "85% 85% 25% 25%", "visibility": "visible" })
+    $('.hat-brim').css({"height": "7px", "width": "200px", "top": "45px", "left": "39px", "border-radius": "0 0 0 0", "visibility": "visible"})
+};
+
+function decorationPattern5() {
+    $('.hat-top').css({"height": "38px", "width": "47px", "left": "113px","top": "6px", "border-radius": "85% 85% 25% 25%", "visibility": "visible" })
+    $('.hat-brim').css({"height": "7px", "width": "85px", "top": "38px", "left": "95px", "border-radius": "0 0 0 0", "visibility": "visible"})
+};
+
+function decorationPattern6() {
+    $('.hat-top').css({"height": "50px", "width": "90px", "left": "93px", "border-radius": "85% 85% 25% 25%", "visibility": "visible" })
+    $('.hat-brim').css({"height": "7px", "width": "120px", "top": "45px", "left": "63px", "border-radius": "0 0 0 0", "visibility": "visible"})
+};
+
+function decorationPattern7() {
+    $('.hat-top').css({"height": "50px", "width": "90px", "left": "93px", "border-radius": "85% 85% 25% 25%", "visibility": "hidden" })
+    $('.hat-brim').css({"height": "7px", "width": "120px", "top": "45px", "left": "78px", "border-radius": "0 0 0 0", "visibility": "hidden" })
 };
