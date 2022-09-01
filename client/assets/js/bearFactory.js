@@ -93,46 +93,6 @@ function eyeVariation(num) {
             break;
     }
 };
-//Hat Variations
-function decorationVariation(num) {
-    $('#dnadecoration').html(num)
-    switch (num) {
-        case 1:
-            $('#decorationName').html('Basic')
-            normaldecoration()
-            break
-        case 2:
-            normaldecoration()
-            $('#decorationName').html('Tophat')
-            decorationPattern2()
-            break
-        case 3:
-            normaldecoration()
-            $('#decorationName').html('Hat with No Brim')
-            decorationPattern3()
-            break
-        case 4:
-            normaldecoration()
-            $('#decorationName').html('Big Hat')
-            decorationPattern4()
-            break
-        case 5:
-            normaldecoration()
-            $('#decorationName').html('Small Hat')
-            decorationPattern5()
-            break
-        case 6:
-            normaldecoration()
-            $('#decorationName').html('Cap')
-            decorationPattern6()
-            break
-        case 7:
-            normaldecoration()
-            $('#decorationName').html('No Hat')
-            decorationPattern7()
-            break
-        }
-};
 
 //Eye types
 function normalEyes() {
@@ -166,6 +126,47 @@ function eyesType6() {
 
 function eyesType7() {
     $('.eye').find('span').css('top', '1px')
+};
+
+//Hat Variations
+function decorationVariation(num) {
+    $('#dnadecoration').html(num)
+    switch (num) {
+        case 1:
+            $('#decorationName').html('Basic')
+            normaldecoration()
+            break;
+        case 2:
+            normaldecoration()
+            $('#decorationName').html('Tophat')
+            decorationPattern2()
+            break;
+        case 3:
+            normaldecoration()
+            $('#decorationName').html('Hat with No Brim')
+            decorationPattern3()
+            break;
+        case 4:
+            normaldecoration()
+            $('#decorationName').html('Big Hat')
+            decorationPattern4()
+            break;
+        case 5:
+            normaldecoration()
+            $('#decorationName').html('Small Hat')
+            decorationPattern5()
+            break;
+        case 6:
+            normaldecoration()
+            $('#decorationName').html('Cap')
+            decorationPattern6()
+            break;
+        case 7:
+            normaldecoration()
+            $('#decorationName').html('No Hat')
+            decorationPattern7()
+            break;
+        }
 };
 
 //Hat Types
@@ -203,4 +204,77 @@ function decorationPattern6() {
 function decorationPattern7() {
     $('.hat-top').css({"height": "50px", "width": "90px", "left": "93px", "border-radius": "85% 85% 25% 25%", "visibility": "hidden" })
     $('.hat-brim').css({"height": "7px", "width": "120px", "top": "45px", "left": "78px", "border-radius": "0 0 0 0", "visibility": "hidden" })
+};
+
+//Animations
+function animationVariation(num){
+    $('#dnaanimation').html(num)
+    switch (num) {
+        case 1:
+            animationType1();
+            $('#animationName').html('Animation 1');
+            break;
+        case 2: 
+            animationType2();
+            $('#animationName').html('Animation 2');
+            break;
+        case 3: 
+            animationType3();
+            $('#animationName').html('Animation 3');
+            break;
+        case 4: 
+            animationType4();
+            $('#animationName').html('Animation 4');
+            break; 
+        case 5: 
+            animationType5();
+            $('#animationName').html('Animation 5');
+            break;
+        case 6: 
+            animationType6();
+            $('#animationName').html('Animation 6');
+            break; 
+        case 7: 
+            animationType7();
+            $('#animationName').html('Animation 7');
+            break;        
+        default:
+            break;
+    }
+};
+
+//reset animation
+function resetAnimation() {
+    $('.head').removeClass("movingHead");
+};
+
+//animations
+function animationType1(){
+    resetAnimation();
+    $('.head').addClass("movingHead");
+};
+
+function animationType2(){
+    resetAnimation();
+    $('.head').addClass("movingHead");
+};
+
+function animationType3(){
+    resetAnimation();
+};
+
+function animationType4(){
+    resetAnimation();
+};
+
+function animationType5(){
+    resetAnimation();
+};
+
+function animationType6(){
+    resetAnimation();
+};
+
+function animationType7(){
+    resetAnimation();
 };

@@ -72,9 +72,12 @@ function renderBear(dna){
 
   decorationColor2(colors[dna.decorationSidescolor], dna.decorationSidescolor)
   $('#hatbrimcolor').val(dna.decorationSidescolor)
+  
+  animationVariation(dna.animation)
+  $("animation").val(dna.animation)
 }
 
-// Changing bear DNA attributes
+// Changing bear DNA attributes; listeners
 $('#bodycolor').change(()=>{
   var colorVal = $('#bodycolor').val()
   headColor(colors[colorVal],colorVal)
@@ -100,6 +103,7 @@ $('#eyesshape').change(()=>{
   eyeVariation(shape)
 });
 
+//Hat Shape and Color Variations 1 & 2
 $('#hatshape').change(()=>{
   var shape = parseInt($('#hatshape').val())
   decorationVariation(shape)
@@ -113,4 +117,10 @@ $('#hattopcolor').change(()=>{
 $('#hatbrimcolor').change(()=>{
   var colorVal = ($('#hatbrimcolor').val())
   decorationColor2(colors[colorVal],colorVal)
+});
+
+//Animation listener
+$('#animation').change(()=>{
+  var animationVal = parseInt($('#animation').val())
+  animationVariation(animationVal)
 });
