@@ -74,7 +74,7 @@ function renderBear(dna){
   $('#hatbrimcolor').val(dna.decorationSidescolor)
   
   animationVariation(dna.animation)
-  $("animation").val(dna.animation)
+  $("#animation").val(dna.animation)
 }
 
 // Changing bear DNA attributes; listeners
