@@ -9,8 +9,8 @@ var defaultDNA = {
   //Attributes
   "eyesShape" : 1,
   "decorationPattern" : 1,
-  "decorationMidcolor" : 13,
-  "decorationSidescolor" : 13,
+  "decorationMidcolor" : 16,
+  "decorationSidescolor" : 16,
   "animation" :  1,
   "lastNum" :  1
 }
@@ -67,10 +67,10 @@ function renderBear(dna){
   decorationVariation(dna.decorationPattern)
   $('#hatshape').val(dna.decorationPattern)
 
-  decorationVariation(dna.decorationMidcolor)
+  decorationColor1(colors[dna.decorationMidcolor], dna.decorationMidcolor)
   $('#hattopcolor').val(dna.decorationMidcolor)
 
-  decorationVariation(dna.decorationSidescolor)
+  decorationColor2(colors[dna.decorationSidescolor], dna.decorationSidescolor)
   $('#hatbrimcolor').val(dna.decorationSidescolor)
 }
 
@@ -106,11 +106,11 @@ $('#hatshape').change(()=>{
 });
 
 $('#hattopcolor').change(()=>{
-  var color = parseInt($('#hattopcolor').val())
-  decorationColor1(color)
+  var colorVal = ($('#hattopcolor').val())
+  decorationColor1(colors[colorVal],colorVal)
 });
 
 $('#hatbrimcolor').change(()=>{
-  var color = parseInt($('#hatbrimcolor').val())
-  decorationColor2(color)
+  var colorVal = ($('#hatbrimcolor').val())
+  decorationColor2(colors[colorVal],colorVal)
 });

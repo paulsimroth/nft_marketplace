@@ -38,6 +38,18 @@ function earsColor(color,code) {
     $('#dnaears').html(code) 
 };
 
+function decorationColor1(color,code) {
+    $('.hat-top').css('background', '#' + color)  
+    $('#decorationColor1').html('code: '+ code) 
+    $('#dnadecorationMid').html(code) 
+};
+
+function decorationColor2(color,code) {
+    $('.hat-brim').css('background', '#' + color)  
+    $('#decorationColor2').html('code: '+ code) 
+    $('#dnadecorationSides').html(code) 
+};
+
 //Eye Variation
 function eyeVariation(num) {
     $('#dnashape').html(num)
