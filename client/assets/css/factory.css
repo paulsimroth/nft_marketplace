@@ -27,3 +27,18 @@
     height: 30px;
     margin: 10px;
 }
+
+.bearCreateButtons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+.bearCreateBtn {
+    background-color: #166edacb;
+    border-radius: 10px;
+    width: 100px;
+    height: 80px;
+    margin: 10px;
+}
