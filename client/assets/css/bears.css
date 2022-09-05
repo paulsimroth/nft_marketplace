@@ -122,6 +122,7 @@ body {
     position: relative;
     top: 95px;
     left: 10px;
+    z-index: 1;
 }
 
 .frontPaw {
@@ -139,6 +140,7 @@ body {
 .backPaws {
     position: relative;
     top: 50px;
+    z-index: 1;
 }
 
 .backPaw {

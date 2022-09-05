@@ -3,6 +3,30 @@
     animation: moveHead 2s infinite;
 }
 
+.wavingPaw {
+    animation: wavePaw 1s infinite;
+}
+
+.movingEars {
+    animation: moveEars 1.5s infinite;
+}
+
+.movingBelly {
+    animation: moveBelly 1.5s infinite;
+}
+
+.movingHat {
+    animation: moveHat 2s infinite;
+}
+
+.movingNose {
+    animation: moveNose 1.5s infinite;
+}
+
+.movingMouth {
+    animation: moveMouth 1s infinite;
+}
+
 @keyframes moveHead {
     0% {
         transform: rotate(0deg);
@@ -15,5 +39,129 @@
     }
     100% {
         transform: rotate(0deg);
+    }
+}
+
+@keyframes wavePaw {
+    0% {
+        transform: rotate(0deg);
+    }
+    10% {
+        transform: rotate(2deg);
+        left: -2px;
+    }
+    20% {
+        transform: rotate(4deg);
+        left: -4px;
+    }
+    30% {
+        transform: rotate(6deg);
+        left: -6px;
+    }
+    40% {
+        transform: rotate(8deg);
+        left: -9px;
+    }
+    50% {
+        transform: rotate(8deg);
+        left: -10px;
+    }
+    60% {
+        transform: rotate(8deg);
+        left: -8px;
+    }
+    70% {
+        transform: rotate(6deg);
+        left: -6px;
+    }
+    80% {
+        transform: rotate(4deg);
+        left: -4px;
+    }
+    90% {
+        transform: rotate(2deg);
+        left: -2px;
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes moveEars {
+    0% {
+        top: 0px;
+    }
+    30% {
+        top: 10px;
+    }
+    60% {
+        top: -10px;
+    }
+    100% {
+        top: 0px;
+    }
+}
+
+@keyframes moveBelly {
+    0% {
+        top: 100px;
+        left: 80px;
+    }
+    30% {
+        top: 110px;
+        left: 70px;
+    }
+    60% {
+        top: 95px;
+        left: 90px;
+    }
+    100% {
+        top: 100px;
+        left: 80px;
+    }
+}
+
+@keyframes moveHat {
+    0% {
+        top: -36px;
+    }
+    30% {
+        top: -20px;
+    }
+    60% {
+        top: -30px;
+    }
+    100% {
+        top: -36px;
+    }
+}
+
+@keyframes moveNose {
+    0% {
+        transform: rotateY(0deg);
+    }
+    30% {
+        transform: rotateY(15deg);
+    }
+    60% {
+        transform: rotateY(-15deg);
+    }
+    100% {
+        transform: rotateY(0deg);
+    }
+}
+
+@keyframes moveMouth {
+    0% {
+        border-radius: 130% 90% 130% 90%;
+    }
+    30% {
+        border-radius: 83% 90% 83% 90%
+    }
+    60% {
+        border-radius: 130% 110% 130% 110%;
+    }
+    100% {
+        border-radius: 130% 90% 130% 90%;
     }
 }

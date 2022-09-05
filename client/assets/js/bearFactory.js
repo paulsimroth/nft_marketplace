@@ -212,31 +212,31 @@ function animationVariation(num){
     switch (num) {
         case 1:
             animationType1();
-            $('#animationName').html('Animation 1');
+            $('#animationName').html('Moving Head');
             break;
         case 2: 
             animationType2();
-            $('#animationName').html('Animation 2');
+            $('#animationName').html('Moving Front Paw');
             break;
         case 3: 
             animationType3();
-            $('#animationName').html('Animation 3');
+            $('#animationName').html('Moving Ears');
             break;
         case 4: 
             animationType4();
-            $('#animationName').html('Animation 4');
+            $('#animationName').html('Moving Belly');
             break; 
         case 5: 
             animationType5();
-            $('#animationName').html('Animation 5');
+            $('#animationName').html('Sliding Hat');
             break;
         case 6: 
             animationType6();
-            $('#animationName').html('Animation 6');
+            $('#animationName').html('Wiggling Nose');
             break; 
         case 7: 
             animationType7();
-            $('#animationName').html('Animation 7');
+            $('#animationName').html('Moving Mouth');
             break;        
         default:
             break;
@@ -246,6 +246,12 @@ function animationVariation(num){
 //reset animation
 function resetAnimation() {
     $('.head').removeClass("movingHead");
+    $('.leftFrontPaw').removeClass("wavingPaw");
+    $('.ear').removeClass("movingEars");
+    $('.belly').removeClass("movingBelly");
+    $('.hat').removeClass("movingHat");
+    $('.nose').removeClass("movingNose");
+    $('.mouth').removeClass("movingMouth");
 };
 
 //animations
@@ -256,25 +262,30 @@ function animationType1(){
 
 function animationType2(){
     resetAnimation();
-    $('.head').addClass("movingHead");
+    $('.leftFrontPaw').addClass("wavingPaw");
 };
 
 function animationType3(){
     resetAnimation();
+    $('.ear').addClass("movingEars");
 };
 
 function animationType4(){
     resetAnimation();
+    $('.belly').addClass("movingBelly");
 };
 
 function animationType5(){
     resetAnimation();
+    $('.hat').addClass("movingHat");
 };
 
 function animationType6(){
     resetAnimation();
+    $('.nose').addClass("movingNose");
 };
 
 function animationType7(){
     resetAnimation();
+    $('.mouth').addClass("movingMouth");
 };
