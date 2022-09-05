@@ -19,3 +19,11 @@
     bottom: 5px;
 
 }
+
+.toggleBtn {
+    background-color: #166edacb;
+    border-radius: 10px;
+    width: 100px;
+    height: 30px;
+    margin: 10px;
+}
