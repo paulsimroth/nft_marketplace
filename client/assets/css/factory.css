@@ -1,6 +1,8 @@
 .bearBox {
     background-color: #e2efffcb;
     border-radius: 10px;
+    min-height: 500px;
+    min-width: 350px;
     padding-top: 40px;
     padding-left: 40px;
     padding-bottom: 235px;
@@ -24,7 +26,7 @@
     background-color: #166edacb;
     border-radius: 10px;
     width: 100px;
-    height: 30px;
+    height: 40px;
     margin: 10px;
 }
 
@@ -41,4 +43,12 @@
     width: 100px;
     height: 80px;
     margin: 10px;
+}
+
+.bearCreateBtn:hover, .toggleBtn:hover  {
+    border-color: #ff0066;
+}
+
+.newBearBtn {
+    background-color: #800000;
 }

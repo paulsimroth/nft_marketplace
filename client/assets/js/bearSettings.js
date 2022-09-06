@@ -49,33 +49,33 @@ function getDna(){
 }
 
 function renderBear(dna){
-  headColor(colors[dna.headColor],dna.headColor)
-  $('#bodycolor').val(dna.headColor)
+  headColor(colors[dna.headColor],dna.headColor);
+  $('#bodycolor').val(dna.headColor);
 
-  mouthColor(colors[dna.mouthColor],dna.mouthColor)
-  $('#mouthcolor').val(dna.mouthColor)
+  mouthColor(colors[dna.mouthColor],dna.mouthColor);
+  $('#mouthcolor').val(dna.mouthColor);
 
-  eyesColor(colors[dna.eyesColor],dna.eyesColor)
-  $('#eyescolor').val(dna.eyesColor)
+  eyesColor(colors[dna.eyesColor],dna.eyesColor);
+  $('#eyescolor').val(dna.eyesColor);
 
-  earsColor(colors[dna.earsColor],dna.earsColor)
-  $('#earscolor').val(dna.earsColor)
+  earsColor(colors[dna.earsColor],dna.earsColor);
+  $('#earscolor').val(dna.earsColor);
 
-  eyeVariation(dna.eyesShape)
-  $('#eyesshape').val(dna.eyesShape)
+  eyeVariation(dna.eyesShape);
+  $('#eyesshape').val(dna.eyesShape);
 
-  decorationVariation(dna.decorationPattern)
-  $('#hatshape').val(dna.decorationPattern)
+  decorationVariation(dna.decorationPattern);
+  $('#hatshape').val(dna.decorationPattern);
 
-  decorationColor1(colors[dna.decorationMidcolor], dna.decorationMidcolor)
-  $('#hattopcolor').val(dna.decorationMidcolor)
+  decorationColor1(colors[dna.decorationMidcolor], dna.decorationMidcolor);
+  $('#hattopcolor').val(dna.decorationMidcolor);
 
-  decorationColor2(colors[dna.decorationSidescolor], dna.decorationSidescolor)
-  $('#hatbrimcolor').val(dna.decorationSidescolor)
+  decorationColor2(colors[dna.decorationSidescolor], dna.decorationSidescolor);
+  $('#hatbrimcolor').val(dna.decorationSidescolor);
   
-  animationVariation(dna.animation)
-  $("#animation").val(dna.animation)
-}
+  animationVariation(dna.animation);
+  $("#animation").val(dna.animation);
+};
 
 // Changing bear DNA attributes; listeners
 $('#bodycolor').change(()=>{

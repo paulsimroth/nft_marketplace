@@ -31,5 +31,59 @@ function toggleAttributeVis(){
 }
 
 /*
+Button Get random Bear
+*/
+function randomBear(){
+    //Head
+    let rndHead = Math.floor(Math.random() * 89) + 10;//random number
+    headColor(colors[rndHead],rndHead);//setting bear
+    $('#bodycolor').val(rndHead);
 
+    //Mouth, Belly & Nose Color
+    let rndMouth = Math.floor(Math.random() * 89) + 10;
+    mouthColor(colors[rndMouth],rndMouth);
+    $('#mouthcolor').val(rndMouth);
+
+    //Eye Color
+    let rndEyes = Math.floor(Math.random() * 89) + 10;
+    eyesColor(colors[rndEyes],rndEyes);
+    $('#eyescolor').val(rndEyes);
+
+    //Ear & Paw Color
+    let rndEars = Math.floor(Math.random() * 89) + 10;
+    earsColor(colors[rndEars],rndEars);
+    $('#earscolor').val(rndEars);
+
+    //Eye Shape
+    let rndEyeShape = Math.floor(Math.random() * 7) + 1;
+    eyeVariation(rndEyeShape);
+    $('#eyesshape').val(rndEyeShape);
+
+    //Hat Shape
+    let rndHatShape = Math.floor(Math.random() * 7) + 1;
+    decorationVariation(rndHatShape);
+    $('#hatshape').val(rndHatShape);
+
+    //Hat Top Color
+    let rndHatTop = Math.floor(Math.random() * 89) + 10;
+    decorationColor1(colors[rndHatTop], rndHatTop);
+    $('#hattopcolor').val(rndHatTop);
+
+    //Hat Brim Color
+    let rndHatBrim = Math.floor(Math.random() * 89) + 10;
+    decorationColor2(colors[rndHatBrim], rndHatBrim);
+    $('#hatbrimcolor').val(rndHatBrim);
+
+    //Animation
+    let rndAnimation = Math.floor(Math.random() * 7) + 1;
+    animationVariation(rndAnimation);
+    $("#animation").val(rndAnimation);
+}
+
+/*
+Button Default Bear calls on renderBear(defaultDna) in bearSettings.js
+*/
+
+/*
+Button Create New Bear
 */
