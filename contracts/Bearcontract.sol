@@ -34,6 +34,7 @@ contract Bearcontract is IERC721, Ownable {
 
     uint256 public gen0Counter;
 
+    //Owner can create gen0 bears
     function createBearGen0(uint256 _genes) public onlyOwner returns(uint256){
         require(gen0Counter < CREATION_LIMIT_GEN0, "Generation 0 supply already fully minted!");
 
@@ -43,6 +44,7 @@ contract Bearcontract is IERC721, Ownable {
         return(_createBear(_genes, 0, 0, 0, address(0)));
     }
 
+    //create Bear
     function _createBear( 
         uint256 _genes,
         uint256 _mumId,
@@ -69,8 +71,21 @@ contract Bearcontract is IERC721, Ownable {
         return newBearId;
     }
 
-    function getBear() public {
+    //returns bear properties
+    function getBear(uint256 tokenId) external view returns(
+        uint256 genes,
+        uint256 birthTime,
+        uint256 mumId,
+        uint256 dadId,
+        uint256 generation
+    ){ 
+        Bear storage bear = bears[tokenId];
 
+        genes = uint256 (bear.genes);
+        birthTime = uint256 (bear.birthTime);
+        mumId = uint256 (bear.mumId);
+        dadId = uint256 (bear.dadId);
+        generation = uint256 (bear.generation);
     }
 
     function balanceOf(address owner) external view returns (uint256 balance) {
