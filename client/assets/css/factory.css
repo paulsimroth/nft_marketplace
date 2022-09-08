@@ -52,3 +52,8 @@
 .newBearBtn {
     background-color: #ff0000;
 }
+
+.alert {
+    background-color: #82f588;
+    margin: 10px;
+}

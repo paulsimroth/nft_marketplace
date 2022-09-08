@@ -85,5 +85,5 @@ Button Default Bear calls on renderBear(defaultDna) in bearSettings.js
 */
 
 /*
-Button Create New Bear
+Button Create New Bear in index.js
 */

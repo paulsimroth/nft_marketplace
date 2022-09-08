@@ -2,7 +2,7 @@ let web3 = new Web3(Web3.givenProvider);
 
 let instance;
 let user;
-let contractAddress = "0x383079758930eD5d2CC66061d74d17a30F61610B";
+let contractAddress = "0x4dA5da687174dAb54221d0A54C9F2f057Aa4c234";
 
 $(document).ready(function(){
     window.ethereum.enable().then(function(accounts){
@@ -11,16 +11,34 @@ $(document).ready(function(){
 
         console.log(instance);
 
+        //Birth Event
+        instance.events.Birth().on("data", function (event) {
+            console.log(event);
+            let owner = event.returnValues.owner;
+            let bearId = event.returnValues.bearId;
+            let mumId = event.returnValues.mumId;
+            let dadId = event.returnValues.dadId;
+            let genes = event.returnValues.genes;
 
-        //Example for function implementation
-        instance.methods.createBearGen0(dna).send({}, function(error, txHash){
-            if(error){
-                console.log(error)
-            }
-            else{
-                console.log(txHash)
-            }
-        });
+            $("#bearCreation").css("display", "block");
+            $("#bearCreation").text("owner: " + owner
+                                    +"bearId: " + bearId
+                                    +"mumId: " + mumId
+                                    +"dadId: " + dadId
+                                    +"genes: " + genes)
+        })
+        .on("error", console.error);
     });
-
 })
+
+function createBear(){
+    let dnaString = getDna();
+    instance.methods.createBearGen0(dnaString).send({}, function(error, txHash){
+        if(error){
+            alert("Create Bear, ERROR");
+            console.log(error);
+        } else {
+            console.log(txHash);
+        }
+    })
+}
