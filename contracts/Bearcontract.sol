@@ -36,7 +36,7 @@ contract Bearcontract is IERC721, Ownable {
 
     //Owner can create gen0 bears
     function createBearGen0(uint256 _genes) public onlyOwner returns(uint256){
-        require(gen0Counter < CREATION_LIMIT_GEN0, "Generation 0 supply already fully minted!");
+        require(gen0Counter <= CREATION_LIMIT_GEN0, "Generation 0 supply already fully minted!");
 
         gen0Counter++;
 

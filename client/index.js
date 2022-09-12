@@ -2,7 +2,7 @@ let web3 = new Web3(Web3.givenProvider);
 
 let instance;
 let user;
-let contractAddress = "0x4dA5da687174dAb54221d0A54C9F2f057Aa4c234";
+let contractAddress = "0xbdbcB1004103d9Cc1F7A9E96D17D23f8d0003aEf";
 
 $(document).ready(function(){
     window.ethereum.enable().then(function(accounts){
@@ -22,12 +22,14 @@ $(document).ready(function(){
 
             $("#bearCreation").css("display", "block");
             $("#bearCreation").text("owner: " + owner
-                                    +"bearId: " + bearId
-                                    +"mumId: " + mumId
-                                    +"dadId: " + dadId
-                                    +"genes: " + genes)
+                                    + "bearId: " + bearId
+                                    + "mumId: " + mumId
+                                    + "dadId: " + dadId
+                                    + "genes: " + genes)
         })
-        .on("error", console.error);
+        .on("error", 
+            $("#bearCreation").css("display", "block"),
+            $("#bearCreation").text("ERROR: Birth Event malfunctioned"));
     });
 })
 
