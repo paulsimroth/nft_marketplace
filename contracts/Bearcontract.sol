@@ -29,8 +29,10 @@ contract Bearcontract is IERC721, Ownable {
 
     Bear[] bears;
 
-    mapping(address => uint256) ownershipTokenCount;
-    mapping(uint256 => address) tokenOwner;
+    mapping (address => uint256) public ownershipTokenCount;
+    mapping (uint256 => address) tokenOwner;
+    mapping (uint256 => address) public bearIndexApproved;
+    mapping (address => mapping (address => bool)) private _operatorApprovals;
 
     uint256 public gen0Counter;
 
@@ -127,5 +129,21 @@ contract Bearcontract is IERC721, Ownable {
         tokenOwner[_tokenId] = _to;
 
         emit Transfer(_from, _to, _tokenId);
+    }
+
+    function approve(address _approved, uint256 _tokenId) external {
+        
+    }
+
+    function setApprovalForAll(address _operator, bool _approved) external {
+        
+    }
+
+    function getApproved(uint256 _tokenId) external view returns (address) {
+        
+    }
+
+    function isApprovedForAll(address _owner, address _operator) external view returns (bool) {
+        
     }
 }
