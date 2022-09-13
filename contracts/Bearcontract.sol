@@ -29,9 +29,9 @@ contract Bearcontract is IERC721, Ownable {
 
     Bear[] bears;
 
-    mapping (address => uint256) public ownershipTokenCount;
-    mapping (uint256 => address) tokenOwner;
-    mapping (uint256 => address) public bearIndexApproved;
+    mapping (uint256 => address) public bearIndexToOwner;
+    mapping (address => uint256) tokenOwnershipCount;
+    mapping (uint256 => address) public bearIndexToApproved;
     mapping (address => mapping (address => bool)) private _operatorApprovals;
 
     uint256 public gen0Counter;
@@ -73,6 +73,18 @@ contract Bearcontract is IERC721, Ownable {
         return newBearId;
     }
 
+    function getBearByOwner(address _owner) external view returns(uint[] memory) {
+        uint[] memory result = new uint[](tokenOwnershipCount[_owner]);
+        uint counter = 0;
+        for (uint i = 0; i < bears.length; i++) {
+            if (bearIndexToOwner[i] == _owner) {
+                result[counter] = i;
+                counter++;
+            }
+        }
+        return result;
+    }
+
     //returns bear properties
     function getBear(uint256 tokenId) external view returns(
         uint256 genes,
@@ -91,7 +103,7 @@ contract Bearcontract is IERC721, Ownable {
     }
 
     function balanceOf(address owner) external view returns (uint256 balance) {
-        return ownershipTokenCount[owner];
+        return tokenOwnershipCount[owner];
     }
 
     function totalSupply() external view returns (uint256) {
@@ -107,43 +119,57 @@ contract Bearcontract is IERC721, Ownable {
     }
 
     function ownerOf(uint256 tokenId) external view returns (address) {
-        require(tokenOwner[tokenId] != address(0), "Invalid token ID");
-        return tokenOwner[tokenId];
+        return bearIndexToOwner[tokenId];
     }
 
     function transfer(address to, uint256 tokenId) external {
         require(to != address(0), "Invalid Address; Cannot transfer to Address 0!");
         require(to != address(this), "Invalid Address; Cannot transfer to Contract Address!");
-        require(tokenOwner[tokenId] == address(msg.sender), "Invalid Address; Cannot transfer to own Address!");
+        require(_owns(msg.sender, tokenId), "Invalid Address; Cannot transfer to own Address!");
 
         _transfer(msg.sender, to, tokenId);
     }
 
     function _transfer(address _from, address _to, uint256 _tokenId) internal {
-        ownershipTokenCount[_to]++;
+        tokenOwnershipCount[_to]++;
+        bearIndexToOwner[_tokenId] = _to;
         
         if(_from != address(0)) {
-            ownershipTokenCount[_from]--;
+            tokenOwnershipCount[_from]--;
+            delete bearIndexToApproved[_tokenId];
         }
-
-        tokenOwner[_tokenId] = _to;
 
         emit Transfer(_from, _to, _tokenId);
     }
 
-    function approve(address _approved, uint256 _tokenId) external {
-        
+    function approve(address _to, uint256 _tokenId) public {
+        require(_owns(msg.sender, _tokenId), "msg.sender is not the token owner!");
+
+        _approve(_tokenId, _to);
+        emit Approval(msg.sender, _to, _tokenId);
     }
 
-    function setApprovalForAll(address _operator, bool _approved) external {
-        
+    function _owns(address _claimant, uint256 _tokenId) internal view returns (bool) {
+        return bearIndexToOwner[_tokenId] == _claimant;
+    }
+    
+    function _approve(uint256 _tokenId, address _approved) internal {
+        bearIndexToApproved[_tokenId] = _approved;
     }
 
-    function getApproved(uint256 _tokenId) external view returns (address) {
-        
+    function setApprovalForAll(address operator, bool approved) public {
+        require(operator != msg.sender, "operator must not be msg.sender");
+
+        _operatorApprovals[msg.sender][operator] = approved;
+        emit ApprovalForAll(msg.sender, operator, approved);
     }
 
-    function isApprovedForAll(address _owner, address _operator) external view returns (bool) {
-        
+    function getApproved(uint256 tokenId) public view returns (address) {
+        require(tokenId < bears.length, "tokenId does not exist");
+        return bearIndexToOwner[tokenId];
+    }
+
+    function isApprovedForAll(address owner, address operator) public view returns (bool) {
+        return _operatorApprovals[owner][operator];
     }
 }

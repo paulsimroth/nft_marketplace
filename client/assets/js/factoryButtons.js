@@ -17,7 +17,7 @@ function toggleColorVis(){
     attributeSection.style.display = "none";
     colorSection.style.display = "block";
     //setting button colors
-    colorBtn.style.backgroundColor = "#006600";
+    colorBtn.style.backgroundColor = "#33ff77";
     attributeBtn.style.backgroundColor = "#166edacb";
 }
 
@@ -27,7 +27,7 @@ function toggleAttributeVis(){
     attributeSection.style.display = "block";
     //setting button colors
     colorBtn.style.backgroundColor = "#166edacb";
-    attributeBtn.style.backgroundColor = "#006600";
+    attributeBtn.style.backgroundColor = "#33ff77";
 }
 
 /*

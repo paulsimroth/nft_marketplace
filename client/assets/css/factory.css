@@ -46,14 +46,14 @@
 }
 
 .bearCreateBtn:hover, .toggleBtn:hover  {
-    border-color: #ff0066;
+    border-color: #dda83d;
 }
 
 .newBearBtn {
-    background-color: #ff0000;
+    background-color: #33ff77;
 }
 
 .alert {
-    background-color: #82f588;
+    background-color: #33ff77;
     margin: 10px;
 }
