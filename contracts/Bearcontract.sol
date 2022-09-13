@@ -102,26 +102,32 @@ contract Bearcontract is IERC721, Ownable {
         generation = uint256 (bear.generation);
     }
 
+    //Returns the number of tokens in ``owner``'s account.
     function balanceOf(address owner) external view returns (uint256 balance) {
         return tokenOwnershipCount[owner];
     }
 
+    //Returns the total number of tokens in circulation.
     function totalSupply() external view returns (uint256) {
         return bears.length;
     }
 
+    //Returns the name of the token.
     function name() external view returns (string memory tokenName) {
         tokenName = bearTicker;
     }
 
+    //Returns the symbol of the token.
     function symbol() external view returns (string memory tokenSymbol) {
         tokenSymbol = bearSymbol;
     }
 
+    //Returns the owner of the `tokenId` token.
     function ownerOf(uint256 tokenId) external view returns (address) {
         return bearIndexToOwner[tokenId];
     }
 
+    //Transfers `tokenId` token from `msg.sender` to `to`
     function transfer(address to, uint256 tokenId) external {
         require(to != address(0), "Invalid Address; Cannot transfer to Address 0!");
         require(to != address(this), "Invalid Address; Cannot transfer to Contract Address!");
@@ -139,9 +145,11 @@ contract Bearcontract is IERC721, Ownable {
             delete bearIndexToApproved[_tokenId];
         }
 
+    //Emitted when `tokenId` token is transfered from `from` to `to`.
         emit Transfer(_from, _to, _tokenId);
     }
-
+    
+    //Change or reaffirm the approved address for an NFT
     function approve(address _to, uint256 _tokenId) public {
         require(_owns(msg.sender, _tokenId), "msg.sender is not the token owner!");
 
@@ -157,19 +165,44 @@ contract Bearcontract is IERC721, Ownable {
         bearIndexToApproved[_tokenId] = _approved;
     }
 
+    //Enable or disable approval for a third party ("operator") to manage all of `msg.sender`'s assets
     function setApprovalForAll(address operator, bool approved) public {
         require(operator != msg.sender, "operator must not be msg.sender");
 
         _operatorApprovals[msg.sender][operator] = approved;
+
+    //Emitted when `owner` enables or disables (`approved`) `operator` to manage all of its assets.
         emit ApprovalForAll(msg.sender, operator, approved);
     }
 
+    //Get the approved address for a single NFT
     function getApproved(uint256 tokenId) public view returns (address) {
         require(tokenId < bears.length, "tokenId does not exist");
         return bearIndexToOwner[tokenId];
     }
 
+    //Query if an address is an authorized operator for another address
     function isApprovedForAll(address owner, address operator) public view returns (bool) {
         return _operatorApprovals[owner][operator];
+    }
+
+    // Transfers the ownership of an NFT from one address to another address
+    function safeTransferFrom(address from, address to, uint256 tokenId, bytes calldata data) external {
+
+    }
+
+    // Transfers the ownership of an NFT from one address to another address
+    function safeTransferFrom(address from, address to, uint256 tokenId) public {
+
+    }
+
+    // Transfer ownership of an NFT
+    function transferFrom(address from, address to, uint256 tokenId) public {
+        require(_owns(msg.sender, tokenId) || isApprovedForAll(from, msg.sender) == true || getApproved(tokenId) == msg.sender, "Not authorized to send transaction");
+        require(_owns(from, tokenId), "msg.sender is not the token owner!");
+        require(to != address(0), "Must not be sent to 0 address");
+        require(tokenId < bears.length, "tokenId does not exist");
+
+        _transfer(from, to, tokenId);
     }
 }
