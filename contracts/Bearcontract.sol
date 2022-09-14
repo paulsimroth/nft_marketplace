@@ -13,7 +13,17 @@ contract Bearcontract is IERC721, Ownable {
     string public constant bearSymbol = "ABT";
 
     bytes4 internal constant ERC721_RECEIVED= bytes4(keccak256("onERC721Received(address,address,uint256,bytes)"));
+    
+    //Interface IDs
+    bytes4 private constant _INTERFACE_ID_ERC721 = 0x80ac58cd;
+    bytes4 private constant _INTERFACE_ID_ERC165 = 0x01ffc9a7;
 
+    //Interface Support for ERC721 and ERC165
+    function supportsInterface(bytes4 _interfaceId) external view retruns (bool) {
+        return (_interfaceId == _INTERFACE_ID_ERC721 || _interfaceId == _INTERFACE_ID_ERC165);
+    }
+
+    //Birth event for Bears
     event Birth(
         address owner, 
         uint256 bearId, 
@@ -22,6 +32,7 @@ contract Bearcontract is IERC721, Ownable {
         uint256 genes
     );
 
+    //Struct of the Bears
     struct Bear {
         uint256 genes;
         uint64 birthTime;
