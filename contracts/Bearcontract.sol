@@ -4,12 +4,15 @@ pragma experimental ABIEncoderV2;
 
 import "./IERC721.sol";
 import "./Ownable.sol";
+import "./IERC721Receiver.sol";
 
 contract Bearcontract is IERC721, Ownable {
 
     uint256 public constant CREATION_LIMIT_GEN0 = 10;
     string public constant bearTicker = "AcademyBear";
     string public constant bearSymbol = "ABT";
+
+    bytes4 internal constant ERC721_RECEIVED= bytes4(keccak256("onERC721Received(address,address,uint256,bytes)"));
 
     event Birth(
         address owner, 
@@ -37,7 +40,7 @@ contract Bearcontract is IERC721, Ownable {
     uint256 public gen0Counter;
 
     //Owner can create gen0 bears
-    function createBearGen0(uint256 _genes) public onlyOwner returns(uint256){
+    function createBearGen0(uint256 _genes) public onlyOwner returns (uint256){
         require(gen0Counter <= CREATION_LIMIT_GEN0, "Generation 0 supply already fully minted!");
 
         gen0Counter++;
@@ -73,7 +76,7 @@ contract Bearcontract is IERC721, Ownable {
         return newBearId;
     }
 
-    function getBearByOwner(address _owner) external view returns(uint[] memory) {
+    function getBearByOwner(address _owner) external view returns (uint[] memory) {
         uint[] memory result = new uint[](tokenOwnershipCount[_owner]);
         uint counter = 0;
         for (uint i = 0; i < bears.length; i++) {
@@ -86,7 +89,7 @@ contract Bearcontract is IERC721, Ownable {
     }
 
     //returns bear properties
-    function getBear(uint256 tokenId) external view returns(
+    function getBear(uint256 tokenId) external view returns (
         uint256 genes,
         uint256 birthTime,
         uint256 mumId,
@@ -186,21 +189,57 @@ contract Bearcontract is IERC721, Ownable {
         return _operatorApprovals[owner][operator];
     }
 
-    // Transfers the ownership of an NFT from one address to another address
-    function safeTransferFrom(address from, address to, uint256 tokenId, bytes calldata data) external {
+    // Transfers the ownership of an NFT from one address to another address, including data
+    function safeTransferFrom(address from, address to, uint256 tokenId, bytes calldata data) public {
+        require(to != address(0), "Must not be sent to 0 address");
+        require(msg.sender == from || isApprovedForAll(from, msg.sender) == true || getApproved(tokenId) == msg.sender, "Not authorized to send transaction");
+        require(_owns(from, tokenId), "From-Address is not the token owner!");
+        require(tokenId < bears.length, "tokenId does not exist");
 
+        _safeTransfer(from, to, tokenId, data);
     }
 
     // Transfers the ownership of an NFT from one address to another address
     function safeTransferFrom(address from, address to, uint256 tokenId) public {
+        require(to != address(0), "Must not be sent to 0 address");
+        require(msg.sender == from || isApprovedForAll(from, msg.sender) == true || getApproved(tokenId) == msg.sender, "Not authorized to send transaction");
+        require(_owns(from, tokenId), "From-Address is not the token owner!");
+        require(tokenId < bears.length, "tokenId does not exist");
 
+        _safeTransfer(from, to, tokenId, "");
+    }
+
+    function _safeTransfer(address _from, address _to, uint256 _tokenId, bytes memory _data) internal {
+        _transfer(_from, _to, _tokenId);
+        require(_checkERC721Support(_from, _to, _tokenId, _data));
+    }
+
+    //Check if receiving contract supports ERC721
+    function _checkERC721Support(address _from, address _to, uint256 _tokenId, bytes memory _data) internal returns (bool) {
+        if(!_isContract(_to)) {
+            return true;
+        }
+        //Call onERC721Received in _to contract
+        bytes4 returnData = IERC721Receiver(_to).onERC721Received(msg.sender, _from, _tokenId, _data);
+
+        //Check return value
+        return returnData == ERC721_RECEIVED;
+    }
+
+    //Check to see if recipient is a contract
+    function _isContract(address _to) view internal returns (bool) {
+        uint32 size;
+        assembly{
+            size := extcodesize(_to)
+        }
+        return size > 0;
     }
 
     // Transfer ownership of an NFT
     function transferFrom(address from, address to, uint256 tokenId) public {
-        require(_owns(msg.sender, tokenId) || isApprovedForAll(from, msg.sender) == true || getApproved(tokenId) == msg.sender, "Not authorized to send transaction");
-        require(_owns(from, tokenId), "msg.sender is not the token owner!");
         require(to != address(0), "Must not be sent to 0 address");
+        require(_owns(msg.sender, tokenId) || isApprovedForAll(from, msg.sender) == true || getApproved(tokenId) == msg.sender, "Not authorized to send transaction");
+        require(_owns(from, tokenId), "From-Address is not the token owner!");
         require(tokenId < bears.length, "tokenId does not exist");
 
         _transfer(from, to, tokenId);
