@@ -19,7 +19,7 @@ contract Bearcontract is IERC721, Ownable {
     bytes4 private constant _INTERFACE_ID_ERC165 = 0x01ffc9a7;
 
     //Interface Support for ERC721 and ERC165
-    function supportsInterface(bytes4 _interfaceId) external view retruns (bool) {
+    function supportsInterface(bytes4 _interfaceId) external view returns (bool) {
         return (_interfaceId == _INTERFACE_ID_ERC721 || _interfaceId == _INTERFACE_ID_ERC165);
     }
 
