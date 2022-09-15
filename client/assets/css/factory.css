@@ -57,3 +57,15 @@
     background-color: #33ff77;
     margin: 10px;
 }
+
+.navbtn {
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 10px;
+    width: 150px;
+    height: 40px;
+    margin: 30px;
+    padding: 10px;
+    cursor: pointer;
+}

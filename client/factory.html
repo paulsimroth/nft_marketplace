@@ -1,0 +1,172 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academy Bears</title>
+  <script type="text/javascript" src="assets/js/jquery-3.4.1.js"></script>
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <script src="assets/bootstrap/js/popper.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/js/web3.min.js"></script>
+  <script src="./abi.js"></script>
+
+  <link rel="stylesheet" href="assets/css/mystyle.css">
+  <link rel="stylesheet" href="assets/css/bears.css">
+  <link rel="stylesheet" href="assets/css/colors.css">
+  <link rel="stylesheet" href="assets/css/factory.css">
+  <link rel="stylesheet" href="assets/css/frontend.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+</head>
+  <body>
+    <div class="container p-5" style="margin-top: 12vh;margin-bottom: 10vh;">
+        <div align="center">
+        <h1 class="c-white">Bear-Factory</h1>
+        <p class="c-white">Create your custom Bear</p>
+
+        <a class="navbtn" href="index.html">Home</a>
+        <a class="navbtn" href="factory.html">Factory</a>
+        <a class="navbtn" href="catalog.html">Bearcave</a>
+
+    </div>
+    <br>
+        <div class="row">
+            <div class="col-lg-4 bearBox m-2 light-b-shadow">
+                <div class="bear">
+                    <div class="hat">
+                        <div class="hat-top"></div>
+                        <div class="hat-brim"></div>
+                    </div>
+                    <div class="ears">
+                        <div class="ear leftEar">
+                            <div class="innerEar"></div>
+                        </div>
+                        <div class="ear rightEar">
+                            <div class="innerEar"></div>
+                        </div>
+                    </div>
+                    <div class="head">
+                        <div class="eyes">
+                            <div class="eye">
+                                <span class="pupils"></span>
+                            </div>
+                            <div class="eye">
+                                <span class="pupils"></span>
+                            </div>
+                        </div>
+                        <div class="nose"></div>
+                        <div class="mouth"></div>
+                    </div>
+                    <div class="body">
+                        <div class="frontPaws">
+                            <div class="frontPaw leftFrontPaw"></div>
+                            <div class="frontPaw rightFrontPaw"></div>
+                        </div>
+                        <div class="belly"></div>
+                        <div class="backPaws">
+                            <div class="backPaw leftBackPaw"></div>
+                            <div class="backPaw rightBackPaw"></div>
+                        </div>
+                    </div>
+                </div>   
+                <br>
+                <div class="dnaDiv" id="catDNA">
+                    <b>
+                        DNA:
+                        <!-- Colors -->
+                         <span id="dnabody"></span>
+                         <span id="dnamouth"></span>
+                         <span id="dnaeyes"></span>
+                         <span id="dnaears"></span>
+                        
+                         <!-- Attributes -->
+                         <span id="dnashape"></span>
+                         <span id="dnadecoration"></span>
+                         <span id="dnadecorationMid"></span>
+                         <span id="dnadecorationSides"></span>
+                         <span id="dnaanimation"></span>
+                         <span id="dnaspecial"></span>
+                    </b>
+                </div>
+            </div>
+            <div class="col-lg-7 bearAttributes m-2 light-b-shadow">
+                <button onclick="toggleColorVis()" class="toggleBtn colorBtn">Colors</button>
+                <button onclick="toggleAttributeVis()" class="toggleBtn attributeBtn">Attributes</button>
+                <!-- Bear colors toggle -->
+                <div id="bearColors">
+                    <!-- Bear Head and Body -->
+                    <div class="form-group">
+                        <label for="formControlRange"><b>Head and body</b><span class="badge badge-dark ml-2" id="headcode"></span></label>
+                        <input type="range" min="10" max="98" class="form-control-range" id="bodycolor">
+                    </div>
+                    <!-- Bear Mouth, Belly and Nose -->
+                    <div class="form-group">
+                        <label for="formControlRange"><b>Mouth, Belly & Nose</b><span class="badge badge-dark ml-2" id="mouthcode"></span></label>
+                        <input type="range" min="10" max="98" class="form-control-range" id="mouthcolor">
+                    </div>
+                    <!-- Bear Pupil Color -->
+                    <div class="form-group">
+                        <label for="formControlRange"><b>Eye Color</b><span class="badge badge-dark ml-2" id="eyescode"></span></label>
+                        <input type="range" min="10" max="98" class="form-control-range" id="eyescolor">
+                    </div>
+                    <!-- Bear Inner Ear and Paw Color -->
+                    <div class="form-group">
+                        <label for="formControlRange"><b>Ear & Paw Color</b><span class="badge badge-dark ml-2" id="earscode"></span></label>
+                        <input type="range" min="10" max="98" class="form-control-range" id="earscolor">
+                    </div>
+                </div>
+                <!-- Bear attributes toggle -->
+                <div id="bearAttributes">
+                    <!-- Eye Shape -->
+                    <div class="form-group">
+                        <label for="formControlRange"><b>Eye Shape</b><span class="badge badge-dark ml-2" id="eyeName"></span></label>
+                        <input type="range" min="1" max="7" class="form-control-range" id="eyesshape">
+                    </div>
+                    <!-- Hat Variation -->
+                    <div class="form-group">
+                        <label for="formControlRange"><b>Hat</b><span class="badge badge-dark ml-2" id="decorationName"></span></label>
+                        <input type="range" min="1" max="7" class="form-control-range" id="hatshape">
+                    </div>
+                    <!-- Pattern Color 1 -->
+                    <div class="form-group">
+                        <label for="formControlRange"><b>Hat Top Color</b><span class="badge badge-dark ml-2" id="decorationColor1"></span></label>
+                        <input type="range" min="10" max="98" class="form-control-range" id="hattopcolor">
+                    </div>
+                    <!-- Pattern Color 2 -->
+                    <div class="form-group">
+                        <label for="formControlRange"><b>Hat Brim Color</b><span class="badge badge-dark ml-2" id="decorationColor2"></span></label>
+                        <input type="range" min="10" max="98" class="form-control-range" id="hatbrimcolor">
+                    </div>
+                    <!-- Animation Variation -->
+                    <div class="form-group">
+                        <label for="formControlRange"><b>Animation</b><span class="badge badge-dark ml-2" id="animationName"></span></label>
+                        <input type="range" min="1" max="7" class="form-control-range" id="animation">
+                    </div>
+                </div>
+                <div class="bearCreateButtons">
+                    <!-- Buttons -->
+                    <button onclick="randomBear()" class="bearCreateBtn randomBearBtn">Get Random Bear</button>
+                    <button onclick="renderBear(defaultDNA)" class="bearCreateBtn defaultBearBtn">Default Bear</button>
+                    <button onclick="createBear()" class="bearCreateBtn newBearBtn">Create Bear</button>
+                </div>
+            </div>
+            <br>
+                <div class="alert" role="alert" id="bearCreation" style="display:none"></div>
+            </div>
+            <br>
+
+        </div>
+
+    </div>
+    <footer align="left">
+        <p>Project for NFT Marketplace Course @ Moralis Academy, August - September 2022</p>
+    </footer>
+
+  </body>
+
+  <script src="./index.js"></script>
+  <script src="assets/js/colors.js"></script>
+  <script src="assets/js/bearSettings.js"></script>
+  <script src="assets/js/bearFactory.js"></script>
+  <script src="assets/js/factoryButtons.js"></script>
+
+</html>
