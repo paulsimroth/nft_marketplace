@@ -77,12 +77,34 @@ contract Bearcontract is IERC721, Ownable {
     }
 
     //Dna of parent bears gets mixed
-    function _mixDna(uint256 _dadDna, uint256 _mumDna) internal returns (uint256) {
-        uint256 firstDnaHalf = _dadDna / 100000000;
-        uint256 secondDnaHalf = _mumDna % 100000000;
+    function _mixDna(uint256 _dadDna, uint256 _mumDna) internal view returns (uint256) {
+        uint256[8] memory geneArray;
+        uint8 random = uint8(block.timestamp % 255);
+        uint256 i = 1;
+        uint256 index = 7;
 
-        uint256 newDna = firstDnaHalf * 100000000;
-        newDna = newDna + secondDnaHalf;
+        //random gene generation
+        for (i = 1; i <= 128; i = i*2) {
+            if(random & i != 0){
+                geneArray[index] = uint8(_mumDna % 100);
+            }
+            else {
+                geneArray[index] = uint8(_dadDna % 100);
+            }
+            _mumDna = _mumDna / 100;
+            _dadDna = _dadDna / 100;
+            index = index - 1;
+        }
+
+        uint256 newDna;
+
+        //newDna gets data from geneArray 
+        for (i = 0; i < 8; i++) {
+            newDna = newDna + geneArray[i];
+            if (i != 7) {            
+                newDna = newDna * 100;
+                }
+        }
         return newDna;
     }
 
@@ -274,7 +296,7 @@ contract Bearcontract is IERC721, Ownable {
     }
 
     //Check to see if recipient is a contract
-    function _isContract(address _to) view internal returns (bool) {
+    function _isContract(address _to) internal view returns (bool) {
         uint32 size;
         assembly{
             size := extcodesize(_to)
