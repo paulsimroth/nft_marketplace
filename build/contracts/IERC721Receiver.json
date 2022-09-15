@@ -50,15 +50,15 @@
     "absolutePath": "project:/contracts/IERC721Receiver.sol",
     "exportedSymbols": {
       "IERC721Receiver": [
-        1024
+        1153
       ]
     },
-    "id": 1025,
+    "id": 1154,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1009,
+        "id": 1138,
         "literals": [
           "solidity",
           "^",
@@ -69,7 +69,7 @@
         "src": "33:24:2"
       },
       {
-        "id": 1010,
+        "id": 1139,
         "literals": [
           "experimental",
           "ABIEncoderV2"
@@ -84,9 +84,9 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 1024,
+        "id": 1153,
         "linearizedBaseContracts": [
-          1024
+          1153
         ],
         "name": "IERC721Receiver",
         "nameLocation": "106:15:2",
@@ -94,7 +94,7 @@
         "nodes": [
           {
             "functionSelector": "150b7a02",
-            "id": 1023,
+            "id": 1152,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -102,17 +102,17 @@
             "nameLocation": "138:16:2",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1019,
+              "id": 1148,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1012,
+                  "id": 1141,
                   "mutability": "mutable",
                   "name": "operator",
                   "nameLocation": "163:8:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1023,
+                  "scope": 1152,
                   "src": "155:16:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -121,7 +121,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1011,
+                    "id": 1140,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "155:7:2",
@@ -135,12 +135,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1014,
+                  "id": 1143,
                   "mutability": "mutable",
                   "name": "from",
                   "nameLocation": "181:4:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1023,
+                  "scope": 1152,
                   "src": "173:12:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -149,7 +149,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1013,
+                    "id": 1142,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "173:7:2",
@@ -163,12 +163,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1016,
+                  "id": 1145,
                   "mutability": "mutable",
                   "name": "tokenId",
                   "nameLocation": "192:7:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1023,
+                  "scope": 1152,
                   "src": "187:12:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -177,7 +177,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1015,
+                    "id": 1144,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "187:4:2",
@@ -190,12 +190,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1018,
+                  "id": 1147,
                   "mutability": "mutable",
                   "name": "data",
                   "nameLocation": "216:4:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1023,
+                  "scope": 1152,
                   "src": "201:19:2",
                   "stateVariable": false,
                   "storageLocation": "calldata",
@@ -204,7 +204,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 1017,
+                    "id": 1146,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "201:5:2",
@@ -219,17 +219,17 @@
               "src": "154:67:2"
             },
             "returnParameters": {
-              "id": 1022,
+              "id": 1151,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1021,
+                  "id": 1150,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1023,
+                  "scope": 1152,
                   "src": "240:6:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -238,7 +238,7 @@
                     "typeString": "bytes4"
                   },
                   "typeName": {
-                    "id": 1020,
+                    "id": 1149,
                     "name": "bytes4",
                     "nodeType": "ElementaryTypeName",
                     "src": "240:6:2",
@@ -252,14 +252,14 @@
               ],
               "src": "239:8:2"
             },
-            "scope": 1024,
+            "scope": 1153,
             "src": "129:119:2",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 1025,
+        "scope": 1154,
         "src": "96:155:2",
         "usedErrors": []
       }
@@ -272,7 +272,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.7",
-  "updatedAt": "2022-09-14T12:05:51.497Z",
+  "updatedAt": "2022-09-15T09:45:54.016Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

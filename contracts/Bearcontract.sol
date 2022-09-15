@@ -50,14 +50,50 @@ contract Bearcontract is IERC721, Ownable {
 
     uint256 public gen0Counter;
 
+    //breeding new Bears
+    function breed(uint256 dadId, uint256 mumId) public returns (uint256) {
+        //check ownership
+        require(_owns(msg.sender, dadId) || getApproved(dadId) == msg.sender, "msg.sender is not the token owner of the father!");
+        require(_owns(msg.sender, mumId) || getApproved(mumId) == msg.sender, "msg.sender is not the token owner of the mother!");
+
+        //new generation is determined
+        (uint256 dadDna,,,,uint256 dadGen) = getBear(dadId);
+        (uint256 mumDna,,,,uint256 mumGen) = getBear(mumId);
+
+        uint256 newGen;
+
+        if(dadGen > mumGen) {
+            newGen = dadGen++;
+        }
+        else {
+            newGen = mumGen++;
+        }
+
+        //DNA String is made
+        uint256 newDna = _mixDna(dadDna, mumDna);
+
+        //create new bear
+        _createBear(newDna, mumId, dadId, newGen, msg.sender);
+    }
+
+    //Dna of parent bears gets mixed
+    function _mixDna(uint256 _dadDna, uint256 _mumDna) internal returns (uint256) {
+        uint256 firstDnaHalf = _dadDna / 100000000;
+        uint256 secondDnaHalf = _mumDna % 100000000;
+
+        uint256 newDna = firstDnaHalf * 100000000;
+        newDna = newDna + secondDnaHalf;
+        return newDna;
+    }
+
     //Owner can create gen0 bears
-    function createBearGen0(uint256 _genes) public onlyOwner returns (uint256){
+    function createBearGen0(uint256 genes) public onlyOwner returns (uint256){
         require(gen0Counter <= CREATION_LIMIT_GEN0, "Generation 0 supply already fully minted!");
 
         gen0Counter++;
 
         //Gen0 are owned by the contract
-        return(_createBear(_genes, 0, 0, 0, address(0)));
+        return(_createBear(genes, 0, 0, 0, address(0)));
     }
 
     //create Bear
@@ -87,11 +123,11 @@ contract Bearcontract is IERC721, Ownable {
         return newBearId;
     }
 
-    function getBearByOwner(address _owner) external view returns (uint[] memory) {
-        uint[] memory result = new uint[](tokenOwnershipCount[_owner]);
+    function getBearByOwner(address owner) external view returns (uint[] memory) {
+        uint[] memory result = new uint[](tokenOwnershipCount[owner]);
         uint counter = 0;
         for (uint i = 0; i < bears.length; i++) {
-            if (bearIndexToOwner[i] == _owner) {
+            if (bearIndexToOwner[i] == owner) {
                 result[counter] = i;
                 counter++;
             }
@@ -100,7 +136,7 @@ contract Bearcontract is IERC721, Ownable {
     }
 
     //returns bear properties
-    function getBear(uint256 tokenId) external view returns (
+    function getBear(uint256 tokenId) public view returns (
         uint256 genes,
         uint256 birthTime,
         uint256 mumId,

@@ -237,7 +237,31 @@ let abi = [
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "_genes",
+        "name": "dadId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "mumId",
+        "type": "uint256"
+      }
+    ],
+    "name": "breed",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "genes",
         "type": "uint256"
       }
     ],
@@ -256,7 +280,7 @@ let abi = [
     "inputs": [
       {
         "internalType": "address",
-        "name": "_owner",
+        "name": "owner",
         "type": "address"
       }
     ],
