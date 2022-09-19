@@ -1,18 +1,25 @@
-let web3 = new Web3(Web3.givenProvider);
+import { ethers } from "ethers";
+
+const provider = new ethers.providers.Web3Provider(window.ethereum);
+await provider.send("eth_requestAccounts", []);
+const signer = provider.getSigner();
+
+const address = "dai.tokens.ethers.eth";
+const contract = new ethers.Contract(address, abi, provider);
 
 let instance;
 let user;
-let contractAddress = "0x0F6ecA9060b1c21D07c324aBbF26a540FE9D24AF";
+let contractAddress = "0x00c3fb12F09a1f00bbbAf512DDad3F3c612F565C";
 
 $(document).ready(function(){
     window.ethereum.enable().then(function(accounts){
-        instance = new web3.eth.Contract(abi, contractAddress, {from: accounts[0]});
+        instance = new ethers.Contract(contractAddress, abi, provider);
         user = accounts[0];
 
         console.log(instance);
 
         //Birth Event
-        instance.events.Birth().on("data", function (event) {
+        contract.Birth().on("data", function (event) {
             console.log(event);
             let owner = event.returnValues.owner;
             let bearId = event.returnValues.bearId;
@@ -36,7 +43,7 @@ $(document).ready(function(){
 
 function createBear(){
     let dnaString = getDna();
-    instance.methods.createBearGen0(dnaString).send({}, function(error, txHash){
+    contract.createBearGen0(dnaString).send({}, function(error, txHash){
         if(error){
             alert("Create Bear, ERROR");
             console.log(error);
