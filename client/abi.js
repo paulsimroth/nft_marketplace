@@ -1,4 +1,4 @@
-let abi = [
+const abi = [
   {
     "anonymous": false,
     "inputs": [
