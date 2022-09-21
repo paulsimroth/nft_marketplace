@@ -2,13 +2,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 90%;
+    width: 100%;
 }
 
 .bearBox {
     background-color: #e2efffcb;
     border-radius: 10px;
     height: 60%;
-    max-width: 40%;
+    width: 40%;
     top: 0%;
     padding-top: 40px;
     padding-left: 40px;
