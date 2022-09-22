@@ -18,7 +18,7 @@ interface IBearMarketPlace {
     * Set the current KittyContract address and initialize the instance of Kittycontract.
     * Requirement: Only the contract owner can call.
      */
-    function setKittyContract(address _kittyContractAddress) external;
+    function setBearContract(address _bearContractAddress) external;
 
     /**
     * Get the details about a offer for _tokenId. Throws an error if there is no active offer for _tokenId.
@@ -53,5 +53,5 @@ interface IBearMarketPlace {
     * Requirement: The msg.value needs to equal the price of _tokenId
     * Requirement: There must be an active offer for _tokenId
      */
-    function buyKitty(uint256 _tokenId) external payable;
+    function buyBear(uint256 _tokenId) external payable;
 }

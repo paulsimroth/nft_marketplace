@@ -33,8 +33,48 @@
     </div>
     <br>
     <div class="breeding-page page-container">
+        <h2 class="">Bears breeding</h2>
         <p>Select one bear as the mother and one as the father</p>
-        <button onclick="alert()">Breed</button>
+        
+        <div class="breeder-menu" id="breedDiv">
+
+            <div class="col-lg-6">
+                <p><b>Mother</b></p>
+                <div class="featureBox" data-toggle="modal" data-target="#bearSelection">
+                    <div id="Dame" data-bearid="0" onclick="breedBear(this.id)" align="left">
+                        <div align="center">
+                            <div class="egg">
+
+                            </div>
+
+                            <h4>Select a bear as mother</h4>
+                        </div>
+                    </div>
+                </div>
+                <div id="bearDNAmum"></div>
+            </div>
+
+            <div class="col-lg-6">
+                <p><b>Father</b></p>
+                <div class="featureBox" data-toggle="modal" data-target="#bearSelection">
+                    <div id="Father" data-bearid="0" onclick="breedBear(this.id)">
+                        <div align="center">
+                            <div class="egg">
+
+                            </div>
+
+                            <h4>Select a bear as father</h4>
+                        </div>
+                    </div>
+                </div>
+                <div id="bearDNAdad"></div>
+            </div>
+        </div>
+
+        <br>
+
+        <div id="message" align="center"></div>
+        <button class="tooltip-btn white-btn" id="breed" disabled>Breed</button>
     </div>
 
     <footer>

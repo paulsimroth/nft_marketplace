@@ -49,7 +49,7 @@ async function createBear() {
 
 const { ethers, providers, signer } = require("ethers");
 
-const contractAddress = "0x24B33Fc05F3386d6aCa51a10526480ceb86de5e9";
+const contractAddress = "0x992F6484277d50cca90Cc62A20b516AB007Ad26A";
 
 async function prep(){
     await window.ethereum.enable();
