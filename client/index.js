@@ -47,17 +47,26 @@ async function createBear() {
 
 //Web3js Version for transitioning
 
-const { ethers, providers, signer } = require("ethers");
+async function connectWallet(){
+    if (typeof window.ethereum != "undefined"){
+        await ethereum.request({method: "eth_requestAccounts"})
+    };
+};
+
+const { ethers } = require("ethers");
 
 const contractAddress = "0x992F6484277d50cca90Cc62A20b516AB007Ad26A";
 
 async function prep(){
-    await window.ethereum.enable();
-    const provider = await new providers.Web3Provider(window.ethereum);
-    const accounts = await provider.listAccounts();
+    await connectWallet();
+
+    const provider = await new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
-    const user = accounts[0];
     const instance = new ethers.Contract(contractAddress, abi, signer);
+    const accounts = await provider.listAccounts();
+    
+    const user = accounts[0];
+    
     console.log(instance);
 
     //Birth Event
@@ -74,6 +83,7 @@ async function prep(){
         $("#bearCreation").css("display", "block"),
         $("#bearCreation").css("background-color", "#ff471a"),
         $("#bearCreation").text("ERROR: Birth Event malfunctioned"));
+
 };
 
 $(document).ready(
@@ -81,14 +91,11 @@ $(document).ready(
 );
 
 async function createBear(){
-    
-    const signature = await signer.signMessage("Sign in to create Bears");
     let dnaString = getDna();
-    let tx = await instance.connect(signer).createBearGen0(dnaString);
-    async function receipt(error, signature){
+    let tx = await instance.createBearGen0(dnaString);
+    async function receipt(error, tx){
         try{
             await tx.wait();
-            console.log(signature);
             console.log(tx);
         } catch {
             alert("Create Bear, ERROR");
@@ -97,3 +104,9 @@ async function createBear(){
     }
     receipt();
 }
+
+module.exports = {
+    connectWallet,
+    prep,
+    createBear,
+};
