@@ -286,24 +286,6 @@ async function prep(){
     const accounts = await provider.listAccounts();
     
     const user = accounts[0];
-    
-    console.log(instance);
-
-    //Birth Event
-    instance.on("Birth", (owner, bearId, mumId, dadId, genes) => {
-        console.log(`birth event: ${owner} | ${bearId} | ${mumId} | ${dadId} | ${genes} `);
-
-        $("#bearCreation").css("display", "block");
-        $("#bearCreation").text("owner: " + owner
-                                + "bearId: " + bearId
-                                + "mumId: " + mumId
-                                + "dadId: " + dadId
-                                + "genes: " + genes)
-    }).on("error", 
-        $("#bearCreation").css("display", "block"),
-        $("#bearCreation").css("background-color", "#ff471a"),
-        $("#bearCreation").text("ERROR: Birth Event malfunctioned"));
-
 };
 
 $(document).ready(
@@ -323,6 +305,21 @@ async function createBear(){
         }
     }
     receipt();
+
+    //Birth Event
+    instance.on("Birth", (owner, bearId, mumId, dadId, genes) => {
+    console.log(`birth event: ${owner} | ${bearId} | ${mumId} | ${dadId} | ${genes} `);
+
+        $("#bearCreation").css("display", "block");
+        $("#bearCreation").text("owner: " + owner
+                                + "bearId: " + bearId
+                                + "mumId: " + mumId
+                                + "dadId: " + dadId
+                                + "genes: " + genes)
+    }).on("error", 
+        $("#bearCreation").css("display", "block"),
+        $("#bearCreation").css("background-color", "#ff471a"),
+        $("#bearCreation").text("ERROR: Birth Event malfunctioned"));
 }
 
 module.exports = {
@@ -330,6 +327,7 @@ module.exports = {
     prep,
     createBear,
 };
+
 },{"ethers":152}],5:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
