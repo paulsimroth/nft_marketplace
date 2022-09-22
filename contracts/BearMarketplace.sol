@@ -22,19 +22,29 @@ contract BearMarket is Ownable, IBearMarketPlace {
 
     mapping(uint256 => Offer) tokenIdToOffer;
 
-    /**
-    * Set the current BearContract address and initialize the instance of Kittycontract.
-    * Requirement: Only the contract owner can call.
-     */
-    function setBearContract(address _bearContractAddress) onlyOwner public {
 
+    //Function and constructor to set the Bearcontract
+    function setBearContract(address _bearContractAddress) onlyOwner public {
+        _bearcontract = Bearcontract(_bearContractAddress);
+    }
+
+    constructor(address _bearContractAddress) public {
+        setBearContract(_bearContractAddress);
     }
 
     /**
-    * Get the details about a offer for _tokenId. Throws an error if there is no active offer for _tokenId.
+    * Get the details about a offer for tokenId. Throws an error if there is no active offer for tokenId.
      */
-    function getOffer(uint256 _tokenId) external view returns ( address seller, uint256 price, uint256 index, uint256 tokenId, bool active) {
-        require(active, "no active offer on this tokeId");
+    function getOffer(uint256 tokenId) public view returns (address seller, uint256 price, uint256 index, uint256 _tokenId, bool active) {
+        Offer storage offer = tokenIdToOffer[tokenId];
+        require(offer.active, "no active offer on this tokenId");
+        return(
+            offer.seller,
+            offer.price,
+            offer.index,
+            offer.tokenId,
+            offer.active
+        );
     }
 
     /**
@@ -60,18 +70,18 @@ contract BearMarket is Ownable, IBearMarketPlace {
     * Emits the MarketTransaction event with txType "Remove offer"
     * Requirement: Only the seller of _tokenId can remove an offer.
      */
-    function removeOffer(uint256 _tokenId) external {
+    function removeOffer(uint256 tokenId) public {
 
     }
 
     /**
-    * Executes the purchase of _tokenId.
-    * Sends the funds to the seller and transfers the token using transferFrom in Kittycontract.
+    * Executes the purchase of tokenId.
+    * Sends the funds to the seller and transfers the token using transferFrom in Bearcontract.
     * Emits the MarketTransaction event with txType "Buy".
     * Requirement: The msg.value needs to equal the price of _tokenId
     * Requirement: There must be an active offer for _tokenId
      */
-    function buyBear(uint256 _tokenId) external payable {
-
+    function buyBear(uint256 tokenId) public payable {
+        emit MarketTransaction("Buy Bear", msg.sender, tokenId);
     }
 }
