@@ -44,4 +44,29 @@ async function createBear(){
             alert("Create Bear, ERROR");
             console.log(error);
         }
+};
+
+const dnaArr = []
+
+async function selectParent(parentId){
+    dnaArr.push(parentId);
+}
+
+async function breedBear(){
+    if (dnaArr.length = 2){
+        try{
+            let tx = await signer.breed(dnaArr[0], dnaArr[1]);
+            const receipt = await tx.wait();
+            console.log(receipt);
+        } catch (error){
+            alert("Breed Bear, ERROR");
+            console.log(error);
+        }
+
+        //Clear dnaArr
+        dnaArr.pop();
+        dnaArr.pop();
+    } else {
+        alert("Incorrect number of parents")
     };
+};

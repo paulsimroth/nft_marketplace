@@ -12,7 +12,6 @@
     <script type="module">
         import { ethers } from "https://cdn.ethers.io/lib/ethers-5.2.esm.min.js";
     </script>
-    <script src="./index.js"></script>
 
     <link rel="stylesheet" href="assets/css/mystyle.css">
     <link rel="stylesheet" href="assets/css/bears.css">
@@ -39,27 +38,10 @@
         <p>Select one bear as the mother and one as the father</p>
         
         <div class="breeder-menu" id="breedDiv">
-
-            <div class="col-lg-6">
-                <p><b>Mother</b></p>
-                <div class="featureBox" data-toggle="modal" data-target="#bearSelection">
-                    <div id="Mother" data-bearid="0" onclick="breedBear(this.id)" align="left">
-                        <div align="center">
-                            <div class="egg">
-
-                            </div>
-
-                            <h4>Select a bear as mother</h4>
-                        </div>
-                    </div>
-                </div>
-                <div id="bearDNAmum"></div>
-            </div>
-
             <div class="col-lg-6">
                 <p><b>Father</b></p>
                 <div class="featureBox" data-toggle="modal" data-target="#bearSelection">
-                    <div id="Father" data-bearid="0" onclick="breedBear(this.id)">
+                    <div id="Father" data-bearid="0" onclick="selectParent(this.id)">
                         <div align="center">
                             <div class="egg">
 
@@ -71,12 +53,28 @@
                 </div>
                 <div id="bearDNAdad"></div>
             </div>
+
+            <div class="col-lg-6">
+                <p><b>Mother</b></p>
+                <div class="featureBox" data-toggle="modal" data-target="#bearSelection">
+                    <div id="Mother" data-bearid="0" onclick="selectParent(this.id)" align="left">
+                        <div align="center">
+                            <div class="egg">
+
+                            </div>
+
+                            <h4>Select a bear as mother</h4>
+                        </div>
+                    </div>
+                </div>
+                <div id="bearDNAmum"></div>
+            </div>
         </div>
 
         <br>
 
         <div id="message" align="center"></div>
-        <button class="tooltip-btn white-btn" id="breed" disabled>Breed</button>
+        <button class="tooltip-btn white-btn" id="breed" onclick="breedBear()">Breed</button>
     </div>
 
     <footer>
@@ -84,7 +82,7 @@
     </footer>
 </body>
 
-
+<script src="./index.js"></script>
 <script src="assets/js/colors.js"></script>
 <script src="assets/js/bearSettings.js"></script>
 <script src="assets/js/bearFactory.js"></script>

@@ -50,6 +50,10 @@ contract Bearcontract is IERC721, Ownable {
 
     uint256 public gen0Counter;
 
+    constructor() public {
+        _createBear(0, 0, 0, 0, address(0));
+    }
+
     //breeding new Bears
     function breed(uint256 dadId, uint256 mumId) public returns (uint256) {
         //check ownership
