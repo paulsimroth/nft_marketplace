@@ -1,43 +1,24 @@
-async function connectWallet(){
-    if (typeof window.ethereum != "undefined"){
-        await ethereum.request({method: "eth_requestAccounts"})
-    };
-};
+let provider, signer, instance, user, address;
+let dnaString = "457896541299";
+const contractAddress = "0xa542570803fb024b193D59ca9bD46584f8f5576E";
 
-const { ethers } = require("ethers");
+$(document).ready(async function () {
+    if (window.ethereum){
+ 
+     provider = new ethers.providers.Web3Provider(window.ethereum);
+     await provider.send("eth_requestAccounts", []);
+     user = provider.getSigner();
+     address = await user.getAddress();
+     instance = new ethers.Contract(contractAddress, abi, provider);
+     signer = instance.connect(user);
+     const testCall = await signer.owner();
+     console.log('Ethereum Browser: Contract Owner', testCall);
+ 
+   } else {
+     console.log('FAILED TO CONNECT WEB3; Install Web3 Provider!');
+   }
 
-const contractAddress = "0x992F6484277d50cca90Cc62A20b516AB007Ad26A";
-
-async function prep(){
-    await connectWallet();
-
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const signer = provider.getSigner();
-    const instance = new ethers.Contract(contractAddress, abi, signer);
-    const accounts = await provider.listAccounts();
-    
-    const user = accounts[0];
-};
-
-$(document).ready(
-    prep()
-);
-
-async function createBear(){
-    let dnaString = getDna();
-    let tx = await instance.createBearGen0(dnaString);
-    async function receipt(error, tx){
-        try{
-            await tx.wait();
-            console.log(tx);
-        } catch {
-            alert("Create Bear, ERROR");
-            console.log(error);
-        }
-    }
-    receipt();
-
-    //Birth Event
+       //Birth Event
     instance.on("Birth", (owner, bearId, mumId, dadId, genes) => {
     console.log(`birth event: ${owner} | ${bearId} | ${mumId} | ${dadId} | ${genes} `);
 
@@ -51,10 +32,16 @@ async function createBear(){
         $("#bearCreation").css("display", "block"),
         $("#bearCreation").css("background-color", "#ff471a"),
         $("#bearCreation").text("ERROR: Birth Event malfunctioned"));
-}
+});
 
-module.exports = {
-    connectWallet,
-    prep,
-    createBear,
-};
+async function createBear(){
+    let dnaString = getDna();
+        try{
+            let tx = await signer.createBearGen0(dnaString);
+            const receipt = await tx.wait();
+            console.log(receipt);
+        } catch (error){
+            alert("Create Bear, ERROR");
+            console.log(error);
+        }
+    };
