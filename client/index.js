@@ -1,6 +1,6 @@
 let provider, signer, instance, user, address;
 let dnaString = "457896541299";
-const contractAddress = "0xa542570803fb024b193D59ca9bD46584f8f5576E";
+const bearAddress = "0xa542570803fb024b193D59ca9bD46584f8f5576E";
 
 $(document).ready(async function () {
     if (window.ethereum){
@@ -9,7 +9,7 @@ $(document).ready(async function () {
      await provider.send("eth_requestAccounts", []);
      user = provider.getSigner();
      address = await user.getAddress();
-     instance = new ethers.Contract(contractAddress, abi, provider);
+     instance = new ethers.Contract(bearAddress, bearAbi, provider);
      signer = instance.connect(user);
      const testCall = await signer.owner();
      console.log('Ethereum Browser: Contract Owner', testCall);

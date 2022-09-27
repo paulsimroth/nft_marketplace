@@ -1,4 +1,4 @@
-const abi = [
+const bearAbi = [
   {
     "inputs": [],
     "stateMutability": "nonpayable",
