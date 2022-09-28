@@ -93,5 +93,5 @@ function inventoryRender(id){
 };
 
 function breedRender(dna, id, generation, gender) {
-
+    renderBear(dna);
 };
