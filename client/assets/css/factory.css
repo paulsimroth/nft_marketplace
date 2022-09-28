@@ -67,10 +67,11 @@
 }
 
 .alert {
+    position: absolute;
     background-color: #33ff77;
     margin: 10px;
-    position: absolute;
     top: 80%;
+    align-self: center;
 }
 
 .navbtn {

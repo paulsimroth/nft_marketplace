@@ -29,10 +29,10 @@ $(document).ready(async function () {
 
         $("#bearCreation").css("display", "block");
         $("#bearCreation").text("owner: " + owner
-                                + "bearId: " + bearId
-                                + "mumId: " + mumId
-                                + "dadId: " + dadId
-                                + "genes: " + genes)
+                                + " | bearId: " + bearId
+                                + " | mumId: " + mumId
+                                + " | dadId: " + dadId
+                                + " | genes: " + genes)
     }).on("error", console.log("ERROR: Birth Event malfunctioned"));
 
     //MarketTransaction Event
