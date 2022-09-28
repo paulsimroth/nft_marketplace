@@ -2,26 +2,26 @@
 let provider, signer, instance, marketInstance, user, address;
 let dnaString = "457896541299";
 const bearAddress = "0xa542570803fb024b193D59ca9bD46584f8f5576E";
-const marketAddress = "";
+const marketAddress = "0x44899c20a67dc7d33643e0045dE47d2b2943C84F";
 
 //Initialize on loading
 $(document).ready(async function () {
     if (window.ethereum){
  
-     provider = new ethers.providers.Web3Provider(window.ethereum);
-     await provider.send("eth_requestAccounts", []);
-     user = provider.getSigner();
-     address = await user.getAddress();
-     instance = new ethers.Contract(bearAddress, bearAbi, provider);
-     marketInstance = new ethers.Contract(marketAddress, marketAbi, provider);
-     signer = instance.connect(user);
-     marketSigner = marketInstance.connect(user);
-     const testCall = await signer.owner();
-     console.log('Ethereum Browser: Contract Owner', testCall);
+        provider = new ethers.providers.Web3Provider(window.ethereum);
+        await provider.send("eth_requestAccounts", []);
+        user = provider.getSigner();
+        address = await user.getAddress();
+        instance = new ethers.Contract(bearAddress, bearAbi, provider);
+        marketInstance = new ethers.Contract(marketAddress, marketAbi, provider);
+        signer = instance.connect(user);
+        marketSigner = marketInstance.connect(user);
+        const testCall = await signer.owner();
+        console.log('Ethereum Browser: Contract Owner', testCall);
  
-   } else {
-     console.log('FAILED TO CONNECT WEB3; Install Web3 Provider!');
-   }
+    } else {
+        console.log('FAILED TO CONNECT WEB3; Install Web3 Provider!');
+    }
 
     //Birth Event
     instance.on("Birth", (owner, bearId, mumId, dadId, genes) => {
@@ -33,10 +33,7 @@ $(document).ready(async function () {
                                 + "mumId: " + mumId
                                 + "dadId: " + dadId
                                 + "genes: " + genes)
-    }).on("error", 
-        $("#bearCreation").css("display", "block"),
-        $("#bearCreation").css("background-color", "#ff471a"),
-        $("#bearCreation").text("ERROR: Birth Event malfunctioned"));
+    }).on("error", console.log("ERROR: Birth Event malfunctioned"));
 
     //MarketTransaction Event
 });
@@ -103,3 +100,9 @@ async function getBear() {
         }
     }
 }
+
+//Get Owner by Id
+
+//Select Token for Sell
+
+//Buy Token

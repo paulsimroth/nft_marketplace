@@ -77,6 +77,7 @@ function bearBody(id) {
     return bear;
 };
 
+//Attribute description
 function attributes(id) {
     let attributes = 
         `<ul class="ml-5 cattributes">                     
@@ -89,9 +90,9 @@ function attributes(id) {
 };
 
 function inventoryRender(id){
-
+    
 };
 
 function breedRender(dna, id, generation, gender) {
-    renderBear(dna);
+    bearDna(dna);
 };

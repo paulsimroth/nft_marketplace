@@ -48,7 +48,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -100,7 +101,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -113,7 +115,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -157,7 +160,8 @@
       "name": "buyBear",
       "outputs": [],
       "stateMutability": "payable",
-      "type": "function"
+      "type": "function",
+      "payable": true
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.8.16+commit.07a7930e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_bearContractAddress\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"TxType\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"MarketTransaction\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"buyBear\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAllTokenOnSale\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"listOfOffers\",\"type\":\"uint256[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"getOffer\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"seller\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"index\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_tokenId\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"active\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"removeOffer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_bearContractAddress\",\"type\":\"address\"}],\"name\":\"setBearContract\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"setOffer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"getAllTokenOnSale()\":{\"notice\":\"Get all tokenId's that are currently for sale. Returns an empty arror if none exist.\"},\"setBearContract(address)\":{\"notice\":\"Set the current KittyContract address and initialize the instance of Kittycontract. Requirement: Only the contract owner can call.\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/BearMarketplace.sol\":\"BearMarket\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/BearMarketplace.sol\":{\"keccak256\":\"0xf96bb4e73e05216825a22289f6806a3f4e50884f9a8e6f4da1965a6c3f7d4148\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://034dd348bb69fb20d64ba72cfe4d8b4c741167abf93f62a57196945781e1d262\",\"dweb:/ipfs/QmdFzhRUtJktuwEmsbsgb7xn9nxgigAYDVRRsq62szAYJR\"]},\"project:/contracts/Bearcontract.sol\":{\"keccak256\":\"0xabe2a6f5d61190103c9b56e74e653395b75e2e1ac92cf18df7fbb8bfe4484bac\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a57874a9d61592321fd78fc88681d72d2ca068a0b572e09ebd0ef777c45e5225\",\"dweb:/ipfs/QmTAiVJgsZsnJ954L3Pz8KQDyrtKPz2CpUc6tbEeHRa3Rx\"]},\"project:/contracts/IBearMarketPlace.sol\":{\"keccak256\":\"0x0b93d66f00710adae1966cc2de84412559b6cfb9d5066ea8e69dcb25b25e9a77\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://fb14a5ef9f4a3e768764d9b1a604da326e1f67e79a64f48e74af6ede14a79d14\",\"dweb:/ipfs/QmR2YoWyJgbKJXEduB9GmzShmSEANUTPLoVrDLJgSAYBBQ\"]},\"project:/contracts/IERC721.sol\":{\"keccak256\":\"0x05bfadd6fa7f08cdce55ca7a65f135a612099322788b7df71834218b21d2b529\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b00ead7ae4c7974ad5a260c5d038ac9be89f5ebb164f7bb8d2d592afcf586ccd\",\"dweb:/ipfs/QmZ8JhNB4jy2sw2JGuwSYohczsftYnZStVSpqhfmu6DuHL\"]},\"project:/contracts/IERC721Receiver.sol\":{\"keccak256\":\"0x7a7aa03b484ac360471ff63e00dd59aa5338111961e40fbb8f127a277e17d68d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://c133577672ae564298abf38f13d4bf65d7b21262a356804437d9129935ca1454\",\"dweb:/ipfs/QmYBvBsJVgD9WtNrb1YnEAdFLS4KrBcRZbAfizQYikpiZv\"]},\"project:/contracts/Ownable.sol\":{\"keccak256\":\"0xc926c8d9efcab9e148234b8f3e140d4c7a26e439307ef2bc2ec63b25394e92d5\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6bb52eb914a1f246950d65f3cbef2b3e5bbfda27e97190474029a06762846e98\",\"dweb:/ipfs/QmVhPLFPivUnS6UDxM4ZuJotsfEyzEGVmt8sqSXCG22LU1\"]}},\"version\":1}",
@@ -14841,9 +14845,17 @@
     "name": "solc",
     "version": "0.8.16+commit.07a7930e.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x44899c20a67dc7d33643e0045dE47d2b2943C84F",
+      "transactionHash": "0x0fbd8a15fb2a17ea83e758cbb8abf35e65e86f9f93a1fe13731d314cd2a147ff"
+    }
+  },
   "schemaVersion": "3.4.7",
-  "updatedAt": "2022-09-26T15:07:36.230Z",
+  "updatedAt": "2022-09-28T15:16:36.086Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {},
