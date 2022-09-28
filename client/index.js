@@ -1,7 +1,9 @@
-let provider, signer, instance, user, address;
+let provider, signer, instance, marketInstance, user, address;
 let dnaString = "457896541299";
 const bearAddress = "0xa542570803fb024b193D59ca9bD46584f8f5576E";
+const marketAddress = "";
 
+//Initialize on loading
 $(document).ready(async function () {
     if (window.ethereum){
  
@@ -10,7 +12,9 @@ $(document).ready(async function () {
      user = provider.getSigner();
      address = await user.getAddress();
      instance = new ethers.Contract(bearAddress, bearAbi, provider);
+     marketInstance = new ethers.Contract(marketAddress, marketAbi, provider);
      signer = instance.connect(user);
+     marketSigner = marketInstance.connect(user);
      const testCall = await signer.owner();
      console.log('Ethereum Browser: Contract Owner', testCall);
  
@@ -18,7 +22,7 @@ $(document).ready(async function () {
      console.log('FAILED TO CONNECT WEB3; Install Web3 Provider!');
    }
 
-       //Birth Event
+    //Birth Event
     instance.on("Birth", (owner, bearId, mumId, dadId, genes) => {
     console.log(`birth event: ${owner} | ${bearId} | ${mumId} | ${dadId} | ${genes} `);
 
@@ -32,41 +36,58 @@ $(document).ready(async function () {
         $("#bearCreation").css("display", "block"),
         $("#bearCreation").css("background-color", "#ff471a"),
         $("#bearCreation").text("ERROR: Birth Event malfunctioned"));
+
+    //MarketTransaction Event
 });
 
+//Initialization of Marketplace
+async function initMarket() {
+    let isMarketOperator = await instance.isApprovedForAll(user, marketAddress);
+
+    if(isMarketOperator){
+        getInventory();
+    } else {
+        const tx = await instance.setApprovalForAll(marketAddress, true);
+        const receipt = await tx.wait();
+        console.log("Set Approval for Market, Receipt:", receipt);
+        getInventory();
+    }
+}
+
+//create Gen 0 Bear
 async function createBear(){
     let dnaString = getDna();
         try{
-            let tx = await signer.createBearGen0(dnaString);
+            const tx = await signer.createBearGen0(dnaString);
             const receipt = await tx.wait();
-            console.log(receipt);
+            console.log("Create Bear, Receipt:", receipt);
         } catch (error){
             alert("Create Bear, ERROR");
             console.log(error);
         }
 };
 
-const dnaArr = []
-
-async function selectParent(parentId){
-    dnaArr.push(parentId);
-}
-
-async function breedBear(){
-    if (dnaArr.length = 2){
-        try{
-            let tx = await signer.breed(dnaArr[0], dnaArr[1]);
-            const receipt = await tx.wait();
-            console.log(receipt);
-        } catch (error){
-            alert("Breed Bear, ERROR");
-            console.log(error);
-        }
-
-        //Clear dnaArr
-        dnaArr.pop();
-        dnaArr.pop();
-    } else {
-        alert("Incorrect number of parents")
-    };
+//Choose Bears for breeding
+async function chooseParents(gender){
+    let arrId = await instance.getBearByOwner();
+    console.log(arrId);
+    for (i = 0; i < arrId.length; i++){
+        appendBreeder(arrId[i], gender);
+    }
 };
+
+async function appendBreeder(id, gender) {
+    let bear = await instance.getBear(id);
+    breedRender(bear[0], id, bear['generation'], gender) //Adds Cat to breeding page
+};
+
+//retrieve all Tokens on Sale in Market
+async function getInventory() {
+    let arrId = await marketInstance.getAllTokenOnSale();
+    console.log(arrId);
+    for (i = 0; i < arrId.length; i++){
+        if(arrId[i] != 0){
+            inventoryRender(arrId[i]);
+        }
+    }
+}
