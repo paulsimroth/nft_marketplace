@@ -1,3 +1,4 @@
+//Interaction between smart contracts and Frontend
 let provider, signer, instance, marketInstance, user, address;
 let dnaString = "457896541299";
 const bearAddress = "0xa542570803fb024b193D59ca9bD46584f8f5576E";
@@ -54,7 +55,7 @@ async function initMarket() {
     }
 }
 
-//create Gen 0 Bear
+//Create Gen 0 Bear
 async function createBear(){
     let dnaString = getDna();
         try{
@@ -78,12 +79,23 @@ async function chooseParents(gender){
 
 async function appendBreeder(id, gender) {
     let bear = await instance.getBear(id);
-    breedRender(bear[0], id, bear['generation'], gender) //Adds Cat to breeding page
+    breedRender(bear[0], id, bear['generation'], gender) //Adds Bear to breeding page
 };
 
 //retrieve all Tokens on Sale in Market
 async function getInventory() {
     let arrId = await marketInstance.getAllTokenOnSale();
+    console.log(arrId);
+    for (i = 0; i < arrId.length; i++){
+        if(arrId[i] != 0){
+            inventoryRender(arrId[i]);
+        }
+    }
+}
+
+//Get Bear of current user
+async function getBear() {
+    let arrId = await instance.getBearByOwner(signer);
     console.log(arrId);
     for (i = 0; i < arrId.length; i++){
         if(arrId[i] != 0){
