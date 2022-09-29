@@ -41,6 +41,12 @@
         <a class="tooltip-btn white-btn" href="breeder.html">Breed a new generation</a>
     </div>
 
+    <div class="animation-wrapper">
+        <div class="particle particle-1"></div>
+        <div class="particle particle-2"></div>
+        <div class="particle particle-3"></div>
+    </div>
+
     <footer>
         <p>Project for NFT Marketplace Course @ Moralis Academy, August - September 2022</p>
     </footer>
@@ -49,8 +55,16 @@
     <script src="assets/js/colors.js"></script>
     <script src="assets/js/bearSettings.js"></script>
     <script src="assets/js/bearFactory.js"></script>
-    <script src="assets/js/factoryButtons.js"></script>
     <script src="./index.js"></script>
     <script src="./render.js"></script>
+
+    <script>
+    // when page loads create the catalog
+    $(document).ready(function () {
+        setTimeout(() => {
+            getMyBears()
+        }, 1000)
+    });
+    </script>
 
 </html>

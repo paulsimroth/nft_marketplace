@@ -4,7 +4,7 @@
 function bearDna(dnaStr) {
     let dna = {
         //Colors
-        "headcolor": dnaStr.substring(0, 2),
+        "headColor": dnaStr.substring(0, 2),
         "mouthColor": dnaStr.substring(2, 4),
         "eyesColor": dnaStr.substring(4, 6),
         "earsColor": dnaStr.substring(6, 8),
@@ -89,8 +89,16 @@ function attributes(id) {
     return attributes;
 };
 
-function inventoryRender(id){
-    
+function inventoryRender(dna, id, gen){
+    let bearDna = bearDna(dna);
+    bearBox(id);
+    renderBear(bearDna);
+    $('#bearDNA' + id).html(`
+    <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>ID:</b>`+ id + `</h4></span>
+    <br>
+    <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>GEN:</b>`+ gen + `</h4></span>
+    <br>
+    <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>DNA:</b>`+ dna + `</h4></span>`)
 };
 
 function breedRender(dna, id, generation, gender) {

@@ -26,14 +26,13 @@ $(document).ready(async function () {
     //Birth Event
     instance.on("Birth", (owner, bearId, mumId, dadId, genes) => {
     console.log(`birth event: ${owner} | ${bearId} | ${mumId} | ${dadId} | ${genes} `);
-
-        $("#bearCreation").css("display", "block");
-        $("#bearCreation").text("owner: " + owner
-                                + " | bearId: " + bearId
-                                + " | mumId: " + mumId
-                                + " | dadId: " + dadId
-                                + " | genes: " + genes)
-    }).on("error", console.log("ERROR: Birth Event malfunctioned"));
+    $("#bearCreation").css("display", "block");
+    $("#bearCreation").text("owner: " + owner
+                            + " | bearId: " + bearId
+                            + " | mumId: " + mumId
+                            + " | dadId: " + dadId
+                            + " | genes: " + genes)
+    });
 
     //MarketTransaction Event
 });
@@ -58,9 +57,9 @@ async function createBear(){
         try{
             const tx = await signer.createBearGen0(dnaString);
             const receipt = await tx.wait();
-            console.log("Create Bear, Receipt:", receipt);
+            console.log("Create Bear Gen 0, Receipt:", receipt);
         } catch (error){
-            alert("Create Bear, ERROR");
+            alert("Create Bear Gen 0, ERROR");
             console.log(error);
         }
 };
@@ -76,7 +75,21 @@ async function chooseParents(gender){
 
 async function appendBreeder(id, gender) {
     let bear = await instance.getBear(id);
-    breedRender(bear[0], id, bear['generation'], gender) //Adds Bear to breeding page
+    breedRender(bear[0], id, bear['generation'], gender); //Adds Bear to breeding page
+};
+
+//Breed new gen Bear
+async function breedBear(){
+    let dadId = PLACEHOLDER;
+    let mumId = PLACEHOLDER;
+        try{
+            const tx = await signer.breed(dadId, mumId);
+            const receipt = await tx.wait();
+            console.log("Create Bear, Receipt:", receipt);
+        } catch (error){
+            alert("Create Bear, ERROR");
+            console.log(error);
+        }
 };
 
 //retrieve all Tokens on Sale in Market
@@ -85,24 +98,34 @@ async function getInventory() {
     console.log(arrId);
     for (i = 0; i < arrId.length; i++){
         if(arrId[i] != 0){
-            inventoryRender(arrId[i]);
+            appendInventory(arrId[i]);
         }
     }
 }
 
 //Get Bear of current user
-async function getBear() {
-    let arrId = await instance.getBearByOwner(signer);
-    console.log(arrId);
-    for (i = 0; i < arrId.length; i++){
-        if(arrId[i] != 0){
-            inventoryRender(arrId[i]);
+async function getMyBears() {
+    try{
+    const bearId = await signer.getBearByOwner(address);
+    console.log("getMyBears", bearId);
+    for (i = 0; i < bearId.length; i++){
+        if(bearId[i] != 0){
+            appendInventory(bearId[i]);
         }
+    }} catch (error){
+        alert("GetMyBears, ERROR");
+        console.log("getMyBears", error);
     }
-}
+};
+
+async function appendInventory(id) {
+    let bear = await instance.getBear(id);
+    console.log("appendInventory", bear);
+    inventoryRender(bear.genes, id, bear.generation);
+};
 
 //Get Owner by Id
 
-//Select Token for Sell
+//Select Token for Selling
 
 //Buy Token
