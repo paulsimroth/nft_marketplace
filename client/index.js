@@ -92,7 +92,7 @@ async function breedBear(){
         }
 };
 
-//retrieve all Tokens on Sale in Market
+//Retrieve all Tokens on Sale in Market
 async function getInventory() {
     let arrId = await marketInstance.getAllTokenOnSale();
     console.log(arrId);

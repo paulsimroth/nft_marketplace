@@ -39,19 +39,19 @@ function bearBox(id) {
 function bearBody(id) {
     let bear = `<div class="bear">
                     <div class="hat">
-                        <div `+ id +`class="hat-top"></div>
-                        <div `+ id +`class="hat-brim"></div>
+                        <div id="`+ id +`" class="hat-top"></div>
+                        <div id="`+ id +`" class="hat-brim"></div>
                     </div>
                     <div class="ears">
-                        <div `+ id +`class="ear leftEar">
+                        <div id="`+ id +`" class="ear leftEar">
                             <div class="innerEar"></div>
                         </div>
-                        <div `+ id +`class="ear rightEar">
+                        <div id="`+ id +`" class="ear rightEar">
                             <div class="innerEar"></div>
                         </div>
                     </div>
-                    <div `+ id +`class="head">
-                        <div `+ id +`class="eyes">
+                    <div id="`+ id +`" class="head">
+                        <div id="`+ id +`" class="eyes">
                             <div class="eye">
                                 <span class="pupils"></span>
                             </div>
@@ -59,18 +59,18 @@ function bearBody(id) {
                                 <span class="pupils"></span>
                             </div>
                         </div>
-                        <div `+ id +`class="nose"></div>
-                        <div `+ id +`class="mouth"></div>
+                        <div id="`+ id +`" class="nose"></div>
+                        <div id="`+ id +`" class="mouth"></div>
                     </div>
                     <div class="body">
                         <div class="frontPaws">
-                            <div `+ id +`class="frontPaw leftFrontPaw"></div>
-                            <div `+ id +`class="frontPaw rightFrontPaw"></div>
+                            <div id="`+ id +`" class="frontPaw leftFrontPaw"></div>
+                            <div id="`+ id +`" class="frontPaw rightFrontPaw"></div>
                         </div>
-                        <div `+ id +`class="belly"></div>
-                        <div `+ id +`class="backPaws">
-                            <div `+ id +`class="backPaw leftBackPaw"></div>
-                            <div `+ id +`class="backPaw rightBackPaw"></div>
+                        <div id="`+ id +`" class="belly"></div>
+                        <div id="`+ id +`" class="backPaws">
+                            <div id="`+ id +`" class="backPaw leftBackPaw"></div>
+                            <div id="`+ id +`" class="backPaw rightBackPaw"></div>
                         </div>
                     </div>
                 </div> `
@@ -80,10 +80,10 @@ function bearBody(id) {
 //Attribute description
 function attributes(id) {
     let attributes = 
-        `<ul class="ml-5 cattributes">                     
-            <li><span id="eyeName`+ id + `"></span> eyes</li>                     
-            <li><span id="decorationName`+ id + `"></span> decoration</li>                     
-            <li><span id="animationName`+ id + `"></span> animation</li>                  
+        `<ul class="ml-5 attributes">                     
+            <li><span id="eyeName`+ id + `"></span> Eyes</li>                     
+            <li><span id="decorationName`+ id + `"></span> Decoration</li>                     
+            <li><span id="animationName`+ id + `"></span> Animation</li>                  
         </ul>`
 
     return attributes;
@@ -93,6 +93,9 @@ function inventoryRender(dna, id, gen){
     let bearDna = bearDna(dna);
     bearBox(id);
     renderBear(bearDna);
+
+    console.log(dna, id);
+
     $('#bearDNA' + id).html(`
     <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>ID:</b>`+ id + `</h4></span>
     <br>
