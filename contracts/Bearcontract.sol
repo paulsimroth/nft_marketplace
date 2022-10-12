@@ -119,7 +119,7 @@ contract Bearcontract is IERC721, Ownable {
         gen0Counter++;
 
         //Gen0 are owned by the contract
-        return(_createBear(genes, 0, 0, 0, address(0)));
+        return(_createBear(genes, 0, 0, 0, msg.sender));
     }
 
     //create Bear
@@ -221,7 +221,7 @@ contract Bearcontract is IERC721, Ownable {
             delete bearIndexToApproved[_tokenId];
         }
 
-    //Emitted when `tokenId` token is transfered from `from` to `to`.
+        //Emitted when `tokenId` token is transfered from `from` to `to`.
         emit Transfer(_from, _to, _tokenId);
     }
     

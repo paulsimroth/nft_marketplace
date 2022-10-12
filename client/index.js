@@ -1,8 +1,8 @@
 //Interaction between smart contracts and Frontend
 let provider, signer, instance, marketInstance, user, address;
 let dnaString = "457896541299";
-const bearAddress = "0xF94840fF3220Cc6727eE549a3BB62874387e9C3B";
-const marketAddress = "0xb42Aa47A39f5587AADD27318f25c21cD4Fff3da6";
+const bearAddress = "0xF6f57d070c2a83053EFcc963c6Cd5865BFc05EB0";
+const marketAddress = "0x55B004d908a61112D74d6Fd30E43F18a780FA2B5";
 
 //Initialize on loading
 $(document).ready(async function () {
