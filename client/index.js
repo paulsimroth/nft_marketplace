@@ -1,8 +1,8 @@
 //Interaction between smart contracts and Frontend
 let provider, signer, instance, marketInstance, user, address;
 let dnaString = "457896541299";
-const bearAddress = "0xa542570803fb024b193D59ca9bD46584f8f5576E";
-const marketAddress = "0x44899c20a67dc7d33643e0045dE47d2b2943C84F";
+const bearAddress = "0xF94840fF3220Cc6727eE549a3BB62874387e9C3B";
+const marketAddress = "0xb42Aa47A39f5587AADD27318f25c21cD4Fff3da6";
 
 //Initialize on loading
 $(document).ready(async function () {
@@ -49,7 +49,7 @@ async function initMarket() {
         console.log("Set Approval for Market, Receipt:", receipt);
         getInventory();
     }
-}
+};
 
 //Create Gen 0 Bear
 async function createBear(){
@@ -101,7 +101,7 @@ async function getInventory() {
             appendInventory(arrId[i]);
         }
     }
-}
+};
 
 //Get Bear of current user
 async function getMyBears() {
