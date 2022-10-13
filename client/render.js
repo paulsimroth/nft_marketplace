@@ -104,6 +104,17 @@ function inventoryRender(dna, id, gen){
     <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>DNA:</b>`+ dna + `</h4></span>`)
 };
 
-function breedRender(dna, id, generation, gender) {
-    bearDna(dna);
+function breedRender(dna, id, gen, gender) {
+    let bearDna = bearDna(dna);
+    bearBox(id);
+    renderBear(bearDna);
+
+    console.log(dna, id);
+
+    $('#bearDNA' + id).html(`
+    <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>GEN:</b>`+ gen + `</h4></span>
+    <br>
+    <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>DNA:</b>`+ dna + `</h4></span>`)
+
+    $('#bearView' + id).attr('onclick', 'selectBreed("' + dna + '","' + id + '","' + gen + '","' + gender + '")')
 };

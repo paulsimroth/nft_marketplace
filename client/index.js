@@ -1,8 +1,8 @@
 //Interaction between smart contracts and Frontend
 let provider, signer, instance, marketInstance, user, address;
 let dnaString = "457896541299";
-const bearAddress = "0xF6f57d070c2a83053EFcc963c6Cd5865BFc05EB0";
-const marketAddress = "0x55B004d908a61112D74d6Fd30E43F18a780FA2B5";
+const bearAddress = "0xa542570803fb024b193D59ca9bD46584f8f5576E";
+const marketAddress = "0x44899c20a67dc7d33643e0045dE47d2b2943C84F";
 
 //Initialize on loading
 $(document).ready(async function () {
@@ -35,6 +35,17 @@ $(document).ready(async function () {
     });
 
     //MarketTransaction Event
+    marketInstance.on("MarketTransaction", (txType, owner, tokenId) => {
+        if (txType == "Buy Bear") {
+            alert('Succesfull purchase! Now you own this Bear with TokenId: ' + tokenId, 'success')
+        }
+        if (txType == "Create Offer") {
+            alert('Offer set for Kitty id: ' + tokenId, 'success')
+        }
+        if (txType == "Remove Offer") {
+            alert("Remove Offer for" + tokenId)
+        }
+    });
 });
 
 //Initialization of Marketplace
