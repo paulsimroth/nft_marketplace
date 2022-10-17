@@ -1,4 +1,4 @@
-//File for rendering Ctas fetched from Smart Contracts
+//File for rendering Bears fetched from Smart Contracts
 
 //Splitting the cat DNA to use it in render
 function bearDna(dnaStr) {
@@ -89,12 +89,12 @@ function attributes(id) {
     return attributes;
 };
 
-function inventoryRender(dna, id, gen){
-    let bearDna = bearDna(dna);
-    bearBox(id);
-    renderBear(bearDna);
+async function inventoryRender(dna, id, gen){
+    let bearDna = await bearDna(dna);
+    await bearBox(id);
+    await renderBear(bearDna);
 
-    console.log(dna, id);
+    console.log("inventoryRender", dna, id);
 
     $('#bearDNA' + id).html(`
     <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>ID:</b>`+ id + `</h4></span>
@@ -104,12 +104,12 @@ function inventoryRender(dna, id, gen){
     <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>DNA:</b>`+ dna + `</h4></span>`)
 };
 
-function breedRender(dna, id, gen, gender) {
-    let bearDna = bearDna(dna);
-    bearBox(id);
-    renderBear(bearDna);
+async function breedRender(dna, id, gen, gender) {
+    let bearDna = await bearDna(dna);
+    await bearBox(id);
+    await renderBear(bearDna);
 
-    console.log(dna, id);
+    console.log("breedRender", dna, id);
 
     $('#bearDNA' + id).html(`
     <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>GEN:</b>`+ gen + `</h4></span>

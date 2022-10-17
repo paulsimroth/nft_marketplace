@@ -1,8 +1,8 @@
 //Interaction between smart contracts and Frontend
 let provider, signer, instance, marketInstance, user, address;
 let dnaString = "457896541299";
-const bearAddress = "0xa542570803fb024b193D59ca9bD46584f8f5576E";
-const marketAddress = "0x44899c20a67dc7d33643e0045dE47d2b2943C84F";
+const bearAddress = "0x2860d6C9F9F3e46635225Dc6626fdc8f9F9F7763";
+const marketAddress = "0xFdb4B2eb371389FD8703F9CB6E3b1d8b445a0cD6";
 
 //Initialize on loading
 $(document).ready(async function () {
@@ -130,9 +130,9 @@ async function getMyBears() {
 };
 
 async function appendInventory(id) {
-    let bear = await instance.getBear(id);
-    console.log("appendInventory", bear);
-    inventoryRender(bear.genes, id, bear.generation);
+    let bear = await signer.getBear(id);
+    console.log("appendInventory",bear[0], id, bear['generation']);
+    inventoryRender(bear[0], id, bear['generation']);
 };
 
 //Get Owner by Id
