@@ -77,7 +77,7 @@ async function createBear(){
 
 //Choose Bears for breeding
 async function chooseParents(gender){
-    let arrId = await instance.getBearByOwner();
+    const arrId = await instance.getBearByOwner();
     console.log(arrId);
     for (i = 0; i < arrId.length; i++){
         appendBreeder(arrId[i], gender);
@@ -85,8 +85,8 @@ async function chooseParents(gender){
 };
 
 async function appendBreeder(id, gender) {
-    let bear = await instance.getBear(id);
-    breedRender(bear[0], id, bear['generation'], gender); //Adds Bear to breeding page
+    const bear = await instance.getBear(id);
+    breedRender(bear.genes, id, bear.generation, gender); //Adds Bear to breeding page
 };
 
 //Breed new gen Bear
@@ -105,7 +105,7 @@ async function breedBear(){
 
 //Retrieve all Tokens on Sale in Market
 async function getInventory() {
-    let arrId = await marketInstance.getAllTokenOnSale();
+    const arrId = await marketInstance.getAllTokenOnSale();
     console.log(arrId);
     for (i = 0; i < arrId.length; i++){
         if(arrId[i] != 0){
@@ -130,9 +130,9 @@ async function getMyBears() {
 };
 
 async function appendInventory(id) {
-    let bear = await signer.getBear(id);
-    console.log("appendInventory",bear[0], id, bear['generation']);
-    inventoryRender(bear[0], id, bear['generation']);
+    const bear = await signer.getBear(id);
+    /* console.log("appendInventory",bear.genes, id, bear.generation); */
+    inventoryRender(bear.genes, id, bear.generation);
 };
 
 //Get Owner by Id

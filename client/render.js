@@ -2,26 +2,26 @@
 
 //Splitting the cat DNA to use it in render
 function bearDna(dnaStr) {
-    let dna = {
+    const bearDna = {
         //Colors
-        "headColor": dnaStr.substring(0, 2),
-        "mouthColor": dnaStr.substring(2, 4),
-        "eyesColor": dnaStr.substring(4, 6),
-        "earsColor": dnaStr.substring(6, 8),
+        "headColor": dnaStr.toString().substring(0, 2),
+        "mouthColor": dnaStr.toString().substring(2, 4),
+        "eyesColor": dnaStr.toString().substring(4, 6),
+        "earsColor": dnaStr.toString().substring(6, 8),
         //Attributes
-        "eyesShape": dnaStr.substring(8, 9),
-        "decorationPattern": dnaStr.substring(9, 10),
-        "decorationMidcolor": dnaStr.substring(10, 12),
-        "decorationSidescolor": dnaStr.substring(12, 14),
-        "animation": dnaStr.substring(14, 15),
-        "lastNum": dnaStr.substring(15, 16)
+        "eyesShape": dnaStr.toString().substring(8, 9),
+        "decorationPattern": dnaStr.toString().substring(9, 10),
+        "decorationMidcolor": dnaStr.toString().substring(10, 12),
+        "decorationSidescolor": dnaStr.toString().substring(12, 14),
+        "animation": dnaStr.toString().substring(14, 15),
+        "lastNum": dnaStr.toString().substring(15, 16)
     }
-    return dna;
+    return bearDna;
 };
 
 //Bear Box
 function bearBox(id) {
-    let bearDiv = `<div class="col-lg-4 pointer fit-content" id="bearView` + id + `">
+    let bearDiv = `<div class="col-lg-4 pointer fit-content ownersBearsDiv" id="bearView` + id + `">
                  <div class="featureBox ownersBear">
                  `+ bearBody(id) + `                           
                  </div>
@@ -29,9 +29,9 @@ function bearBox(id) {
                  `+ attributes(id) + `
                 </div>`;
 
-    let bearView = $('#bearView' + id);
+    let bearView = $('#ownersBearsDiv' + id);
     if (!bearView.length) {
-        $('#ownersBear').append(bearDiv)
+        $('#ownersBearsDiv').append(bearDiv)
     };
 };
 
@@ -89,10 +89,10 @@ function attributes(id) {
     return attributes;
 };
 
-async function inventoryRender(dna, id, gen){
-    let bearDna = await bearDna(dna);
-    await bearBox(id);
-    await renderBear(bearDna);
+function inventoryRender(dna, id, gen){
+    const bearDnaStr = bearDna(dna);
+    renderBear(bearDnaStr);
+    bearBox(id);
 
     console.log("inventoryRender", dna, id);
 
@@ -104,10 +104,10 @@ async function inventoryRender(dna, id, gen){
     <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>DNA:</b>`+ dna + `</h4></span>`)
 };
 
-async function breedRender(dna, id, gen, gender) {
-    let bearDna = await bearDna(dna);
-    await bearBox(id);
-    await renderBear(bearDna);
+function breedRender(dna, id, gen, gender) {
+    const bearDnaStr = bearDna(dna);
+    renderBear(bearDnaStr);
+    bearBox(id);
 
     console.log("breedRender", dna, id);
 
