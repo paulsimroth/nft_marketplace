@@ -131,7 +131,8 @@ async function getMyBears() {
 
 async function appendInventory(id) {
     const bear = await signer.getBear(id);
-    /* console.log("appendInventory",bear.genes, id, bear.generation); */
+    console.log("appendInventory",bear.genes, id, bear.generation);
+    
     inventoryRender(bear.genes, id, bear.generation);
 };
 

@@ -49,3 +49,11 @@
     align-items: flex-start;
     justify-content: flex-start;
 }
+
+.bearDna {
+    height: 50px;
+    width: 150px;
+    position: absolute;
+    left:20px;
+    bottom: 5px;
+}

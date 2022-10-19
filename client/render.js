@@ -98,12 +98,12 @@ function inventoryRender(dna, id, gen){
 
     console.log("inventoryRender", dna, id);
 
-    $('#bearDNA' + id).html(`
+    document.querySelector('.bearDna').innerHTML =`
     <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>ID:</b>`+ id + `</h4></span>
     <br>
     <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>GEN:</b>`+ gen + `</h4></span>
     <br>
-    <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>DNA:</b>`+ dna + `</h4></span>`)
+    <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>DNA:</b>`+ dna + `</h4></span>`;
 };
 
 function breedRender(dna, id, gen, gender) {
@@ -113,7 +113,7 @@ function breedRender(dna, id, gen, gender) {
 
     console.log("breedRender", dna, id);
 
-    $('#bearDNA' + id).html(`
+    $('#bearDna' + id).html(`
     <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>GEN:</b>`+ gen + `</h4></span>
     <br>
     <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>DNA:</b>`+ dna + `</h4></span>`)
