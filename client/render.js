@@ -84,9 +84,9 @@ function bearBody() {
 function attributes(id) {
     const attributes = 
         `<ul class="ml-5 attributes">                     
-            <li><span id="eyeName`+ id + `"></span> Eyes</li>                     
-            <li><span id="decorationName`+ id + `"></span> Decoration</li>                     
-            <li><span id="animationName`+ id + `"></span> Animation</li>                  
+            <li><span id="eyeName `+ id + `"></span> Eyes</li>                     
+            <li><span id="decorationName `+ id + `"></span> Decoration</li>                     
+            <li><span id="animationName `+ id + `"></span> Animation</li>                  
         </ul>`
 
     return attributes;
@@ -100,11 +100,11 @@ function inventoryRender(dna, id, gen){
     console.log("inventoryRender", dna, id);
 
     document.querySelector('.bearDna').innerHTML =`
-        <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>ID:</b>`+ id + `</h4></span>
+        <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>ID: </b>`+ id + `</h4></span>
         <br>
-        <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>GEN:</b>`+ gen + `</h4></span>
+        <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>GEN: </b>`+ gen + `</h4></span>
         <br>
-        <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>DNA:</b>`+ dna + `</h4></span>
+        <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>DNA: </b>`+ dna + `</h4></span>
     `;
 };
 
@@ -127,7 +127,7 @@ function breedRender(dna, id, gen, gender) {
 
 function testRender(dna, id, gen){
     const bearDnaStr = bearDna(dna);
-    const bear = document.querySelector(".ownersBearsDiv").innerHTML =`
+    document.querySelector(".ownersBearsDiv").innerHTML =`
     <div class="ownersBear">
         <div class="bear">
             <div class="hat">
@@ -168,11 +168,11 @@ function testRender(dna, id, gen){
         </div>
         <br>
         <div class="dnaDiv" id="bearDNA"></div>
-        <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>ID:</b>`+ id + `</h4></span>
+        <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>ID: </b>`+ id + `</h4></span>
         <br>
-        <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>GEN:</b>`+ gen + `</h4></span>
+        <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>GEN: </b>`+ gen + `</h4></span>
         <br>
-        <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>DNA:</b>`+ dna + `</h4></span>
+        <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>DNA: </b>`+ dna + `</h4></span>
     </div>
     `;
     renderBear(bearDnaStr);

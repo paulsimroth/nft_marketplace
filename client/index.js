@@ -117,20 +117,20 @@ async function getInventory() {
 //Get Bear of current user
 async function getMyBears() {
     try{
-    const bearId = await signer.getBearByOwner(address);
+    const bearId = await instance.getBearByOwner(address);
     console.log("getMyBears", bearId);
     for (i = 0; i < bearId.length; i++){
         if(bearId[i] != 0){
             appendInventory(bearId[i]);
         }
     }} catch (error){
-        alert("GetMyBears, ERROR");
+        alert("GetMyBears, ERROR:", error);
         console.log("getMyBears", error);
     }
 };
 
 async function appendInventory(id) {
-    const bear = await signer.getBear(id);
+    const bear = await instance.getBear(id);
     console.log("appendInventory",bear.genes, id, bear.generation);
     
     inventoryRender(bear.genes, id, bear.generation);
