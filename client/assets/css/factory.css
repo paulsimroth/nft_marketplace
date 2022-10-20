@@ -67,7 +67,7 @@
 }
 
 .alert {
-    position: absolute;
+    position: fixed;
     background-color: #33ff77;
     margin: 10px;
     top: 80%;

@@ -10,8 +10,11 @@ html {
 }
 
 body {
-    background: #607d8b;
- 
+    background: #607d8b; 
+}
+
+.bear {
+    z-index: 5;
 }
 
 .head {
@@ -36,7 +39,6 @@ body {
     height: 50px;
     margin: 25px;
     position: relative;
-    
 }
 
 .pupils {

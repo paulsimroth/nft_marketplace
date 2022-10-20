@@ -34,12 +34,16 @@
     </div>
     <br>
     <div class="catalog page-container">
-        <p>Look at your inventory of bears</p>
+        <div class="catalog-title">
+            <h3>Look at your inventory of bears</h3>
+            
+            <a class="tooltip-btn white-btn breedBtn" href="breeder.html">Breed a new generation</a>
+        </div>
         <div class="ownersBearsDiv" id="bearView">
 
         </div>
         <br>
-        <a class="tooltip-btn white-btn" href="breeder.html">Breed a new generation</a>
+        
     </div>
 
     <div class="animation-wrapper">
@@ -64,7 +68,7 @@
     $(document).ready(function () {
         setTimeout(() => {
             getMyBears()
-        }, 1000)
+        }, 100)
     });
     </script>
 

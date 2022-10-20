@@ -24,37 +24,37 @@ function bearDna(dnaStr) {
 //Bear Box
 function bearBox(id) {
     const bearDiv = `
-            <div class="col-lg-4 pointer  ownersBearsDiv" id="bearView` + id + `">
+            <div class="col-lg-4 pointer bearView" id="bearView` + id + `">
                 <div class="featureBox ownersBear">
-                `+ bearBody(id) + `                                                                                                      
+                `+ bearBody(id) + `
                 </div>
                 <div class="dnaDiv bearDna" id="bearDNA"></div>
                 `+ attributes(id) + `
             </div>`;
 
-    const bearView = $('.ownersBearsDiv' + id);
+    const bearView = $('#bearView' + id);
     if (!bearView.length) {
-        $('.ownersBearsDiv').append(bearDiv)
+        $('#bearView').append(bearDiv)
     };
 };
 
 //Bear Body
-function bearBody() {
-    const bear = `<div class="bear">
+function bearBody(id) {
+    const bear = `<div id="`+ id +`" class="bear">
                     <div class="hat">
-                        <div class="hat-top"></div>
-                        <div class="hat-brim"></div>
+                        <div id="`+ id +`" class="hat-top"></div>
+                        <div id="`+ id +`" class="hat-brim"></div>
                     </div>
                     <div class="ears">
-                        <div class="ear leftEar">
+                        <div id="`+ id +`" class="ear leftEar">
                             <div class="innerEar"></div>
                         </div>
-                        <div class="ear rightEar">
+                        <div id="`+ id +`" class="ear rightEar">
                             <div class="innerEar"></div>
                         </div>
                     </div>
-                    <div class="head">
-                        <div class="eyes">
+                    <div id="`+ id +`" class="head">
+                        <div id="`+ id +`" class="eyes">
                             <div class="eye">
                                 <span class="pupils"></span>
                             </div>
@@ -62,18 +62,18 @@ function bearBody() {
                                 <span class="pupils"></span>
                             </div>
                         </div>
-                        <div class="nose"></div>
-                        <div class="mouth"></div>
+                        <div id="`+ id +`" class="nose"></div>
+                        <div id="`+ id +`" class="mouth"></div>
                     </div>
                     <div class="body">
                         <div class="frontPaws">
-                            <div class="frontPaw leftFrontPaw"></div>
-                            <div class="frontPaw rightFrontPaw"></div>
+                            <div id="`+ id +`" class="frontPaw leftFrontPaw"></div>
+                            <div id="`+ id +`" class="frontPaw rightFrontPaw"></div>
                         </div>
-                        <div class="belly"></div>
-                        <div class="backPaws">
-                            <div class="backPaw leftBackPaw"></div>
-                            <div class="backPaw rightBackPaw"></div>
+                        <div id="`+ id +`" class="belly"></div>
+                        <div id="`+ id +`" class="backPaws">
+                            <div id="`+ id +`" class="backPaw leftBackPaw"></div>
+                            <div id="`+ id +`" class="backPaw rightBackPaw"></div>
                         </div>
                     </div>
                 </div> `
@@ -92,23 +92,37 @@ function attributes(id) {
     return attributes;
 };
 
+//Inventory of own bears is shown
 function inventoryRender(dna, id, gen){
     const bearDnaStr = bearDna(dna);
     renderBear(bearDnaStr);
-    bearBox(id);
+    
 
     console.log("inventoryRender", dna, id);
 
-    document.querySelector('.bearDna').innerHTML =`
+    const bearDiv = `
+    <div class="col-lg-4 pointer bearView" id="bearView` + id + `">
+        <div class="featureBox ownersBear">
+        `+ bearBody(id) + `
+        </div>
+        <div class="dnaDiv bearDna" id="bearDNA"></div>
+        
         <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>ID: </b>`+ id + `</h4></span>
         <br>
         <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>GEN: </b>`+ gen + `</h4></span>
         <br>
         <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>DNA: </b>`+ dna + `</h4></span>
-    `;
+        `+ attributes(id) + `
+    </div>`;
+
+    const bearView = $('#bearView' + id);
+    if (!bearView.length) {
+    $('#bearView').append(bearDiv)
+    };
 };
 
-function breedRender(dna, id, gen, gender) {
+//breeding page
+/* function breedRender(dna, id, gen, gender) {
     const bearDnaStr = bearDna(dna);
     renderBear(bearDnaStr);
     bearBox(id);
@@ -121,64 +135,4 @@ function breedRender(dna, id, gen, gender) {
     <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>DNA:</b>`+ dna + `</h4></span>`)
 
     $('#bearView' + id).attr('onclick', 'selectBreed("' + dna + '","' + id + '","' + gen + '","' + gender + '")')
-};
-
-//TEST FOR OTHER RENDERING FUNCTION SOLUTION
-
-function testRender(dna, id, gen){
-    const bearDnaStr = bearDna(dna);
-    document.querySelector(".ownersBearsDiv").innerHTML =`
-    <div class="ownersBear">
-        <div class="bear">
-            <div class="hat">
-                <div class="hat-top"></div>
-                <div class="hat-brim"></div>
-            </div>
-            <div class="ears">
-                <div class="ear leftEar">
-                    <div class="innerEar"></div>
-                </div>
-                <div class="ear rightEar">
-                    <div class="innerEar"></div>
-                </div>
-            </div>
-            <div class="head">
-                <div class="eyes">
-                    <div class="eye">
-                        <span class="pupils"></span>
-                    </div>
-                    <div class="eye">
-                        <span class="pupils"></span>
-                    </div>
-                </div>
-                <div class="nose"></div>
-                <div class="mouth"></div>
-            </div>
-            <div class="body">
-                <div class="frontPaws">
-                    <div class="frontPaw leftFrontPaw"></div>
-                    <div class="frontPaw rightFrontPaw"></div>
-                </div>
-                <div class="belly"></div>
-                <div class="backPaws">
-                    <div class="backPaw leftBackPaw"></div>
-                    <div class="backPaw rightBackPaw"></div>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="dnaDiv" id="bearDNA"></div>
-        <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>ID: </b>`+ id + `</h4></span>
-        <br>
-        <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>GEN: </b>`+ gen + `</h4></span>
-        <br>
-        <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>DNA: </b>`+ dna + `</h4></span>
-    </div>
-    `;
-    renderBear(bearDnaStr);
-    const bearView = $('.ownersBearsDiv' + id);
-    if (!bearView.length) {
-        $('.ownersBearsDiv').append(bearDiv)
-    };
-    console.log("testRender", dna, id);
-}
+}; */
