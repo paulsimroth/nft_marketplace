@@ -60,7 +60,7 @@
 }
 
 .catalog-title {
-    top: 10%;
+    top: 70px;
     position: fixed;
     display: flex;
     flex-direction: row;
