@@ -16,20 +16,21 @@ function bearDna(dnaStr) {
         "animation": dnaStr.toString().substring(14, 15),
         "lastNum": dnaStr.toString().substring(15, 16)
     };
-    console.log(bearDna);
+    console.log("bearDna", bearDna);
 
     return bearDna;
 };
 
 //Bear Box
 function bearBox(id) {
-    const bearDiv = `<div class="col-lg-4 pointer fit-content ownersBearsDiv" id="bearView` + id + `">
-                 <div class="featureBox ownersBear">
-                 `+ bearBody(id) + `                           
-                 </div>
-                 <div class="dnaDiv" id="bearDNA"></div>
-                
-                </div>`;
+    const bearDiv = `
+            <div class="col-lg-4 pointer  ownersBearsDiv" id="bearView` + id + `">
+                <div class="featureBox ownersBear">
+                `+ bearBody(id) + `                                                                                                      
+                </div>
+                <div class="dnaDiv bearDna" id="bearDNA"></div>
+                `+ attributes(id) + `
+            </div>`;
 
     const bearView = $('.ownersBearsDiv' + id);
     if (!bearView.length) {
@@ -99,11 +100,12 @@ function inventoryRender(dna, id, gen){
     console.log("inventoryRender", dna, id);
 
     document.querySelector('.bearDna').innerHTML =`
-    <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>ID:</b>`+ id + `</h4></span>
-    <br>
-    <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>GEN:</b>`+ gen + `</h4></span>
-    <br>
-    <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>DNA:</b>`+ dna + `</h4></span>`;
+        <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>ID:</b>`+ id + `</h4></span>
+        <br>
+        <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>GEN:</b>`+ gen + `</h4></span>
+        <br>
+        <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>DNA:</b>`+ dna + `</h4></span>
+    `;
 };
 
 function breedRender(dna, id, gen, gender) {
@@ -125,7 +127,7 @@ function breedRender(dna, id, gen, gender) {
 
 function testRender(dna, id, gen){
     const bearDnaStr = bearDna(dna);
-    document.querySelector(".ownersBearsDiv").innerHTML =`
+    const bear = document.querySelector(".ownersBearsDiv").innerHTML =`
     <div class="ownersBear">
         <div class="bear">
             <div class="hat">
