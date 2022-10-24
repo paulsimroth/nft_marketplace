@@ -15,39 +15,40 @@ function genColors(){
 
 //Color Variations
 function headColor(color,code) {
-    $('.ear, .head, .body').css('background', '#' + color)  //This changes the color of the bear
-    $('#headcode').html('code: '+ code) //This updates text of the badge next to the slider
-    $('#dnabody').html(code) //This updates the body color part of the DNA that is displayed below the bear
+    $('#rightEar, #leftEar, #head, #body').css('background', '#' + color);  //This changes the color of the bear
+    $('#headcode').html('code: '+ code); //This updates text of the badge next to the slider
+    $('#dnabody').html(code); //This updates the body color part of the DNA that is displayed below the bear
 };
 
 function mouthColor(color,code) {
-    $('.mouth, .nose, .belly').css('background', '#' + color) 
-    $('#mouthcode').html('code: '+ code) 
-    $('#dnamouth').html(code) 
+    $('#mouth, #nose, #belly').css('background', '#' + color); 
+    $('#mouthcode').html('code: '+ code); 
+    $('#dnamouth').html(code); 
 };
 
 function eyesColor(color,code) {
-    $('.pupils').css('background', '#' + color)  
-    $('#eyescode').html('code: '+ code) 
-    $('#dnaeyes').html(code) 
+    $('#rightPupil, #leftPupil').css('background', '#' + color);  
+    $('#eyescode').html('code: '+ code); 
+    $('#dnaeyes').html(code); 
 };
 
 function earsColor(color,code) {
-    $('.innerEar, .frontPaw, .backPaw').css('background', '#' + color)  
-    $('#earscode').html('code: '+ code) 
-    $('#dnaears').html(code) 
+    $('#rightInnerEar, #rightFrontPaw, #rightBackPaw').css('background', '#' + color); 
+    $('#leftInnerEar, #leftFrontPaw, #leftBackPaw').css('background', '#' + color);  
+    $('#earscode').html('code: '+ code); 
+    $('#dnaears').html(code); 
 };
 
 function decorationColor1(color,code) {
-    $('.hat-top').css('background', '#' + color)  
-    $('#decorationColor1').html('code: '+ code) 
-    $('#dnadecorationMid').html(code) 
+    $('#hat-top').css('background', '#' + color);  
+    $('#decorationColor1').html('code: '+ code); 
+    $('#dnadecorationMid').html(code); 
 };
 
 function decorationColor2(color,code) {
-    $('.hat-brim').css('background', '#' + color)  
-    $('#decorationColor2').html('code: '+ code) 
-    $('#dnadecorationSides').html(code) 
+    $('#hat-brim').css('background', '#' + color);  
+    $('#decorationColor2').html('code: '+ code); 
+    $('#dnadecorationSides').html(code); 
 };
 
 //Eye Variation
@@ -97,35 +98,35 @@ function eyeVariation(num) {
 //Eye types
 function normalEyes() {
     //all variantions are reset to default
-    $('.eye').find('span').css('border', 'none')
-    $('.eye').find('span').css('width', '35px')
-    $('.eye').find('span').css('position', 'absolute')
-    $('.eye').find('span').css('border-radius', '50%')
-    $('.eye').find('span').css('top', '10px')
+    $('#eyes').find('span').css('border', 'none')
+    $('#eyes').find('span').css('width', '35px')
+    $('#eyes').find('span').css('position', 'absolute')
+    $('#eyes').find('span').css('border-radius', '50%')
+    $('#eyes').find('span').css('top', '10px')
 };
 
 function eyesType2() {
-    $('.eye').find('span').css('border-top', '15px solid ')
+    $('#eyes').find('span').css('border-top', '15px solid ')
 };
 
 function eyesType3() {
-    $('.eye').find('span').css('border-bottom', '15px solid')
+    $('#eyes').find('span').css('border-bottom', '15px solid')
 };
 
 function eyesType4() {
-    $('.eye').find('span').css('width', '25px')
+    $('#eyes').find('span').css('width', '25px')
 };
 
 function eyesType5() {
-    $('.eye').find('span').css('position', 'unset')
+    $('#eyes').find('span').css('position', 'unset')
 };
 
 function eyesType6() {
-    $('.eye').find('span').css('border-radius', '0 0 0 0')
+    $('#eyes').find('span').css('border-radius', '0 0 0 0')
 };
 
 function eyesType7() {
-    $('.eye').find('span').css('top', '1px')
+    $('#eyes').find('span').css('top', '1px')
 };
 
 //Hat Variations
@@ -172,38 +173,38 @@ function decorationVariation(num) {
 //Hat Types
 async function normaldecoration() {
     //Remove all style from other decorations
-    $('.hat-top').css({"height": "50px", "width": "90px", "left": "93px", "border-radius": "85% 85% 25% 25%", "top": "0px", "visibility": "visible"})
-    $('.hat-brim').css({"height": "7px", "width": "120px", "top": "45px", "left": "78px", "border-radius": "0 0 0 0", "visibility": "visible"})
+    $('#hat-top').css({"height": "50px", "width": "90px", "left": "93px", "border-radius": "85% 85% 25% 25%", "top": "0px", "visibility": "visible"})
+    $('#hat-brim').css({"height": "7px", "width": "120px", "top": "45px", "left": "78px", "border-radius": "0 0 0 0", "visibility": "visible"})
 };
 
 function decorationPattern2() {
-    $('.hat-top').css({"height": "70px", "width": "90px", "left": "93px", "border-radius": "0 0 0 0", "top": "-18px", "visibility": "visible"})
-    $('.hat-brim').css({"height": "7px", "width": "120px", "top": "45px", "left": "78px", "border-radius": "0 0 0 0", "visibility": "visible"})
+    $('#hat-top').css({"height": "70px", "width": "90px", "left": "93px", "border-radius": "0 0 0 0", "top": "-18px", "visibility": "visible"})
+    $('#hat-brim').css({"height": "7px", "width": "120px", "top": "45px", "left": "78px", "border-radius": "0 0 0 0", "visibility": "visible"})
 };
 
 function decorationPattern3() {
-    $('.hat-top').css({"height": "50px", "width": "90px", "left": "93px", "border-radius": "85% 85% 25% 25%", "visibility": "visible" })
-    $('.hat-brim').css({"height": "7px", "width": "90px", "top": "45px", "left": "93px", "border-radius": "0 0 0 0", "visibility": "visible"})
+    $('#hat-top').css({"height": "50px", "width": "90px", "left": "93px", "border-radius": "85% 85% 25% 25%", "visibility": "visible" })
+    $('#hat-brim').css({"height": "7px", "width": "90px", "top": "45px", "left": "93px", "border-radius": "0 0 0 0", "visibility": "visible"})
 };
 
 function decorationPattern4() {
-    $('.hat-top').css({"height": "50px", "width": "120px", "left": "78px", "border-radius": "85% 85% 25% 25%", "visibility": "visible" })
-    $('.hat-brim').css({"height": "7px", "width": "200px", "top": "45px", "left": "39px", "border-radius": "0 0 0 0", "visibility": "visible"})
+    $('#hat-top').css({"height": "50px", "width": "120px", "left": "78px", "border-radius": "85% 85% 25% 25%", "visibility": "visible" })
+    $('#hat-brim').css({"height": "7px", "width": "200px", "top": "45px", "left": "39px", "border-radius": "0 0 0 0", "visibility": "visible"})
 };
 
 function decorationPattern5() {
-    $('.hat-top').css({"height": "38px", "width": "47px", "left": "113px","top": "6px", "border-radius": "85% 85% 25% 25%", "visibility": "visible" })
-    $('.hat-brim').css({"height": "7px", "width": "85px", "top": "38px", "left": "95px", "border-radius": "0 0 0 0", "visibility": "visible"})
+    $('#hat-top').css({"height": "38px", "width": "47px", "left": "113px","top": "6px", "border-radius": "85% 85% 25% 25%", "visibility": "visible" })
+    $('#hat-brim').css({"height": "7px", "width": "85px", "top": "38px", "left": "95px", "border-radius": "0 0 0 0", "visibility": "visible"})
 };
 
 function decorationPattern6() {
-    $('.hat-top').css({"height": "50px", "width": "90px", "left": "93px", "border-radius": "85% 85% 25% 25%", "visibility": "visible" })
-    $('.hat-brim').css({"height": "7px", "width": "120px", "top": "45px", "left": "63px", "border-radius": "0 0 0 0", "visibility": "visible"})
+    $('#hat-top').css({"height": "50px", "width": "90px", "left": "93px", "border-radius": "85% 85% 25% 25%", "visibility": "visible" })
+    $('#hat-brim').css({"height": "7px", "width": "120px", "top": "45px", "left": "63px", "border-radius": "0 0 0 0", "visibility": "visible"})
 };
 
 function decorationPattern7() {
-    $('.hat-top').css({"height": "50px", "width": "90px", "left": "93px", "border-radius": "85% 85% 25% 25%", "visibility": "hidden" })
-    $('.hat-brim').css({"height": "7px", "width": "120px", "top": "45px", "left": "78px", "border-radius": "0 0 0 0", "visibility": "hidden" })
+    $('#hat-top').css({"height": "50px", "width": "90px", "left": "93px", "border-radius": "85% 85% 25% 25%", "visibility": "hidden" })
+    $('#hat-brim').css({"height": "7px", "width": "120px", "top": "45px", "left": "78px", "border-radius": "0 0 0 0", "visibility": "hidden" })
 };
 
 //Animations
@@ -245,47 +246,47 @@ function animationVariation(num){
 
 //reset animation
 function resetAnimation() {
-    $('.head').removeClass("movingHead");
-    $('.leftFrontPaw').removeClass("wavingPaw");
-    $('.ear').removeClass("movingEars");
-    $('.belly').removeClass("movingBelly");
-    $('.hat').removeClass("movingHat");
-    $('.nose').removeClass("movingNose");
-    $('.mouth').removeClass("movingMouth");
+    $('#head').removeClass("movingHead");
+    $('#leftFrontPaw').removeClass("wavingPaw");
+    $('#ear').removeClass("movingEars");
+    $('#belly').removeClass("movingBelly");
+    $('#hat').removeClass("movingHat");
+    $('#nose').removeClass("movingNose");
+    $('#mouth').removeClass("movingMouth");
 };
 
 //animations
 function animationType1(){
     resetAnimation();
-    $('.head').addClass("movingHead");
+    $('#head').addClass("movingHead");
 };
 
 function animationType2(){
     resetAnimation();
-    $('.leftFrontPaw').addClass("wavingPaw");
+    $('#leftFrontPaw').addClass("wavingPaw");
 };
 
 function animationType3(){
     resetAnimation();
-    $('.ear').addClass("movingEars");
+    $('#ear').addClass("movingEars");
 };
 
 function animationType4(){
     resetAnimation();
-    $('.belly').addClass("movingBelly");
+    $('#belly').addClass("movingBelly");
 };
 
 function animationType5(){
     resetAnimation();
-    $('.hat').addClass("movingHat");
+    $('#hat').addClass("movingHat");
 };
 
 function animationType6(){
     resetAnimation();
-    $('.nose').addClass("movingNose");
+    $('#nose').addClass("movingNose");
 };
 
 function animationType7(){
     resetAnimation();
-    $('.mouth').addClass("movingMouth");
+    $('#mouth').addClass("movingMouth");
 };

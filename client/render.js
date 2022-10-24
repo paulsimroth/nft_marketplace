@@ -40,43 +40,45 @@ function bearBox(id) {
 
 //Bear Body
 function bearBody(id) {
-    const bear = `<div id="`+ id +`" class="bear">
-                    <div class="hat">
-                        <div id="`+ id +`" class="hat-top"></div>
-                        <div id="`+ id +`" class="hat-brim"></div>
-                    </div>
-                    <div class="ears">
-                        <div id="`+ id +`" class="ear leftEar">
-                            <div class="innerEar"></div>
-                        </div>
-                        <div id="`+ id +`" class="ear rightEar">
-                            <div class="innerEar"></div>
-                        </div>
-                    </div>
-                    <div id="`+ id +`" class="head">
-                        <div id="`+ id +`" class="eyes">
-                            <div class="eye">
-                                <span class="pupils"></span>
-                            </div>
-                            <div class="eye">
-                                <span class="pupils"></span>
-                            </div>
-                        </div>
-                        <div id="`+ id +`" class="nose"></div>
-                        <div id="`+ id +`" class="mouth"></div>
-                    </div>
-                    <div class="body">
-                        <div class="frontPaws">
-                            <div id="`+ id +`" class="frontPaw leftFrontPaw"></div>
-                            <div id="`+ id +`" class="frontPaw rightFrontPaw"></div>
-                        </div>
-                        <div id="`+ id +`" class="belly"></div>
-                        <div id="`+ id +`" class="backPaws">
-                            <div id="`+ id +`" class="backPaw leftBackPaw"></div>
-                            <div id="`+ id +`" class="backPaw rightBackPaw"></div>
-                        </div>
-                    </div>
-                </div> `
+    const bear = `                
+    <div id="bear`+ id +`" class="bear">
+        <div id="hat`+ id +`" class="hat">
+            <div id="hat-top`+ id +`" class="hat-top"></div>
+            <div id="hat-brim`+ id +`" class="hat-brim"></div>
+        </div>
+        <div id="ears`+ id +`" class="ears">
+            <div id="leftEar`+ id +`" class="ear leftEar">
+                <div id="leftInnerEar`+ id +`" class="innerEar"></div>
+            </div>
+            <div id="rightEar`+ id +`" class="ear rightEar">
+                <div id="rightInnerEar`+ id +`" class="innerEar"></div>
+            </div>
+        </div>
+        <div id="head`+ id +`" class="head">
+            <div id="eyes`+ id +`" class="eyes">
+                <div id="leftEye`+ id +`" class="eye">
+                    <span id="leftPupil`+ id +`" class="pupils"></span>
+                </div>
+                <div id="rightEye`+ id +`" class="eye">
+                    <span id="rightPupil`+ id +`" class="pupils"></span>
+                </div>
+            </div>
+            <div id="nose`+ id +`" class="nose"></div>
+            <div id="mouth`+ id +`" class="mouth"></div>
+        </div>
+        <div id="body`+ id +`" class="body">
+            <div id="frontPaws`+ id +`" class="frontPaws">
+                <div id="leftFrontPaw`+ id +`" class="frontPaw leftFrontPaw"></div>
+                <div id="rightFrontPaw`+ id +`" class="frontPaw rightFrontPaw"></div>
+            </div>
+            <div id="belly`+ id +`" class="belly"></div>
+            <div id="backPaws`+ id +`" class="backPaws">
+                <div id="leftBackPaw`+ id +`" class="backPaw leftBackPaw"></div>
+                <div id="rightBackPaw`+ id +`" class="backPaw rightBackPaw"></div>
+            </div>
+        </div>
+    </div>`
+
     return bear;
 };
 
@@ -102,7 +104,7 @@ function inventoryRender(dna, id, gen){
 
     const bearDiv = `
     <div class="col-lg-4 pointer bearView" id="bearView` + id + `">
-        <div class="featureBox ownersBear">
+        <div class="featureBox ownersBear id="ownersBear` + id + `">
         `+ bearBody(id) + `
         </div>
         <div class="dnaDiv bearDna" id="bearDNA"></div>
