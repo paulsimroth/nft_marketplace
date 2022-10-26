@@ -5,33 +5,32 @@
 
 //Color Variations
 function headColor(color, id) {
-    $('#rightEar'+ id +', #leftEar'+ id +', #head'+ id +', #body'+ id +'').css('background', '#' + color);  //This changes the color of the bear
+    $('#rightEar'+ id +', #leftEar'+ id +', #head'+ id +', #body'+ id).css('background', '#' + color);
 };
 
 function mouthColor(color, id) {
-    $('#mouth'+ id +', #nose'+ id +', #belly'+ id +'').css('background', '#' + color); 
+    $('#mouth'+ id +', #nose'+ id +', #belly'+ id).css('background', '#' + color); 
 };
 
 function eyesColor(color, id) {
-    $('#rightPupil'+ id +', #leftPupil'+ id +'').css('background', '#' + color);  
+    $('#rightPupil'+ id +', #leftPupil'+ id).css('background', '#' + color);  
 };
 
 function earsColor(color, id) {
-    $('#rightInnerEar'+ id +', #rightFrontPaw'+ id +', #rightBackPaw'+ id +'').css('background', '#' + color); 
-    $('#leftInnerEar'+ id +', #leftFrontPaw'+ id +', #leftBackPaw'+ id +'').css('background', '#' + color);  
+    $('#rightInnerEar'+ id +', #rightFrontPaw'+ id +', #rightBackPaw'+ id).css('background', '#' + color); 
+    $('#leftInnerEar'+ id +', #leftFrontPaw'+ id +', #leftBackPaw'+ id).css('background', '#' + color);  
 };
 
 function decorationColor1(color, id) {
-    $('#hat-top'+ id +'').css('background', '#' + color);  
+    $('#hat-top'+ id).css('background', '#' + color);  
 };
 
 function decorationColor2(color, id) {
-    $('#hat-brim'+ id +'').css('background', '#' + color);   
+    $('#hat-brim'+ id).css('background', '#' + color);   
 };
 
 //Eye Variation
 function eyeVariation(num, id) {
-    $('#dnashape').html(num)
     switch (num) {
         case 1:
             normalEyes(id)
@@ -109,7 +108,6 @@ function eyesType7(id) {
 
 //Hat Variations
 function decorationVariation(num, id) {
-    $('#dnadecoration').html(num)
     switch (num) {
         case 1:
             $('#decorationName'+ id).html('Basic')
@@ -140,7 +138,7 @@ function decorationVariation(num, id) {
             $('#decorationName'+ id).html('Cap')
             decorationPattern6(id)
             break;
-        case 7:'+ id +'
+        case 7:
             normaldecoration(id)
             $('#decorationName'+ id).html('No Hat')
             decorationPattern7(id)
@@ -186,8 +184,7 @@ function decorationPattern7(id) {
 };
 
 //Animations
-function animationVariation(num, id){'+ id +'
-    $('#dnaanimation').html(num)
+function animationVariation(num, id){
     switch (num) {
         case 1:
             animationType1(id);

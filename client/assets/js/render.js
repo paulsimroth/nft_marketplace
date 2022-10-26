@@ -62,7 +62,7 @@ function bearBox(id) {
                 <div class="featureBox ownersBear">
                 `+ bearBody(id) + `
                 </div>
-                <div class="dnaDiv bearDna" id="bearDNA"></div>
+                <div class="dnaDiv bearDna" id="bearDNA` + id + `"></div>
                 `+ attributes(id) + `
             </div>`;
 
@@ -120,9 +120,9 @@ function bearBody(id) {
 function attributes(id) {
     const attributes = 
         `<ul class="ml-5 attributes">                     
-            <li><span id="eyeName `+ id + `"></span> Eyes</li>                     
-            <li><span id="decorationName `+ id + `"></span> Decoration</li>                     
-            <li><span id="animationName `+ id + `"></span> Animation</li>                  
+            <li><span id="eyeName`+ id + `"></span> Eyes</li>                     
+            <li><span id="decorationName`+ id + `"></span> Decoration</li>                     
+            <li><span id="animationName`+ id + `"></span> Animation</li>                  
         </ul>`
 
     return attributes;
@@ -140,7 +140,7 @@ function inventoryRender(dna, id, gen){
         <div class="featureBox ownersBear id="ownersBear` + id + `">
         `+ bearBody(id) + `
         </div>
-        <div class="dnaDiv bearDna" id="bearDNA"></div>
+        <div class="dnaDiv bearDna" id="bearDNA` + id + `"></div>
         
         <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>ID: </b>`+ id + `</h4></span>
         <br>
