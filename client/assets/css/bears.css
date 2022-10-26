@@ -47,7 +47,7 @@ body {
     height: 200px;
     border-radius: 45%;
     margin-left: 40px;
-    z-index: 1;
+    z-index: 3;
 }
 
 #eyes {
@@ -242,6 +242,14 @@ body {
     position: absolute;
 }
 
+.head {
+    background-color: #804000;
+    width: 200px;
+    height: 200px;
+    border-radius: 45%;
+    margin-left: 40px;
+    z-index: 3;
+}
 
 .eyes {
     position: relative;

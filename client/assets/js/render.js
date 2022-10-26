@@ -1,4 +1,5 @@
 //File for rendering Bears fetched from Smart Contracts
+var colors = Object.values(allColors())
 
 //Splitting the cat DNA to use it in render
 function bearDna(dnaStr) {
@@ -16,10 +17,44 @@ function bearDna(dnaStr) {
         "animation": dnaStr.toString().substring(14, 15),
         "lastNum": dnaStr.toString().substring(15, 16)
     };
+
+
     console.log("bearDna", bearDna);
 
     return bearDna;
 };
+
+function renderBearWithId(dna, id){
+    const toNumber = (value) => parseInt(value.toString()); 
+
+    const _headColor = toNumber(dna.headColor);
+    const _mouthColor = toNumber(dna.mouthColor);
+    const _eyesColor = toNumber(dna.eyesColor);
+    const _earsColor = toNumber(dna.earsColor);
+    const _eyesShape = toNumber(dna.eyesShape);
+    const _decorationPattern = toNumber(dna.decorationPattern);
+    const _decorationMidcolor = toNumber(dna.decorationMidcolor);
+    const _decorationSidescolor = toNumber(dna.decorationSidescolor);
+    const _animation = toNumber(dna.animation);
+
+    headColor(colors[_headColor],_headColor, id);
+  
+    mouthColor(colors[_mouthColor],_mouthColor, id);
+  
+    eyesColor(colors[_eyesColor],_eyesColor, id);
+  
+    earsColor(colors[_earsColor],_earsColor, id);
+  
+    eyeVariation(_eyesShape, id);
+  
+    decorationVariation(_decorationPattern, id);
+  
+    decorationColor1(colors[_decorationMidcolor], _decorationMidcolor, id);
+  
+    decorationColor2(colors[_decorationSidescolor], _decorationSidescolor, id);
+    
+    animationVariation(_animation, id);
+  };
 
 //Bear Box
 function bearBox(id) {
@@ -97,7 +132,7 @@ function attributes(id) {
 //Inventory of own bears is shown
 function inventoryRender(dna, id, gen){
     const bearDnaStr = bearDna(dna);
-    renderBear(bearDnaStr);
+    renderBearWithId(bearDnaStr, id);
     
 
     console.log("inventoryRender", dna, id);
