@@ -18,7 +18,6 @@ function bearDna(dnaStr) {
         "lastNum": dnaStr.toString().substring(15, 16)
     };
 
-
     console.log("bearDna", bearDna);
 
     return bearDna;
@@ -37,21 +36,21 @@ function renderBearWithId(dna, id){
     const _decorationSidescolor = toNumber(dna.decorationSidescolor);
     const _animation = toNumber(dna.animation);
 
-    headColor(colors[_headColor],_headColor, id);
+    headColor(colors[_headColor], id);
   
-    mouthColor(colors[_mouthColor],_mouthColor, id);
+    mouthColor(colors[_mouthColor], id);
   
-    eyesColor(colors[_eyesColor],_eyesColor, id);
+    eyesColor(colors[_eyesColor], id);
   
-    earsColor(colors[_earsColor],_earsColor, id);
+    earsColor(colors[_earsColor], id);
   
     eyeVariation(_eyesShape, id);
   
     decorationVariation(_decorationPattern, id);
   
-    decorationColor1(colors[_decorationMidcolor], _decorationMidcolor, id);
+    decorationColor1(colors[_decorationMidcolor], id);
   
-    decorationColor2(colors[_decorationSidescolor], _decorationSidescolor, id);
+    decorationColor2(colors[_decorationSidescolor], id);
     
     animationVariation(_animation, id);
   };
@@ -134,7 +133,6 @@ function inventoryRender(dna, id, gen){
     const bearDnaStr = bearDna(dna);
     renderBearWithId(bearDnaStr, id);
     
-
     console.log("inventoryRender", dna, id);
 
     const bearDiv = `
@@ -153,8 +151,9 @@ function inventoryRender(dna, id, gen){
     </div>`;
 
     const bearView = $('#bearView' + id);
+
     if (!bearView.length) {
-    $('#bearView').append(bearDiv)
+        $('#bearView').append(bearDiv)
     };
 };
 

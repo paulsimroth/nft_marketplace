@@ -2,42 +2,31 @@
 *FUNCTIONS FROM bearFactory.js WITH ID FOR CATALOG
 */
 
+
 //Color Variations
-function headColor(color,code ,id) {
+function headColor(color, id) {
     $('#rightEar'+ id +', #leftEar'+ id +', #head'+ id +', #body'+ id +'').css('background', '#' + color);  //This changes the color of the bear
-    $('#headcode').html('code: '+ code); //This updates text of the badge next to the slider
-    $('#dnabody').html(code); //This updates the body color part of the DNA that is displayed below the bear
 };
 
-function mouthColor(color,code, id) {
+function mouthColor(color, id) {
     $('#mouth'+ id +', #nose'+ id +', #belly'+ id +'').css('background', '#' + color); 
-    $('#mouthcode').html('code: '+ code); 
-    $('#dnamouth').html(code); 
 };
 
-function eyesColor(color,code, id) {
+function eyesColor(color, id) {
     $('#rightPupil'+ id +', #leftPupil'+ id +'').css('background', '#' + color);  
-    $('#eyescode').html('code: '+ code); 
-    $('#dnaeyes').html(code); 
 };
 
-function earsColor(color,code, id) {
+function earsColor(color, id) {
     $('#rightInnerEar'+ id +', #rightFrontPaw'+ id +', #rightBackPaw'+ id +'').css('background', '#' + color); 
     $('#leftInnerEar'+ id +', #leftFrontPaw'+ id +', #leftBackPaw'+ id +'').css('background', '#' + color);  
-    $('#earscode').html('code: '+ code); 
-    $('#dnaears').html(code); 
 };
 
-function decorationColor1(color,code, id) {
+function decorationColor1(color, id) {
     $('#hat-top'+ id +'').css('background', '#' + color);  
-    $('#decorationColor1').html('code: '+ code); 
-    $('#dnadecorationMid').html(code); 
 };
 
-function decorationColor2(color,code, id) {
-    $('#hat-brim'+ id +'').css('background', '#' + color);  
-    $('#decorationColor2').html('code: '+ code); 
-    $('#dnadecorationSides').html(code); 
+function decorationColor2(color, id) {
+    $('#hat-brim'+ id +'').css('background', '#' + color);   
 };
 
 //Eye Variation
@@ -93,7 +82,7 @@ function normalEyes(id) {
     $('#eyes'+ id).find('span').css('border-radius', '50%')
     $('#eyes'+ id).find('span').css('top', '10px')
 };
-id
+
 function eyesType2(id) {
     $('#eyes'+ id).find('span').css('border-top', '15px solid ')
 };
