@@ -132,8 +132,8 @@ function attributes(id) {
 
 //Inventory of own bears is shown
 function inventoryRender(dna, id, gen){
-    const dnaNum = dna.toNumber();
-    const idNum = id.toNumber();
+    let dnaNum = dna.toNumber();
+    let idNum = id.toNumber();
     const bearDnaStr = bearDna(dnaNum);
     renderBearWithId(bearDnaStr, idNum);
     
@@ -154,7 +154,7 @@ function inventoryRender(dna, id, gen){
         `+ attributes(idNum) + `
     </div>`;
 
-    $('#bearView' + id).attr('onclick', 'window.location.href = "singleBear.html?bearId=' + idNum + '"')
+    $('#ownersBear' + idNum).attr('onclick',  'go_to("singleBear.html?bearId=' + idNum + '")');
     const bearView = $('#bearView' + idNum);
 
     if (!bearView.length) {
@@ -162,9 +162,33 @@ function inventoryRender(dna, id, gen){
     };
 };
 
-//Single Bear 
-function getSingleBear() {
+function go_to(url) {
+    window.location.href = url;
+};
 
+//Single Bear 
+function getSingleBear(dna, id, gen) {
+    let dnaNum = dna.toNumber();
+    let idNum = id.toNumber();
+    const bearDnaStr = bearDna(dnaNum);
+    renderBearWithId(bearDnaStr, idNum);
+    
+    console.log("getSingleBear", dnaNum, idNum);
+
+    const bearDiv = `
+    <div class="col-lg-4 pointer bearView" id="bearView` + idNum + `">
+        <div class="featureBox ownersBear id="ownersBear` + idNum + `">
+        `+ bearBody(idNum) + `
+        </div>
+        <div class="dnaDiv bearDna" id="bearDNA` + idNum + `"></div>
+        
+        <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>ID: </b>`+ idNum + `</h4></span>
+        <br>
+        <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>GEN: </b>`+ gen + `</h4></span>
+        <br>
+        <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>DNA: </b>`+ dna + `</h4></span>
+        `+ attributes(idNum) + `
+    </div>`;
 };
 
 //breeding page

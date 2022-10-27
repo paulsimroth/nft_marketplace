@@ -184,7 +184,7 @@ function decorationPattern7(id) {
 
 //Animations
 function animationVariation(num, id){
-    console.log("animationVar", "Num:", num, "ID:", id);
+    
     switch (num) {
         case 1:
             animationType1(id);
