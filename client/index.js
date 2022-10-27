@@ -62,6 +62,10 @@ async function initMarket() {
     }
 };
 
+/*
+*BREEDING FUNCTIONS
+*/
+
 //Create Gen 0 Bear
 async function createBear(){
     let dnaString = getDna();
@@ -103,22 +107,17 @@ async function breedBear(){
         }
 };
 
-//Retrieve all Tokens on Sale in Market
-async function getInventory() {
-    const arrId = await marketInstance.getAllTokenOnSale();
-    console.log(arrId);
-    for (i = 0; i < arrId.length; i++){
-        if(arrId[i] != 0){
-            appendInventory(arrId[i]);
-        }
-    }
-};
+/*
+* RENDERING FUNCTIONS TO GET OWN BEARS
+*/
 
 //Get Bear of current user
 async function getMyBears() {
     try{
     const bearId = await instance.getBearByOwner(address);
-    console.log("getMyBears", bearId);
+
+    /* console.log("getMyBears", bearId); */
+
     for (i = 0; i < bearId.length; i++){
         if(bearId[i] != 0){
             appendInventory(bearId[i]);
@@ -131,13 +130,73 @@ async function getMyBears() {
 
 async function appendInventory(id) {
     const bear = await instance.getBear(id);
-    console.log("appendInventory",bear.genes, id, bear.generation);
+
+    /* console.log("appendInventory",bear.genes, id, bear.generation); */
     
     inventoryRender(bear.genes, id, bear.generation);
 };
 
+/*
+* MARKET FUNCTIONS
+*/
+
+//Retrieve all Tokens on Sale in Market
+async function getMarketInventory() {
+    const arrId = await marketInstance.getAllTokenOnSale();
+    console.log("getInventory,  arrId:", arrId);
+    for (i = 0; i < arrId.length; i++){
+        if(arrId[i] != 0){
+            appendMarket(arrId[i]);
+        }
+    }
+};
+
+async function appendMarket(id) {
+    const bear = await marketInstance.getBear(id);
+    console.log("appendMarket",bear.genes, id, bear.generation); 
+    marketRender(bear.genes, id, bear.generation);
+};
+
 //Get Owner by Id
+async function getOwnerById() {
+
+};
 
 //Select Token for Selling
+async function sellBear(id) {
+    const price = $('#tokenPrice').val();
+    const amount = ethers.utils.formatUnits(price, "ether");
+
+    try{
+        const tx = await marketSigner.setOffer(amount ,id);
+        const receipt = await tx.wait();
+        console.log("sellBear, Receipt:", receipt);
+    } catch (error){
+        alert("sellBear, ERROR");
+        console.log("sellBear, ERROR:", error);
+    }
+};
+
+//Remove Offer from Market
+async function removeOffer(id) {
+    try{
+        const tx = await marketSigner.removeOffer(id);
+        const receipt = await tx.wait();
+        console.log("removeOffer, Receipt:", receipt);
+    } catch (error){
+        alert("removeOffer, ERROR");
+        console.log("removeOffer, ERROR:", error);
+    }
+};
 
 //Buy Token
+async function buyToken(id) {
+    try{
+        const tx = await marketSigner.buyBear(id);
+        const receipt = await tx.wait();
+        console.log("buyToken, Receipt:", receipt);
+    } catch (error){
+        alert("buyToken, ERROR");
+        console.log("buyToken, ERROR:", error);
+    }
+};

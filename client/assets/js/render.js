@@ -36,6 +36,8 @@ function renderBearWithId(dna, id){
     const _decorationSidescolor = toNumber(dna.decorationSidescolor);
     const _animation = toNumber(dna.animation);
 
+    console.log("renderBearWithId", "DNA:", dna, "ID:", id);
+
     headColor(colors[_headColor], id);
   
     mouthColor(colors[_mouthColor], id);
@@ -130,27 +132,29 @@ function attributes(id) {
 
 //Inventory of own bears is shown
 function inventoryRender(dna, id, gen){
-    const bearDnaStr = bearDna(dna);
-    renderBearWithId(bearDnaStr, id);
+    const dnaNum = dna.toNumber();
+    const idNum = id.toNumber();
+    const bearDnaStr = bearDna(dnaNum);
+    renderBearWithId(bearDnaStr, idNum);
     
-    console.log("inventoryRender", dna, id);
+    console.log("inventoryRender", dnaNum, idNum);
 
     const bearDiv = `
-    <div class="col-lg-4 pointer bearView" id="bearView` + id + `">
-        <div class="featureBox ownersBear id="ownersBear` + id + `">
-        `+ bearBody(id) + `
+    <div class="col-lg-4 pointer bearView" id="bearView` + idNum + `">
+        <div class="featureBox ownersBear id="ownersBear` + idNum + `">
+        `+ bearBody(idNum) + `
         </div>
-        <div class="dnaDiv bearDna" id="bearDNA` + id + `"></div>
+        <div class="dnaDiv bearDna" id="bearDNA` + idNum + `"></div>
         
         <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>ID: </b>`+ id + `</h4></span>
         <br>
         <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>GEN: </b>`+ gen + `</h4></span>
         <br>
         <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>DNA: </b>`+ dna + `</h4></span>
-        `+ attributes(id) + `
+        `+ attributes(idNum) + `
     </div>`;
 
-    const bearView = $('#bearView' + id);
+    const bearView = $('#bearView' + idNum);
 
     if (!bearView.length) {
         $('#bearView').append(bearDiv)
