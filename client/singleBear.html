@@ -34,14 +34,48 @@
     <br>
     <div class="catalog page-container">
         <div class="catalog-title">
-            <h3>Look at your inventory of bears</h3>
+            <h3>Your Bear</h3>
             
-            <a class="tooltip-btn white-btn breedBtn" href="breeder.html">Breed a new generation</a>
         </div>
-        <div class="ownersBearsDiv" id="bearView">
+        <div class="ownersBearsDiv" id="singleBear">
 
         </div>
         <br>
+
+        <div class="container middleBox mt-5">
+            <div id="bearDNA" align="center"></div>
+            <br>
+            <div class="hidden" align="center" id="buyBox">
+                <div class="btn-group">
+                    <button class="btn btn-light btn-lg light-b-shadow" id="buyBtn"><b>Buy me</b></button>
+                    <button class="btn btn-light btn-lg ml-2 light-b-shadow" id="priceBtn"></button>
+                </div>
+                <br>
+
+            </div>
+            <div class="hidden row justify-content-center" align="center" id="sellBox">
+
+                <div class="col-lg-2 p-1">
+                    <button class="btn btn-warning" id="sellBtn"><b>Sell me</b></button>
+                </div>
+
+                <div class="col-lg-2 p-1 input-group">
+                    
+                    <input type="number" class="form-control" id="tokenPrice" placeholder="Price in ether">
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2"><b>ETH</b></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 p-1 hidden" id="cancelBox">
+                    <button class="btn btn-danger" id="cancelBtn"><b class="t-no-wrap">Cancel offer</b></button>
+                </div>
+                
+            </div>
+            <div id="message" align="center"></div>
+            <br>
+            <div id="attributes"></div>
+
+        </div>
         
     </div>
 
@@ -65,7 +99,7 @@
     // when page loads create the catalog
     $(document).ready(function () {
         setTimeout(() => {
-            getMyBears()
+            getSingleBear()
         }, 500)
     });
     </script>

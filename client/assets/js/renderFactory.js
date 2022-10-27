@@ -2,7 +2,6 @@
 *FUNCTIONS FROM bearFactory.js WITH ID FOR CATALOG
 */
 
-
 //Color Variations
 function headColor(color, id) {
     $('#rightEar'+ id +', #leftEar'+ id +', #head'+ id +', #body'+ id).css('background', '#' + color);

@@ -113,7 +113,7 @@ function bearBody(id) {
                 <div id="rightBackPaw`+ id +`" class="backPaw rightBackPaw"></div>
             </div>
         </div>
-    </div>`
+    </div>`;
 
     return bear;
 };
@@ -125,7 +125,7 @@ function attributes(id) {
             <li><span id="eyeName`+ id + `"></span> Eyes</li>                     
             <li><span id="decorationName`+ id + `"></span> Decoration</li>                     
             <li><span id="animationName`+ id + `"></span> Animation</li>                  
-        </ul>`
+        </ul>`;
 
     return attributes;
 };
@@ -146,7 +146,7 @@ function inventoryRender(dna, id, gen){
         </div>
         <div class="dnaDiv bearDna" id="bearDNA` + idNum + `"></div>
         
-        <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>ID: </b>`+ id + `</h4></span>
+        <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>ID: </b>`+ idNum + `</h4></span>
         <br>
         <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>GEN: </b>`+ gen + `</h4></span>
         <br>
@@ -154,11 +154,17 @@ function inventoryRender(dna, id, gen){
         `+ attributes(idNum) + `
     </div>`;
 
+    $('#bearView' + id).attr('onclick', 'window.location.href = "singleBear.html?bearId=' + idNum + '"')
     const bearView = $('#bearView' + idNum);
 
     if (!bearView.length) {
         $('#bearView').append(bearDiv)
     };
+};
+
+//Single Bear 
+function getSingleBear() {
+
 };
 
 //breeding page

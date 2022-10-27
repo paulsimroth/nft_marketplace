@@ -55,10 +55,18 @@
   </body>
 
     <script src="assets/js/colors.js"></script>
-    <script src="assets/js/bearSettings.js"></script>
-    <script src="assets/js/bearFactory.js"></script>
     <script src="assets/js/factoryButtons.js"></script>
+    <script src="assets/js/renderFactory.js"></script>
     <script src="assets/js/render.js"></script>
     <script src="./index.js"></script>
+
+    <script>
+      // when page loads create the catalog
+      $(document).ready(function () {
+          setTimeout(() => {
+              getMarketInventory()
+          }, 500)
+      });
+      </script>
 
 </html>
