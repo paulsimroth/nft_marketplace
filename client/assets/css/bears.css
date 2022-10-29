@@ -66,7 +66,6 @@ body {
 }
 
 #eye {
-    background-color: #fff;
     border-radius: 50%;
     width: 50px;
     height: 50px;
@@ -86,7 +85,7 @@ body {
 }
 
 #rightPupil {
-    background-color: black;
+    
     width: 35px;
     height: 35px;
     border-radius: 50%;
@@ -97,7 +96,7 @@ body {
 }
 
 #leftPupil {
-    background-color: black;
+    
     width: 35px;
     height: 35px;
     border-radius: 50%;
@@ -122,7 +121,7 @@ body {
 
 #leftEar {
     border-radius: 50%;
-    background-color: #804000;
+    
     height: 100px;
     width: 100px;
     position: absolute;
@@ -132,7 +131,7 @@ body {
 
 #rightEar {
     border-radius: 50%;
-    background-color: #804000;
+    
     height: 100px;
     width: 100px;
     position: absolute;
@@ -141,7 +140,7 @@ body {
 
 #rightInnerEar {
     border-radius: 50%;
-    background-color: #996600;
+    
     height: 70px;
     width: 70px;
     position: relative;
@@ -150,7 +149,7 @@ body {
 
 #leftInnerEar {
     border-radius: 50%;
-    background-color: #996600;
+    
     height: 70px;
     width: 70px;
     position: relative;
@@ -158,7 +157,7 @@ body {
 }
 
 #nose {
-    background-color: #997300;
+    
     border-radius: 20% 20% 50% 50%;
     width: 40px;
     height: 40px;
@@ -167,7 +166,7 @@ body {
 }
 
 #mouth {
-    background-color: #997300;
+    
     width: 50px;
     height: 20px;
     border-radius: 130% 90% 130% 90%;
@@ -178,7 +177,7 @@ body {
 #body {
     position: absolute;
     top: 145px;
-    background-color: #804000;
+    
     width: 300px;
     height: 300px;
     border-radius: 85% 85% 25% 25%;
@@ -186,7 +185,7 @@ body {
 }
 
 #belly {
-    background-color: #996600;
+    
     width: 130px;
     height: 150px;
     border-radius: 85% 85% 25% 25%;
@@ -203,7 +202,7 @@ body {
 }
 
 #rightFrontPaw {
-    background-color: #996633;
+    
     width: 75px;
     height: 75px;
     border-radius: 25% 25% 85% 85%;
@@ -212,7 +211,7 @@ body {
 }
 
 #leftFrontPaw {
-    background-color: #996633;
+    
     width: 75px;
     height: 75px;
     border-radius: 25% 25% 85% 85%;
@@ -226,7 +225,7 @@ body {
 }
 
 #rightBackPaw {
-    background-color: #996633;
+    
     width: 100px;
     height: 100px;
     border-radius: 85% 85% 25% 25%;
@@ -235,7 +234,7 @@ body {
 }
 
 #leftBackPaw {
-    background-color: #996633;
+    
     width: 100px;
     height: 100px;
     border-radius: 85% 85% 25% 25%;
