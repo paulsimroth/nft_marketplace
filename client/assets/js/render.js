@@ -145,6 +145,7 @@ function inventoryRender(dna, id, gen){
         <div class="featureBox ownersBear" id="ownersBear` + idNum + `">
         `+ bearBody(idNum) + `
         </div>
+    </a>
         <div class="dnaDiv bearDna" id="bearDNA` + idNum + `"></div>
         
         <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>ID: </b>`+ idNum + `</h4></span>
@@ -153,7 +154,6 @@ function inventoryRender(dna, id, gen){
         <br>
         <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>DNA: </b>`+ dnaNum + `</h4></span>
         `+ attributes(idNum) + `
-    </a>
     </div>`;
 
     const bearView = $('#bearView' + idNum);
@@ -231,6 +231,7 @@ function marketRender(dna, id, gen) {
         <div class="featureBox ownersBear" id="ownersBear` + idNum + `">
         `+ bearBody(idNum) + `
         </div>
+    </a>
         <div class="dnaDiv bearDna" id="bearDNA` + idNum + `"></div>
         
         <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>ID: </b>`+ idNum + `</h4></span>
@@ -239,7 +240,6 @@ function marketRender(dna, id, gen) {
         <br>
         <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>DNA: </b>`+ dnaNum + `</h4></span>
         `+ attributes(idNum) + `
-    </a>
     </div>`;
 
     const marketView = $('#marketView' + idNum);
@@ -260,6 +260,7 @@ function breedRender(dna, id, gen, gender) {
         <div class="featureBox ownersBear" id="ownersBear` + idNum + `">
         `+ bearBody(idNum) + `
         </div>
+    </a>
         <div class="dnaDiv bearDna" id="bearDNA` + idNum + `"></div>
         
         <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>ID: </b>`+ idNum + `</h4></span>
@@ -268,7 +269,6 @@ function breedRender(dna, id, gen, gender) {
         <br>
         <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>DNA: </b>`+ dnaNum + `</h4></span>
         `+ attributes(idNum) + `
-    </a>
     </div>`;
 
     console.log("breedRender", dna, id, gen, gender);
