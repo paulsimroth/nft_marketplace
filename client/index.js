@@ -157,9 +157,21 @@ async function appendMarket(id) {
     marketRender(bear.genes, id, bear.generation);
 };
 
-//Get Owner by Id
-async function getOwnerById() {
+//check Ownership
+async function bearOwnership(id) {
+    try{
+        const tx = await signer.ownerOf(id);
+        const receipt = await tx.wait();
+        
+        if (receipt.toLowerCase() == user.toLowerCase()) {      
+            return true;
+        };
 
+        console.log("bearOwnership, Receipt:", receipt); 
+    } catch (error){
+        alert("bearOwnership, ERROR");
+        console.log("bearOwnership, ERROR:", error);
+    }
 };
 
 //Select Token for Selling
@@ -190,7 +202,7 @@ async function removeOffer(id) {
 };
 
 //Buy Token
-async function buyToken(id) {
+async function buyBear(id) {
     try{
         const tx = await marketSigner.buyBear(id);
         const receipt = await tx.wait();
@@ -198,5 +210,31 @@ async function buyToken(id) {
     } catch (error){
         alert("buyToken, ERROR");
         console.log("buyToken, ERROR:", error);
+    }
+};
+
+async function getOffers(id) {
+    try{
+        const tx = await marketSigner.getOffer(amount ,id);
+        const receipt = await tx.wait();
+        console.log("getOffers, Receipt:", receipt);
+        var price = receipt.price;
+        var seller = receipt.seller;
+        var onSale = false;
+        //Bear mus be worth something
+        if (price > 0) {
+            onSale = true
+        };
+
+        //price unit conversion
+        price = ethers.utils.formatUnits(price, "ether");
+        
+        var offers = { seller: seller, price: price, onSale: onSale };
+        console.log(offers);
+        return offers;
+        
+    } catch (error){
+        alert("getOffers, ERROR");
+        console.log("getOffers, ERROR:", error);
     }
 };

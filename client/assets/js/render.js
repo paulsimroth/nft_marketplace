@@ -132,8 +132,8 @@ function attributes(id) {
 
 //Inventory of own bears is shown
 function inventoryRender(dna, id, gen){
-    const dnaNum = dna.toNumber();
-    const idNum = id.toNumber();
+    var dnaNum = dna.toNumber();
+    var idNum = id.toNumber();
     const bearDnaStr = bearDna(dnaNum);
     renderBearWithId(bearDnaStr, idNum);
     
@@ -141,6 +141,7 @@ function inventoryRender(dna, id, gen){
 
     const bearDiv = `
     <div class="col-lg-4 pointer bearView" id="bearView` + idNum + `">
+    <a href="singleBear.html?bearId=` + idNum + `" class="bearLink">
         <div class="featureBox ownersBear" id="ownersBear` + idNum + `">
         `+ bearBody(idNum) + `
         </div>
@@ -152,9 +153,9 @@ function inventoryRender(dna, id, gen){
         <br>
         <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>DNA: </b>`+ dnaNum + `</h4></span>
         `+ attributes(idNum) + `
+    </a>
     </div>`;
 
-    $('#ownersBear'+ idNum).attr('onclick',  'go_to("singleBear.html?bearId=' + idNum + '")');
     const bearView = $('#bearView' + idNum);
 
     if (!bearView.length) {
@@ -162,33 +163,28 @@ function inventoryRender(dna, id, gen){
     };
 };
 
-function go_to(url) {
-    window.location.href = url;
-};
 
 //Single Bear 
-function getSingleBear(dna, id, gen) {
-    let dnaNum = dna.toNumber();
-    let idNum = id.toNumber();
+async function getSingleBear(dna, id, gen) {
+    var dnaNum = dna.toNumber();
+    var idNum = id.toNumber();
     const bearDnaStr = bearDna(dnaNum);
+
+    $('#singleBear').html(bearBody(idNum));
+
     renderBearWithId(bearDnaStr, idNum);
+
+    $('#bearDNA').html(`
+    <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>GEN:</b>`+ gen + `</h4></span>
+    <br>
+    <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>DNA:</b>`+ dnaNum + `</h4></span>
+    `+ attributes(idNum) + `
+    `);
+    
+    await bearOffer(idNum);
     
     console.log("getSingleBear", dnaNum, idNum);
 
-    const bearDiv = `
-    <div class="col-lg-4 pointer bearView" id="bearView` + idNum + `">
-        <div class="featureBox ownersBear id="ownersBear` + idNum + `">
-        `+ bearBody(idNum) + `
-        </div>
-        <div class="dnaDiv bearDna" id="bearDNA` + idNum + `"></div>
-        
-        <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>ID: </b>`+ idNum + `</h4></span>
-        <br>
-        <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>GEN: </b>`+ gen + `</h4></span>
-        <br>
-        <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>DNA: </b>`+ dnaNum + `</h4></span>
-        `+ attributes(idNum) + `
-    </div>`;
 };
 
 //breeding page
@@ -207,7 +203,64 @@ function breedRender(dna, id, gen, gender) {
     $('#bearView' + id).attr('onclick', 'selectBreed("' + dna + '","' + id + '","' + gen + '","' + gender + '")')
 };
 
+//Set functions for trading on singleBear page
+async function bearOffer(id) {
+    var offer = await getOffers(id);
+    var seller = offer.seller.toLocaleLowerCase()
+    if (offer.onSale == true && seller != user) {
+        $('#buyBox').removeClass('hidden');
+        $('#priceBtn').html('<b>' + offer.price + ' ETH</b>');
+        $('#buyBtn').attr('onclick', 'buyBear(' + id + ',"' + offer.price + '")');
+    };
+
+    var ownership = await bearOwnership(id);
+    //If user owns token
+    if (ownership == true) {        
+        //If is not on sale
+        if (offer.onSale == false) {
+            $('#sellBox').removeClass('hidden');
+            $('#sellBtn').attr('onclick', 'sellBear(' + id + ')');
+        } else {
+            $('#sellBox').removeClass('hidden');
+            $('#cancelBox').removeClass('hidden');
+            $('#cancelBtn').attr('onclick', 'deleteOffer(' + id + ')');
+            $('#sellBtn').addClass('btn-success');
+            $('#sellBtn').html('<b>For sale at:</b>');
+            $('#tokenPrice').val(offer.price);
+            $('#tokenPrice').prop('readonly', true);
+        }
+    };
+};
+
 //market page
 function marketRender(dna, id, gen) {
+    var dnaNum = dna.toNumber();
+    var idNum = id.toNumber();
+    const bearDnaStr = bearDna(dnaNum);
+    renderBearWithId(bearDnaStr, idNum);
+    
+    console.log("marketRender", dnaNum, idNum);
 
+    const bearDiv = `
+    <div class="col-lg-4 pointer bearView" id="marketView` + idNum + `">
+    <a href="singleBear.html?bearId=` + idNum + `" class="bearLink">
+        <div class="featureBox ownersBear" id="ownersBear` + idNum + `">
+        `+ bearBody(idNum) + `
+        </div>
+        <div class="dnaDiv bearDna" id="bearDNA` + idNum + `"></div>
+        
+        <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>ID: </b>`+ idNum + `</h4></span>
+        <br>
+        <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>GEN: </b>`+ gen + `</h4></span>
+        <br>
+        <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>DNA: </b>`+ dnaNum + `</h4></span>
+        `+ attributes(idNum) + `
+    </a>
+    </div>`;
+
+    const bearView = $('#marketView' + idNum);
+
+    if (!bearView.length) {
+        $('#marketView').append(bearDiv)
+    };
 };
