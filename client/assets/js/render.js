@@ -55,7 +55,7 @@ function renderBearWithId(dna, id){
     decorationColor2(colors[_decorationSidescolor], id);
     
     animationVariation(_animation, id);
-  };
+};
 
 //Bear Box
 function bearBox(id) {
@@ -252,15 +252,31 @@ function marketRender(dna, id, gen) {
 //breeding page
 function breedRender(dna, id, gen, gender) {
     const bearDnaStr = bearDna(dna);
-    renderBear(bearDnaStr);
-    bearBox(id);
+    renderBearWithId(bearDnaStr ,id);
 
-    console.log("breedRender", dna, id);
+    const bearDiv = `
+    <div class="col-lg-4 pointer bearView" id="bearView` + idNum + `">
+    <a href="singleBear.html?bearId=` + idNum + `" class="bearLink">
+        <div class="featureBox ownersBear" id="ownersBear` + idNum + `">
+        `+ bearBody(idNum) + `
+        </div>
+        <div class="dnaDiv bearDna" id="bearDNA` + idNum + `"></div>
+        
+        <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>ID: </b>`+ idNum + `</h4></span>
+        <br>
+        <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>GEN: </b>`+ gen + `</h4></span>
+        <br>
+        <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>DNA: </b>`+ dnaNum + `</h4></span>
+        `+ attributes(idNum) + `
+    </a>
+    </div>`;
 
-    $('#bearDna' + id).html(`
-    <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>GEN:</b>`+ gen + `</h4></span>
-    <br>
-    <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>DNA:</b>`+ dna + `</h4></span>`)
+    console.log("breedRender", dna, id, gen, gender);
 
-    $('#bearView' + id).attr('onclick', 'selectBreed("' + dna + '","' + id + '","' + gen + '","' + gender + '")')
+    $('#bearView' + id).attr('onclick', 'breederSelection("' + dna + '","' + id + '","' + gen + '","' + gender + '")');
+};
+ 
+function breederSelection(dna, id, gen, gender) {
+    const bearDnaStr = bearDna(dna);
+    renderBearWithId(bearDnaStr, gender);
 };

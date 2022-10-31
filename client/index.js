@@ -80,8 +80,8 @@ async function createBear(){
 };
 
 //Choose Bears for breeding
-async function chooseParents(gender){
-    const arrId = await instance.getBearByOwner();
+async function chooseParent(gender){
+    const arrId = await signer.getBearByOwner(user);
     console.log(arrId);
     for (i = 0; i < arrId.length; i++){
         appendBreeder(arrId[i], gender);

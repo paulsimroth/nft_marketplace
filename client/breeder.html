@@ -39,7 +39,7 @@
         <div class="breeder-menu" id="breedDiv">
             <div class="col-lg-6">
                 <p><b>Father</b></p>
-                <div class="featureBox" data-toggle="modal" data-target="#bearSelection">
+                <div class="featureBox pointer" data-toggle="modal" data-target="#bearSelection">
                     <div id="Father" data-bearid="0" onclick="chooseParent(this.id)">
                         <div align="center">
                             <div class="egg">
@@ -55,7 +55,7 @@
 
             <div class="col-lg-6">
                 <p><b>Mother</b></p>
-                <div class="featureBox" data-toggle="modal" data-target="#bearSelection">
+                <div class="featureBox pointer" data-toggle="modal" data-target="#bearSelection">
                     <div id="Mother" data-bearid="0" onclick="chooseParent(this.id)" align="left">
                         <div align="center">
                             <div class="egg">
@@ -73,7 +73,7 @@
         <br>
 
         <div id="message" align="center"></div>
-        <button class="tooltip-btn white-btn" id="breed" onclick="breedBear()">Breed</button>
+        <button class="tooltip-btn white-btn pointer" id="breed" disabled onclick="breedBear()">Breed</button>
     </div>
 
     <div class="animation-wrapper">
