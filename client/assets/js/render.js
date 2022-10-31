@@ -187,22 +187,6 @@ async function getSingleBear(dna, id, gen) {
 
 };
 
-//breeding page
-function breedRender(dna, id, gen, gender) {
-    const bearDnaStr = bearDna(dna);
-    renderBear(bearDnaStr);
-    bearBox(id);
-
-    console.log("breedRender", dna, id);
-
-    $('#bearDna' + id).html(`
-    <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>GEN:</b>`+ gen + `</h4></span>
-    <br>
-    <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>DNA:</b>`+ dna + `</h4></span>`)
-
-    $('#bearView' + id).attr('onclick', 'selectBreed("' + dna + '","' + id + '","' + gen + '","' + gender + '")')
-};
-
 //Set functions for trading on singleBear page
 async function bearOffer(id) {
     var offer = await getOffers(id);
@@ -258,9 +242,25 @@ function marketRender(dna, id, gen) {
     </a>
     </div>`;
 
-    const bearView = $('#marketView' + idNum);
+    const marketView = $('#marketView' + idNum);
 
-    if (!bearView.length) {
+    if (!marketView.length) {
         $('#marketView').append(bearDiv)
     };
+};
+
+//breeding page
+function breedRender(dna, id, gen, gender) {
+    const bearDnaStr = bearDna(dna);
+    renderBear(bearDnaStr);
+    bearBox(id);
+
+    console.log("breedRender", dna, id);
+
+    $('#bearDna' + id).html(`
+    <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>GEN:</b>`+ gen + `</h4></span>
+    <br>
+    <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>DNA:</b>`+ dna + `</h4></span>`)
+
+    $('#bearView' + id).attr('onclick', 'selectBreed("' + dna + '","' + id + '","' + gen + '","' + gender + '")')
 };
