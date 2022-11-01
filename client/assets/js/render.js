@@ -121,7 +121,7 @@ function bearBody(id) {
 //Attribute description
 function attributes(id) {
     const attributes = 
-        `<ul class="ml-5 attributes">                     
+        `<ul class="ml-5 attributes id="attributes`+id+`">                     
             <li><span id="eyeName`+id+`"></span> Eyes</li>                     
             <li><span id="decorationName`+id+`"></span> Decoration</li>                     
             <li><span id="animationName`+id+`"></span> Animation</li>                  
@@ -164,7 +164,7 @@ function inventoryRender(dna, id, gen){
 };
 
 
-//Single Bear 
+//Get a Single Bear 
 async function getSingleBear(dna, id, gen) {
     var dnaNum = dna.toNumber();
     var idNum = id.toNumber();
@@ -256,11 +256,9 @@ function breedRender(dna, id, gen, gender) {
 
     const bearDiv = `
     <div class="col-lg-4 pointer bearView" id="bearView` + idNum + `">
-    <a href="singleBear.html?bearId=` + idNum + `" class="bearLink">
         <div class="featureBox ownersBear" id="ownersBear` + idNum + `">
         `+ bearBody(idNum) + `
         </div>
-    </a>
         <div class="dnaDiv bearDna" id="bearDNA` + idNum + `"></div>
         
         <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>ID: </b>`+ idNum + `</h4></span>
@@ -278,5 +276,71 @@ function breedRender(dna, id, gen, gender) {
  
 function breederSelection(dna, id, gen, gender) {
     const bearDnaStr = bearDna(dna);
+
+    var body = bearBody(gender);
+    var attributes = attributes(gender);
+    $('#attributes' + gender).html(attributes);
+    $('#' + gender).html(body);
+
     renderBearWithId(bearDnaStr, gender);
+
+    $('#' + gender).addClass('breedSelect');
+    $('#' + gender).attr('data-catid', id);
+    $('#' + gender).attr('onclick', 'breedKitties("' + gender + '")');
+    $('#catDNA' + gender).html(`
+    <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>GEN:</b>`+ gen + `</h4><input class="hidden" id="` + gender + `Id" type="number" value=` + id + `></span>
+    <br>
+    <span class="badge badge-light"><h4 class="tsp-2 m-0"><b>DNA:</b>`+ dna + `</h4></span>`);
+    $('#catSelection').modal('hide');
+    removeBreedSelection(id, gender);
+    readyForBreeding();
+};
+
+//
+function readyForBreeding() {
+    var mumId = $('#DameId').val();
+    var dadId = $('#SireId').val();
+
+    if (!empty(mumId) && !empty(dadId)) {
+        $('#breed').css('filter', 'none')
+        $('#breed').prop('disabled', false)
+        $('#breed').attr('onclick', 'breedBear("' + dadId + '","' + mumId + '")')
+        return true
+    };
+
+    $('#breed').prop('disabled', true);
+    $('#breed').css('filter', ' grayscale()');
+    return false;
+};
+
+//Clearing Breeding Window of selected bears
+function removeBreedSelection(id, gender) {
+    const selectionDiv = `
+    <div align="center">
+        <div class="egg">
+        </div>
+            <h4>Select a cat as `+ gender + `</h4>
+        </div>
+    </div>`;
+
+    if (gender == 'Mother') {
+            var catData = $('#Father').attr('data-catid')
+        if (catData == id) {
+            $('#Father').attr('data-catid', 0)
+            $('#Father').attr('onclick', 'chooseParent(this.id)')
+            $('#Father').html(selectionDiv)
+            $('#Father').removeClass('breedSelect')
+            $('#catDNAfather').html('')
+        };
+    };
+    if (gender == 'Father') {
+            var catData = $('#Mother').attr('data-catid')
+        if (catData == id) {
+            $('#Mother').attr('data-catid', 0)
+            $('#Mother').attr('onclick', 'chooseParent(this.id)')
+            $('#Mother').html(selectionDiv)
+            $('#Mother').removeClass('breedSelect')
+            $('#catDNAmother').html('')
+        };
+    };
 };

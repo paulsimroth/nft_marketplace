@@ -37,30 +37,32 @@ $(document).ready(async function () {
     //MarketTransaction Event
     marketInstance.on("MarketTransaction", (txType, owner, tokenId) => {
         if (txType == "Buy Bear") {
-            alert('Succesfull purchase! Now you own this Bear with TokenId: ' + tokenId, 'success')
-        }
+            alert('Succesfull purchase! Now you own this Bear with TokenId: ' + tokenId, 'success');
+        };
         if (txType == "Create Offer") {
-            alert('Offer set for Kitty id: ' + tokenId, 'success')
-        }
+            alert('Offer set for Kitty id: ' + tokenId, 'success');
+            $('#cancelBox').removeClass('hidden');
+            $('#cancelBtn').attr('onclick', 'deleteOffer(' + tokenId + ')');
+            $('#sellBtn').attr('onclick', '');
+            $('#sellBtn').addClass('btn-warning');
+            $('#sellBtn').html('<b>For sale at:</b>');
+            var price = $('#tokenPrice').val();
+            $('#tokenPrice').val(price);
+            $('#tokenPrice').prop('readonly', true);
+        };
         if (txType == "Remove Offer") {
-            alert("Remove Offer for" + tokenId)
-        }
+            alert("Remove Offer for" + tokenId);
+            $('#cancelBox').addClass('hidden');
+            $('#cancelBtn').attr('onclick', '');       
+            $('#tokenPrice').val('');
+            $('#tokenPrice').prop('readonly', false);
+            $('#sellBtn').removeClass('btn-warning');
+            $('#sellBtn').addClass('btn-success');
+            $('#sellBtn').html('<b>Sell me</b>');
+            $('#sellBtn').attr('onclick', 'sellBear(' + tokenId + ')');
+        };
     });
 });
-
-//Initialization of Marketplace
-async function initMarket() {
-    let isMarketOperator = await instance.isApprovedForAll(user, marketAddress);
-
-    if(isMarketOperator){
-        getInventory();
-    } else {
-        const tx = await instance.setApprovalForAll(marketAddress, true);
-        const receipt = await tx.wait();
-        console.log("Set Approval for Market, Receipt:", receipt);
-        getInventory();
-    }
-};
 
 /*
 *BREEDING FUNCTIONS
@@ -89,20 +91,18 @@ async function chooseParent(gender){
 };
 
 async function appendBreeder(id, gender) {
-    const bear = await instance.getBear(id);
+    const bear = await signer.getBear(id);
     breedRender(bear.genes, id, bear.generation, gender); //Adds Bear to breeding page
 };
 
 //Breed new gen Bear
-async function breedBear(){
-    let dadId = PLACEHOLDER;
-    let mumId = PLACEHOLDER;
+async function breedBear(dadId, mumId){
         try{
             const tx = await signer.breed(dadId, mumId);
             const receipt = await tx.wait();
-            console.log("Create Bear, Receipt:", receipt);
+            console.log("Breed new Gen, Receipt:", receipt);
         } catch (error){
-            alert("Create Bear, ERROR");
+            alert("Breed new Gen, ERROR");
             console.log(error);
         }
 };
@@ -140,14 +140,33 @@ async function appendInventory(id) {
 * MARKET FUNCTIONS
 */
 
+//Initialization of Marketplace
+async function initMarket() {
+    let isMarketOperator = await instance.isApprovedForAll(user, marketAddress);
+
+    if(isMarketOperator){
+        getMarketInventory();
+    } else {
+        const tx = await instance.setApprovalForAll(marketAddress, true);
+        const receipt = await tx.wait();
+        console.log("Set Approval for Market, Receipt:", receipt);
+        getMarketInventory();
+    }
+};
+
 //Retrieve all Tokens on Sale in Market
 async function getMarketInventory() {
-    const arrId = await marketInstance.getAllTokenOnSale();
-    console.log("getInventory,  arrId:", arrId);
-    for (i = 0; i < arrId.length; i++){
-        if(arrId[i] != 0){
-            appendMarket(arrId[i]);
+    try{
+        const arrId = await await marketInstance.getAllTokenOnSale();
+        for (i = 0; i < arrId.length; i++){
+            if(arrId[i] != 0){
+                appendMarket(arrId[i]);
+            }
         }
+        console.log("getMarketInventory, Array:", arrId);
+    } catch (error){
+        alert("getMarketInventory, ERROR");
+        console.log("getMarketInventory, ERROR:", error);
     }
 };
 
@@ -213,6 +232,7 @@ async function buyBear(id) {
     }
 };
 
+//CheCk Market for Offers
 async function getOffers(id) {
     try{
         const tx = await marketSigner.getOffer(amount ,id);
