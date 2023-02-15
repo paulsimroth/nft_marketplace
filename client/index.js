@@ -1,8 +1,8 @@
 //Interaction between smart contracts and Frontend
 let provider, signer, instance, marketInstance, user, address;
 let dnaString = "457896541299";
-const bearAddress = "0x2860d6C9F9F3e46635225Dc6626fdc8f9F9F7763";
-const marketAddress = "0xFdb4B2eb371389FD8703F9CB6E3b1d8b445a0cD6";
+const bearAddress = "0xCE2A7C04D7172eC5313AF480A71425Ff199e6355";
+const marketAddress = "0xbF5d13c6C317892Ea7919bD0015ea1bA3a357957";
 
 //Initialize on loading
 $(document).ready(async function () {
@@ -116,7 +116,7 @@ async function getMyBears() {
     try{
     const bearId = await instance.getBearByOwner(address);
 
-    /* console.log("getMyBears", bearId); */
+    console.log("getMyBears", bearId);
 
     for (i = 0; i < bearId.length; i++){
         if(bearId[i] != 0){

@@ -23,38 +23,38 @@ function bearDna(dnaStr) {
     return bearDna;
 };
 
-function renderBearWithId(dna, id){
+function renderBearWithId(bearDna, id){
     const toNumber = (value) => parseInt(value.toString()); 
 
-    const _headColor = toNumber(dna.headColor);
-    const _mouthColor = toNumber(dna.mouthColor);
-    const _eyesColor = toNumber(dna.eyesColor);
-    const _earsColor = toNumber(dna.earsColor);
-    const _eyesShape = toNumber(dna.eyesShape);
-    const _decorationPattern = toNumber(dna.decorationPattern);
-    const _decorationMidcolor = toNumber(dna.decorationMidcolor);
-    const _decorationSidescolor = toNumber(dna.decorationSidescolor);
-    const _animation = toNumber(dna.animation);
+    const _headColor = toNumber(bearDna.headColor);
+    const _mouthColor = toNumber(bearDna.mouthColor);
+    const _eyesColor = toNumber(bearDna.eyesColor);
+    const _earsColor = toNumber(bearDna.earsColor);
+    const _eyesShape = toNumber(bearDna.eyesShape);
+    const _decorationPattern = toNumber(bearDna.decorationPattern);
+    const _decorationMidcolor = toNumber(bearDna.decorationMidcolor);
+    const _decorationSidescolor = toNumber(bearDna.decorationSidescolor);
+    const _animation = toNumber(bearDna.animation);
 
-    console.log("renderBearWithId", "DNA:", dna, "ID:", id);
+    console.log("renderBearWithId", "DNA:", bearDna, "ID:", id);
 
-    headColor(colors[_headColor], id);
+    headColorById(colors[_headColor], id);
   
-    mouthColor(colors[_mouthColor], id);
+    mouthColorById(colors[_mouthColor], id);
   
-    eyesColor(colors[_eyesColor], id);
+    eyesColorById(colors[_eyesColor], id);
   
-    earsColor(colors[_earsColor], id);
+    earsColorById(colors[_earsColor], id);
   
-    eyeVariation(_eyesShape, id);
+    eyeVariationById(_eyesShape, id);
   
-    decorationVariation(_decorationPattern, id);
+    decorationVariationById(_decorationPattern, id);
   
-    decorationColor1(colors[_decorationMidcolor], id);
+    decorationColor1ById(colors[_decorationMidcolor], id);
   
-    decorationColor2(colors[_decorationSidescolor], id);
+    decorationColor2ById(colors[_decorationSidescolor], id);
     
-    animationVariation(_animation, id);
+    animationVariationById(_animation, id);
 };
 
 //Bear Box
@@ -304,7 +304,7 @@ function readyForBreeding() {
     if (!empty(mumId) && !empty(dadId)) {
         $('#breed').css('filter', 'none')
         $('#breed').prop('disabled', false)
-        $('#breed').attr('onclick', 'breedBear("' + dadId + '","' + mumId + '")')
+        $('#breed').attr('onclick', 'breedBearById("' + dadId + '","' + mumId + '")')
         return true
     };
 
